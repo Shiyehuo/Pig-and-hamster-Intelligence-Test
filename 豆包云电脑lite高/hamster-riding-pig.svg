@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500">
+  <!-- 背景：天空 -->
+  <defs>
+    <linearGradient id="skyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#87CEEB;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#E0F6FF;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="grassGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#7CB342;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#558B2F;stop-opacity:1" />
+    </linearGradient>
+    <radialGradient id="pigBody" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" style="stop-color:#FFB6C1;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FF9AAE;stop-opacity:1" />
+    </radialGradient>
+    <radialGradient id="hamsterBody" cx="40%" cy="35%" r="65%">
+      <stop offset="0%" style="stop-color:#D4A574;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#B8864F;stop-opacity:1" />
+    </radialGradient>
+  </defs>
+
+  <!-- 天空 -->
+  <rect width="800" height="350" fill="url(#skyGrad)" />
+
+  <!-- 云朵 -->
+  <g opacity="0.9">
+    <ellipse cx="150" cy="80" rx="50" ry="25" fill="white" />
+    <ellipse cx="190" cy="70" rx="40" ry="22" fill="white" />
+    <ellipse cx="110" cy="75" rx="35" ry="20" fill="white" />
+  </g>
+  <g opacity="0.8">
+    <ellipse cx="600" cy="120" rx="45" ry="22" fill="white" />
+    <ellipse cx="635" cy="112" rx="35" ry="18" fill="white" />
+    <ellipse cx="565" cy="115" rx="30" ry="16" fill="white" />
+  </g>
+
+  <!-- 太阳 -->
+  <circle cx="700" cy="70" r="35" fill="#FFD700" />
+  <g stroke="#FFD700" stroke-width="3" stroke-linecap="round">
+    <line x1="700" y1="20" x2="700" y2="30" />
+    <line x1="700" y1="110" x2="700" y2="120" />
+    <line x1="650" y1="70" x2="660" y2="70" />
+    <line x1="740" y1="70" x2="750" y2="70" />
+    <line x1="665" y1="35" x2="672" y2="42" />
+    <line x1="728" y1="98" x2="735" y2="105" />
+    <line x1="735" y1="35" x2="728" y2="42" />
+    <line x1="672" y1="98" x2="665" y2="105" />
+  </g>
+
+  <!-- 草地 -->
+  <rect y="350" width="800" height="150" fill="url(#grassGrad)" />
+
+  <!-- 地面装饰：小草 -->
+  <g fill="#689F38">
+    <path d="M 80 380 Q 85 365 90 380" stroke="#689F38" stroke-width="2" fill="none" />
+    <path d="M 200 400 Q 205 385 210 400" stroke="#689F38" stroke-width="2" fill="none" />
+    <path d="M 650 390 Q 655 375 660 390" stroke="#689F38" stroke-width="2" fill="none" />
+    <path d="M 720 410 Q 725 395 730 410" stroke="#689F38" stroke-width="2" fill="none" />
+  </g>
+
+  <!-- 小花 -->
+  <g>
+    <circle cx="100" cy="400" r="5" fill="#FF6B9D" />
+    <circle cx="100" cy="400" r="2" fill="#FFD700" />
+    <circle cx="700" cy="390" r="5" fill="#FF6B9D" />
+    <circle cx="700" cy="390" r="2" fill="#FFD700" />
+  </g>
+
+  <!-- 奔跑速度线 -->
+  <g stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" opacity="0.6">
+    <line x1="80" y1="320" x2="130" y2="320" />
+    <line x1="60" y1="350" x2="110" y2="350" />
+    <line x1="90" y1="380" x2="140" y2="380" />
+  </g>
+
+  <!-- 小猪身体 -->
+  <g transform="translate(250, 230)">
+    <!-- 身体 -->
+    <ellipse cx="180" cy="100" rx="140" ry="75" fill="url(#pigBody)" />
+    
+    <!-- 头部 -->
+    <ellipse cx="300" cy="70" rx="65" ry="55" fill="url(#pigBody)" />
+    
+    <!-- 猪鼻子 -->
+    <ellipse cx="350" cy="80" rx="22" ry="18" fill="#FFB6C1" stroke="#FF8FA3" stroke-width="2" />
+    <ellipse cx="345" cy="80" rx="4" ry="6" fill="#E07A8F" />
+    <ellipse cx="355" cy="80" rx="4" ry="6" fill="#E07A8F" />
+    
+    <!-- 眼睛 -->
+    <circle cx="300" cy="55" r="6" fill="#333" />
+    <circle cx="302" cy="53" r="2" fill="white" />
+    
+    <!-- 腮红 -->
+    <ellipse cx="280" cy="75" rx="10" ry="6" fill="#FF8FA3" opacity="0.6" />
+    
+    <!-- 耳朵 -->
+    <path d="M 270 25 L 260 -5 L 285 15 Z" fill="#FFB6C1" stroke="#FF8FA3" stroke-width="2" />
+    <path d="M 310 20 L 315 -10 L 330 12 Z" fill="#FFB6C1" stroke="#FF8FA3" stroke-width="2" />
+    
+    <!-- 前腿（奔跑姿态：一只抬起） -->
+    <g transform="rotate(-20, 310, 160)">
+      <ellipse cx="310" cy="170" rx="18" ry="35" fill="url(#pigBody)" />
+      <ellipse cx="310" cy="200" rx="16" ry="10" fill="#FF8FA3" />
+    </g>
+    <g transform="rotate(15, 270, 160)">
+      <ellipse cx="270" cy="170" rx="18" ry="35" fill="url(#pigBody)" />
+      <ellipse cx="270" cy="200" rx="16" ry="10" fill="#FF8FA3" />
+    </g>
+    
+    <!-- 后腿 -->
+    <g transform="rotate(25, 100, 160)">
+      <ellipse cx="100" cy="170" rx="20" ry="38" fill="url(#pigBody)" />
+      <ellipse cx="100" cy="205" rx="18" ry="11" fill="#FF8FA3" />
+    </g>
+    <g transform="rotate(-15, 150, 165)">
+      <ellipse cx="150" cy="175" rx="20" ry="38" fill="url(#pigBody)" />
+      <ellipse cx="150" cy="210" rx="18" ry="11" fill="#FF8FA3" />
+    </g>
+    
+    <!-- 尾巴 -->
+    <path d="M 40 100 Q 20 90 30 75 Q 40 65 50 75 Q 55 85 45 90" 
+          fill="none" stroke="#FF8FA3" stroke-width="4" stroke-linecap="round" />
+  </g>
+
+  <!-- 仓鼠骑在小猪背上 -->
+  <g transform="translate(340, 160)">
+    <!-- 仓鼠身体 -->
+    <ellipse cx="60" cy="50" rx="45" ry="35" fill="url(#hamsterBody)" />
+    
+    <!-- 仓鼠头部 -->
+    <circle cx="90" cy="35" r="28" fill="url(#hamsterBody)" />
+    
+    <!-- 仓鼠耳朵 -->
+    <circle cx="75" cy="12" r="10" fill="#D4A574" />
+    <circle cx="75" cy="12" r="5" fill="#FFB6C1" />
+    <circle cx="100" cy="10" r="10" fill="#D4A574" />
+    <circle cx="100" cy="10" r="5" fill="#FFB6C1" />
+    
+    <!-- 仓鼠眼睛 -->
+    <circle cx="98" cy="32" r="4" fill="#333" />
+    <circle cx="99.5" cy="30.5" r="1.5" fill="white" />
+    
+    <!-- 仓鼠鼻子 -->
+    <ellipse cx="115" cy="40" rx="4" ry="3" fill="#FF6B9D" />
+    
+    <!-- 仓鼠胡须 -->
+    <g stroke="#999" stroke-width="1" stroke-linecap="round">
+      <line x1="110" y1="42" x2="125" y2="38" />
+      <line x1="110" y1="45" x2="125" y2="45" />
+      <line x1="110" y1="48" x2="125" y2="52" />
+    </g>
+    
+    <!-- 仓鼠腮帮子（白色） -->
+    <ellipse cx="105" cy="45" rx="8" ry="6" fill="#FFF8E7" opacity="0.8" />
+    
+    <!-- 仓鼠前爪（抓着猪耳朵） -->
+    <ellipse cx="80" cy="55" rx="10" ry="7" fill="#FFF8E7" />
+    <ellipse cx="100" cy="55" rx="10" ry="7" fill="#FFF8E7" />
+    
+    <!-- 仓鼠后腿 -->
+    <ellipse cx="45" cy="75" rx="12" ry="8" fill="#FFF8E7" />
+    <ellipse cx="65" cy="78" rx="12" ry="8" fill="#FFF8E7" />
+    
+    <!-- 仓鼠尾巴 -->
+    <ellipse cx="18" cy="55" rx="6" ry="5" fill="#FFF8E7" />
+    
+    <!-- 仓鼠的小围巾 -->
+    <path d="M 70 55 Q 85 65 100 55" fill="none" stroke="#FF6B9D" stroke-width="5" stroke-linecap="round" />
+  </g>
+
+  <!-- 奔跑的尘土效果 -->
+  <g opacity="0.5">
+    <ellipse cx="380" cy="420" rx="20" ry="8" fill="#D7CCC8" />
+    <ellipse cx="420" cy="425" rx="15" ry="6" fill="#D7CCC8" />
+    <ellipse cx="350" cy="425" rx="12" ry="5" fill="#D7CCC8" />
+  </g>
+
+  <!-- 爱心装饰 -->
+  <g transform="translate(550, 200)">
+    <path d="M 0 5 Q 0 -5 10 -5 Q 20 -5 20 5 Q 20 15 10 25 Q 0 15 0 5 Z" 
+          fill="#FF6B9D" opacity="0.7" />
+  </g>
+  <g transform="translate(580, 180) scale(0.7)">
+    <path d="M 0 5 Q 0 -5 10 -5 Q 20 -5 20 5 Q 20 15 10 25 Q 0 15 0 5 Z" 
+          fill="#FF6B9D" opacity="0.5" />
+  </g>
+</svg>

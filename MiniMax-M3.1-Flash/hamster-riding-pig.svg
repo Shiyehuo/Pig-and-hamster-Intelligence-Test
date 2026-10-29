@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="title desc">
+  <title id="title">仓鼠骑在小猪背上奔跑</title>
+  <desc id="desc">一只小仓鼠围着红围巾，骑在一头粉色小猪背上向前奔跑，背景是蓝天草地，脚下扬起尘土。</desc>
+
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#8fd3ff"/>
+      <stop offset="0.55" stop-color="#c9ecff"/>
+      <stop offset="1" stop-color="#f2fbff"/>
+    </linearGradient>
+    <linearGradient id="grass" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#8ed36a"/>
+      <stop offset="1" stop-color="#4f9c46"/>
+    </linearGradient>
+    <linearGradient id="pigBody" x1="0" y1="0" x2="0.3" y2="1">
+      <stop offset="0" stop-color="#ffc2d4"/>
+      <stop offset="0.55" stop-color="#f9a5bd"/>
+      <stop offset="1" stop-color="#ef8aa8"/>
+    </linearGradient>
+    <linearGradient id="pigHead" x1="0" y1="0" x2="0.4" y2="1">
+      <stop offset="0" stop-color="#ffc9d8"/>
+      <stop offset="1" stop-color="#f49cb4"/>
+    </linearGradient>
+    <linearGradient id="hamsterBody" x1="0" y1="0" x2="0.3" y2="1">
+      <stop offset="0" stop-color="#f2c78f"/>
+      <stop offset="0.6" stop-color="#dfa868"/>
+      <stop offset="1" stop-color="#c78a50"/>
+    </linearGradient>
+    <linearGradient id="hamsterHead" x1="0" y1="0" x2="0.4" y2="1">
+      <stop offset="0" stop-color="#f7d19c"/>
+      <stop offset="1" stop-color="#e2ac6d"/>
+    </linearGradient>
+    <radialGradient id="sunGlow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#fff6c9" stop-opacity="0.95"/>
+      <stop offset="1" stop-color="#fff6c9" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- 背景 -->
+  <rect width="1200" height="900" fill="url(#sky)"/>
+  <circle cx="1040" cy="150" r="190" fill="url(#sunGlow)"/>
+  <circle cx="1040" cy="150" r="62" fill="#fff4bd" opacity="0.9"/>
+
+  <!-- 云 -->
+  <g fill="#ffffff" opacity="0.85">
+    <g transform="translate(150,150)">
+      <ellipse cx="0" cy="0" rx="52" ry="30"/>
+      <ellipse cx="42" cy="8" rx="38" ry="24"/>
+      <ellipse cx="-42" cy="10" rx="30" ry="20"/>
+      <rect x="-48" y="6" width="96" height="26" rx="13"/>
+    </g>
+    <g transform="translate(560,92) scale(0.7)" opacity="0.7">
+      <ellipse cx="0" cy="0" rx="52" ry="30"/>
+      <ellipse cx="42" cy="8" rx="38" ry="24"/>
+      <ellipse cx="-42" cy="10" rx="30" ry="20"/>
+      <rect x="-48" y="6" width="96" height="26" rx="13"/>
+    </g>
+    <g transform="translate(880,250) scale(0.55)" opacity="0.65">
+      <ellipse cx="0" cy="0" rx="52" ry="30"/>
+      <ellipse cx="42" cy="8" rx="38" ry="24"/>
+      <ellipse cx="-42" cy="10" rx="30" ry="20"/>
+      <rect x="-48" y="6" width="96" height="26" rx="13"/>
+    </g>
+  </g>
+
+  <!-- 远山 -->
+  <path d="M0 700 Q 150 620 320 686 Q 470 742 640 684 Q 810 626 980 690 Q 1080 726 1200 690 L1200 760 L0 760 Z"
+        fill="#a5d98f" opacity="0.75"/>
+
+  <!-- 速度线 -->
+  <g stroke="#ffffff" stroke-linecap="round" fill="none" opacity="0.75">
+    <path d="M60 330 H250" stroke-width="10"/>
+    <path d="M100 390 H210" stroke-width="7"/>
+    <path d="M30 450 H170" stroke-width="9"/>
+    <path d="M90 510 H200" stroke-width="6"/>
+    <path d="M120 570 H230" stroke-width="8"/>
+    <path d="M40 630 H150" stroke-width="6"/>
+    <path d="M150 268 H290" stroke-width="5"/>
+  </g>
+
+  <!-- 草地 -->
+  <rect x="0" y="700" width="1200" height="200" fill="url(#grass)"/>
+  <path d="M0 700 H1200" stroke="#7cc25a" stroke-width="6" opacity="0.8"/>
+
+  <g stroke="#ffffff" stroke-linecap="round" opacity="0.35">
+    <path d="M40 760 H300" stroke-width="7"/>
+    <path d="M180 812 H400" stroke-width="5"/>
+    <path d="M880 756 H1120" stroke-width="6"/>
+    <path d="M960 818 H1180" stroke-width="5"/>
+  </g>
+
+  <!-- 草丛 -->
+  <g stroke="#3f8b3d" stroke-width="6" stroke-linecap="round" fill="none" opacity="0.8">
+    <path d="M180 742 l -8 -26 M180 742 l 4 -30 M180 742 l 14 -22"/>
+    <path d="M980 748 l -10 -24 M980 748 l 2 -28 M980 748 l 15 -20"/>
+    <path d="M1120 736 l -8 -22 M1120 736 l 12 -18"/>
+    <path d="M640 754 l -6 -18 M640 754 l 10 -14"/>
+  </g>
+
+  <!-- 投影 -->
+  <ellipse cx="600" cy="742" rx="330" ry="32" fill="#2f6b2c" opacity="0.22"/>
+
+  <!-- 扬尘 -->
+  <g fill="#f0e2c6" opacity="0.9">
+    <circle cx="300" cy="706" r="26"/>
+    <circle cx="258" cy="716" r="18"/>
+    <circle cx="340" cy="722" r="20"/>
+    <circle cx="220" cy="704" r="12"/>
+    <circle cx="380" cy="714" r="13"/>
+  </g>
+  <g fill="#e6d5b4" opacity="0.75">
+    <circle cx="170" cy="712" r="9"/>
+    <circle cx="410" cy="720" r="10"/>
+  </g>
+
+  <!-- 小猪：远侧腿 -->
+  <g stroke="#e5849f" stroke-width="38" stroke-linecap="round" fill="none">
+    <path d="M748 592 C 742 642, 754 686, 790 720"/>
+    <path d="M470 600 C 448 646, 430 686, 402 722"/>
+  </g>
+  <g fill="#c96f8b">
+    <ellipse cx="792" cy="724" rx="24" ry="13"/>
+    <ellipse cx="400" cy="726" rx="24" ry="13"/>
+  </g>
+
+  <!-- 尾巴 -->
+  <path d="M392 470 C 360 424, 312 442, 318 484 C 323 520, 372 516, 372 484 C 372 458, 340 448, 330 470"
+        stroke="#f28fae" stroke-width="12" fill="none" stroke-linecap="round"/>
+
+  <!-- 身体 -->
+  <ellipse cx="600" cy="520" rx="215" ry="138" fill="url(#pigBody)" transform="rotate(-5 600 520)"/>
+  <ellipse cx="590" cy="556" rx="150" ry="80" fill="#f28fae" opacity="0.35" transform="rotate(-5 600 520)"/>
+  <ellipse cx="500" cy="440" rx="88" ry="34" fill="#ffffff" opacity="0.24" transform="rotate(-12 500 440)"/>
+
+  <!-- 近侧腿 -->
+  <g stroke="#f7a8bf" stroke-width="44" stroke-linecap="round" fill="none">
+    <path d="M700 588 C 742 622, 800 646, 852 668"/>
+    <path d="M500 592 C 452 624, 392 640, 338 668"/>
+  </g>
+  <g fill="#d9789a">
+    <ellipse cx="858" cy="674" rx="25" ry="14"/>
+    <ellipse cx="332" cy="672" rx="25" ry="14"/>
+  </g>
+
+  <!-- 头 -->
+  <circle cx="800" cy="468" r="116" fill="url(#pigHead)"/>
+
+  <!-- 耳朵 -->
+  <path d="M706 394 C 688 336, 704 296, 736 306 C 766 316, 774 358, 760 400 Z" fill="#f7a3ba"/>
+  <path d="M716 384 C 704 342, 714 318, 734 324 C 752 330, 758 360, 750 390 Z" fill="#e07b9b" opacity="0.7"/>
+  <path d="M776 374 C 762 316, 786 278, 820 292 C 852 306, 858 350, 838 392 Z" fill="#f9aec3"/>
+  <path d="M790 366 C 782 326, 798 302, 816 310 C 834 318, 838 344, 828 372 Z" fill="#e07b9b" opacity="0.75"/>
+
+  <!-- 眼睛 -->
+  <circle cx="830" cy="428" r="17" fill="#3b2a32"/>
+  <circle cx="836" cy="422" r="6" fill="#ffffff"/>
+  <circle cx="824" cy="434" r="3" fill="#ffffff" opacity="0.6"/>
+  <path d="M812 396 Q 830 386 848 398" stroke="#3b2a32" stroke-width="6" fill="none" stroke-linecap="round"/>
+
+  <ellipse cx="762" cy="488" rx="32" ry="20" fill="#f2749a" opacity="0.32"/>
+
+  <!-- 猪鼻 -->
+  <ellipse cx="900" cy="520" rx="60" ry="50" fill="#f287a5" transform="rotate(-8 900 520)"/>
+  <ellipse cx="900" cy="520" rx="60" ry="50" fill="none" stroke="#e2779a" stroke-width="4" transform="rotate(-8 900 520)"/>
+  <ellipse cx="882" cy="514" rx="9" ry="12" fill="#cf5f88" transform="rotate(-14 882 514)"/>
+  <ellipse cx="916" cy="522" rx="9" ry="12" fill="#cf5f88" transform="rotate(-14 916 522)"/>
+  <path d="M884 556 Q 902 570 920 556" stroke="#cf5f88" stroke-width="5" fill="none" stroke-linecap="round"/>
+
+  <!-- ============ 仓鼠 ============ -->
+
+  <!-- 围巾飘带（最底层） -->
+  <g>
+    <path d="M578 356 C 536 340, 494 344, 456 360 C 430 370, 410 368, 394 358 C 402 382, 430 390, 458 382 C 498 370, 540 372, 582 374 Z"
+          fill="#c94440" transform="translate(6,9)"/>
+    <path d="M584 368 C 544 368, 504 378, 466 396 C 440 408, 418 410, 400 404 C 412 426, 442 430, 470 418 C 506 402, 548 392, 588 384 Z"
+          fill="#c94440" transform="translate(5,10)"/>
+    <path d="M578 356 C 536 340, 494 344, 456 360 C 430 370, 410 368, 394 358 C 402 382, 430 390, 458 382 C 498 370, 540 372, 582 374 Z"
+          fill="#ef5a52"/>
+    <path d="M584 368 C 544 368, 504 378, 466 396 C 440 408, 418 410, 400 404 C 412 426, 442 430, 470 418 C 506 402, 548 392, 588 384 Z"
+          fill="#f4685f"/>
+  </g>
+
+  <!-- 仓鼠身体 -->
+  <ellipse cx="648" cy="386" rx="90" ry="72" fill="url(#hamsterBody)" transform="rotate(-8 648 386)"/>
+  <ellipse cx="646" cy="416" rx="50" ry="30" fill="#f8e8cc" transform="rotate(-8 646 416)"/>
+
+  <!-- 后脚 -->
+  <ellipse cx="612" cy="448" rx="25" ry="12" fill="#b87a44" transform="rotate(-12 612 448)"/>
+  <ellipse cx="664" cy="440" rx="23" ry="11" fill="#b87a44" transform="rotate(-10 664 440)"/>
+
+  <!-- 围巾颈圈 -->
+  <path d="M566 350 C 588 338, 616 344, 626 360 C 610 376, 582 376, 562 364 Z" fill="#e8524e"/>
+
+  <!-- 头 -->
+  <circle cx="556" cy="306" r="66" fill="url(#hamsterHead)"/>
+  <ellipse cx="558" cy="332" rx="32" ry="22" fill="#fbeed4" opacity="0.9"/>
+
+  <!-- 耳朵 -->
+  <circle cx="520" cy="252" r="25" fill="#e2ab6e"/>
+  <circle cx="520" cy="252" r="14" fill="#f4a7a3"/>
+  <circle cx="606" cy="246" r="23" fill="#e2ab6e"/>
+  <circle cx="606" cy="246" r="13" fill="#f4a7a3"/>
+
+  <!-- 眼睛 -->
+  <circle cx="532" cy="298" r="12.5" fill="#3a2a24"/>
+  <circle cx="536" cy="294" r="4.5" fill="#ffffff"/>
+  <circle cx="586" cy="294" r="12.5" fill="#3a2a24"/>
+  <circle cx="590" cy="290" r="4.5" fill="#ffffff"/>
+
+  <!-- 腮红 -->
+  <ellipse cx="506" cy="328" rx="18" ry="11" fill="#f4909c" opacity="0.55"/>
+  <ellipse cx="606" cy="324" rx="18" ry="11" fill="#f4909c" opacity="0.55"/>
+
+  <!-- 鼻子与嘴 -->
+  <ellipse cx="560" cy="324" rx="10" ry="7.5" fill="#e07f8e"/>
+  <path d="M560 332 C 554 340, 545 338, 542 333" stroke="#8a5a44" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+  <path d="M560 332 C 566 340, 575 338, 578 333" stroke="#8a5a44" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+
+  <!-- 胡须 -->
+  <g stroke="#8a5a44" stroke-width="3" stroke-linecap="round" opacity="0.8">
+    <path d="M520 330 L 486 322"/>
+    <path d="M520 338 L 480 344"/>
+    <path d="M600 326 L 634 318"/>
+    <path d="M600 334 L 640 340"/>
+  </g>
+
+  <!-- 前爪：抱住小猪 -->
+  <g stroke="#d59b60" stroke-width="21" stroke-linecap="round" fill="none">
+    <path d="M598 356 C 588 374, 578 392, 574 412"/>
+    <path d="M712 366 C 720 382, 724 396, 722 412"/>
+  </g>
+  <g stroke="#a8703c" stroke-width="3" stroke-linecap="round" opacity="0.75">
+    <path d="M568 418 L 566 406"/>
+    <path d="M578 419 L 577 407"/>
+    <path d="M716 418 L 717 406"/>
+    <path d="M726 416 L 728 404"/>
+  </g>
+
+  <!-- 前景尘土 -->
+  <g fill="#f4e7cd" opacity="0.85">
+    <circle cx="930" cy="706" r="20"/>
+    <circle cx="1000" cy="716" r="26"/>
+    <circle cx="1064" cy="704" r="15"/>
+    <circle cx="1096" cy="718" r="9"/>
+  </g>
+</svg>

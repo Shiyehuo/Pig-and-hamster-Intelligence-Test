@@ -1,0 +1,214 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+  <title id="title">仓鼠骑着小猪奔跑</title>
+  <desc id="desc">一只金黄的小仓鼠围着蓝绿色围巾，坐在粉红色小猪背上。小猪开心地向右奔跑，身后有速度线和扬起的尘土，周围是柔和的草地和小花。</desc>
+  <defs>
+    <linearGradient id="background" x2="0" y2="1">
+      <stop stop-color="#fff9e9"/>
+      <stop offset="1" stop-color="#fff1d9"/>
+    </linearGradient>
+    <radialGradient id="sunGlow">
+      <stop stop-color="#ffe8b2"/>
+      <stop offset="1" stop-color="#ffe8b2" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="pig" x1="0" y1="0" x2=".3" y2="1">
+      <stop stop-color="#ffd5d4"/>
+      <stop offset=".62" stop-color="#ffb8bf"/>
+      <stop offset="1" stop-color="#f69cab"/>
+    </linearGradient>
+    <linearGradient id="pigHead" x1="0" y1="0" x2=".4" y2="1">
+      <stop stop-color="#ffdbd7"/>
+      <stop offset="1" stop-color="#ffb5be"/>
+    </linearGradient>
+    <linearGradient id="fur" x1="0" y1="0" x2=".35" y2="1">
+      <stop stop-color="#ffd899"/>
+      <stop offset="1" stop-color="#ecac62"/>
+    </linearGradient>
+    <linearGradient id="scarf" x1="0" y1="0" x2="0" y2="1">
+      <stop stop-color="#8bd9d4"/>
+      <stop offset="1" stop-color="#4caeaf"/>
+    </linearGradient>
+    <style>
+      .outline { stroke: #734c42; stroke-width: 6; stroke-linecap: round; stroke-linejoin: round; }
+      .detail { fill: none; stroke: #734c42; stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
+      .speed { fill: none; stroke: #ddbc8e; stroke-width: 7; stroke-linecap: round; }
+    </style>
+  </defs>
+
+  <!-- Warm, open sky. -->
+  <path fill="url(#background)" d="M0 0h1200v900H0z"/>
+  <circle cx="647" cy="419" r="385" fill="url(#sunGlow)"/>
+  <circle cx="664" cy="426" r="315" fill="#ffe9bc" opacity=".44"/>
+  <g fill="#fffdf6" opacity=".88">
+    <path d="M143 219c-4-17 10-33 29-29 2-26 42-31 55-10 21-12 48 2 47 22 25-3 35 12 31 23H143Z"/>
+    <path d="M875 195c-2-15 11-26 27-23 6-24 39-28 52-8 16-8 38 1 40 20 23-1 32 12 29 23H876Z"/>
+  </g>
+  <g fill="none" stroke="#d9c693" stroke-width="4" stroke-linecap="round" opacity=".7">
+    <path d="M309 155l8-13m-3 16 15 1"/>
+    <path d="M978 354l7-13m-2 17 15 1"/>
+  </g>
+
+  <!-- Low hills and a soft landing shadow keep the running pose airborne. -->
+  <path d="M0 760c144-40 254-22 381-1 158 25 266-1 417-20 166-22 287-6 402 24v137H0Z" fill="#dde5bd"/>
+  <path d="M0 807c185-37 338 13 515-2 211-18 415-24 685 19v76H0Z" fill="#cbdbae"/>
+  <ellipse cx="597" cy="744" rx="286" ry="27" fill="#a7b486" opacity=".22"/>
+  <ellipse cx="617" cy="742" rx="204" ry="15" fill="#96a479" opacity=".14"/>
+
+  <!-- Speed strokes and little puffs of dust. -->
+  <g class="speed">
+    <path d="M180 392h135"/>
+    <path d="M215 432h74"/>
+    <path d="M138 497h147"/>
+    <path d="M184 550h62"/>
+    <path d="M160 608h104"/>
+  </g>
+  <g fill="#fff6de" stroke="#dec9a2" stroke-width="4" stroke-linejoin="round">
+    <path d="M165 719c-16-3-17-21-5-28-1-19 25-30 38-16 12-11 32-3 33 12 18-2 26 20 10 28-17 7-54 7-76 4Z"/>
+    <path d="M267 740c-14-1-21-17-11-27-4-17 18-29 31-18 17-8 35 5 32 20 16 5 17 23-1 27-14 4-35 2-51-2Z"/>
+    <circle cx="126" cy="736" r="10"/>
+    <circle cx="238" cy="752" r="6"/>
+  </g>
+
+  <!-- Far legs, visible beneath the belly. -->
+  <g class="outline" fill="#ee96a5">
+    <path d="M391 551c-20 16-32 38-52 56l-60-9c-12-2-21 6-21 17 0 9 8 17 18 21l51 18c15 5 25 1 37-9l56-43Z"/>
+    <path d="M687 569c7 37 27 65 51 92l47 32c11 8 23 4 29-6 6-9 3-21-7-30l-31-34-26-68Z"/>
+  </g>
+  <g class="outline" fill="#86615c">
+    <path d="m279 598-9-1c-17-2-25 20-9 32l21 9 10-31Z"/>
+    <path d="m781 653 25 7c14 10 16 22 7 32-8 9-18 10-30 1l-15-10Z"/>
+  </g>
+
+  <!-- The curly pig tail. -->
+  <path d="M348 486c-40 0-65-13-70-37-5-22 14-36 28-24 14 12 2 31-15 23-22-11-30-33-26-49" fill="none" stroke="#734c42" stroke-width="17" stroke-linecap="round"/>
+  <path d="M348 486c-40 0-65-13-70-37-5-22 14-36 28-24 14 12 2 31-15 23-22-11-30-33-26-49" fill="none" stroke="#ffb8bf" stroke-width="10" stroke-linecap="round"/>
+
+  <!-- Main body and warm belly shading. -->
+  <path class="outline" fill="url(#pig)" d="M338 502c-2-69 74-105 195-106 109-1 219 31 244 96 31 81-34 138-142 157-95 17-206 6-260-41-26-23-37-59-37-106Z"/>
+  <path d="M359 556c51 43 132 63 236 52 89-9 146-33 174-73-7 60-61 99-134 112-95 17-206 6-260-41-15-13-25-30-30-48Z" fill="#ef8fa3" opacity=".2"/>
+  <path d="M389 464c25-24 68-37 110-39" fill="none" stroke="#ffe9df" stroke-width="18" stroke-linecap="round" opacity=".75"/>
+  <ellipse cx="376" cy="488" rx="8" ry="6" fill="#ffe9df" transform="rotate(-35 376 488)"/>
+
+  <!-- Near legs stretch backward and forward in a gallop. -->
+  <path class="outline" fill="url(#pig)" d="M452 595c-4 23-22 49-46 66l-68 26c-14 5-17 18-10 29 6 10 18 14 32 11l62-18c22-6 44-19 62-38l33-42"/>
+  <path class="outline" fill="url(#pig)" d="M699 591c15 29 38 58 67 70 13 6 25 8 39 6l52-8c13-2 18-15 13-26-4-10-14-15-27-13l-43 6-56-54"/>
+  <g class="outline" fill="#87645e">
+    <path d="m343 685-9 4c-13 5-16 18-7 29 6 8 17 12 31 7l13-4-11-35Z"/>
+    <path d="m844 620 15-2c13-1 23 10 22 22-1 11-10 17-22 19l-13 2-11-36Z"/>
+  </g>
+  <path class="detail" d="m349 703 5 19m506-98 4 30" opacity=".7"/>
+
+  <!-- Pig ears: one behind the face, one curling toward the viewer. -->
+  <path class="outline" fill="#f8a5b3" d="M733 415c-25-9-41-31-45-70-1-8 7-13 15-9 24 12 44 26 57 50Z"/>
+  <path d="M735 399c-15-11-24-27-29-44 15 10 29 20 39 34Z" fill="#de7f96"/>
+
+  <!-- Happy face and large bean-shaped snout. -->
+  <path class="outline" fill="url(#pigHead)" d="M705 470c-4-37 13-68 48-79 48-16 109 6 138 49 21 31 25 75 5 108-24 40-64 61-105 52-45-10-83-59-86-94Z"/>
+  <path class="outline" fill="url(#pigHead)" d="M777 398c-4-23 0-49 13-66 6-7 16-6 21 2 6 9 14 13 27 15 13 2 20 11 17 22-4 24-20 42-46 52"/>
+  <path d="M797 400c-3-15-1-32 6-43 10 7 20 10 32 11-6 17-19 26-38 32Z" fill="#ef93a7"/>
+  <path d="M778 450c17-14 36-18 52-13" fill="none" stroke="#ffe9e1" stroke-width="9" stroke-linecap="round"/>
+
+  <ellipse cx="831" cy="475" rx="13" ry="19" fill="#67473f" transform="rotate(-8 831 475)"/>
+  <ellipse cx="835" cy="469" rx="4" ry="6" fill="#fffdf4"/>
+  <path class="detail" d="M815 441q14-8 26-1"/>
+  <ellipse cx="802" cy="521" rx="24" ry="14" fill="#f38ca3" opacity=".7" transform="rotate(13 802 521)"/>
+  <g fill="#db8197">
+    <circle cx="786" cy="516" r="2.5"/>
+    <circle cx="797" cy="512" r="2.5"/>
+    <circle cx="807" cy="516" r="2.5"/>
+  </g>
+  <path class="outline" fill="#99585d" d="M837 545c16 5 34 0 45-10-3 23-20 38-33 31-6-3-10-11-12-21Z"/>
+  <path d="M847 555c8-5 15-5 23-2-6 11-16 15-22 9Z" fill="#f599a3"/>
+  <path class="detail" d="M830 544q7 4 12 1"/>
+  <ellipse class="outline" cx="906" cy="506" rx="58" ry="44" fill="#ff9dab" transform="rotate(-6 906 506)"/>
+  <path d="M873 484c17-10 38-12 52-6" fill="none" stroke="#ffc9ca" stroke-width="8" stroke-linecap="round"/>
+  <ellipse cx="889" cy="510" rx="8" ry="13" fill="#b96379" transform="rotate(-9 889 510)"/>
+  <ellipse cx="923" cy="507" rx="8" ry="13" fill="#b96379" transform="rotate(-9 923 507)"/>
+
+  <!-- Scarf ends stream to the left. -->
+  <path class="outline" fill="#66bcbc" d="M576 346c-48-6-96-20-138-18-39 3-61 19-87 14l17 21-14 18c37 10 66-15 102-16 38 0 66 17 109 16Z"/>
+  <path fill="#9adfda" d="M567 352c-44-8-91-24-132-17-23 3-42 11-59 12 35 11 72-7 106 3l79 21Z"/>
+  <path class="outline" fill="url(#scarf)" d="M567 361c-40 6-58 33-86 36-28 3-45-2-64-10l10 23-8 17c29 12 65 6 87-13 22-19 38-29 65-26Z"/>
+  <path d="m436 403 5 18m9-17 4 18" fill="none" stroke="#41999d" stroke-width="4" stroke-linecap="round"/>
+
+  <!-- Hamster body, cream tummy, and feet hugging the pig's back. -->
+  <path class="outline" fill="url(#fur)" d="M546 322c-30 18-49 54-46 84 3 32 26 60 64 62 39 2 76-19 81-51 5-30-10-69-34-84Z"/>
+  <path d="M560 357c-22 7-38 31-38 54 0 24 19 39 43 40 28 2 48-14 48-39 0-25-21-51-39-55Z" fill="#fff1d4"/>
+  <path class="outline" fill="#f6cd97" d="M518 428c-12 0-25 8-24 18 1 13 22 18 43 17 13-1 18-9 13-18-5-9-18-16-32-17Z"/>
+  <path class="outline" fill="#f6cd97" d="M619 421c15-3 28 4 32 14 3 12-11 21-30 24-12 2-23-2-24-12-2-12 7-22 22-26Z"/>
+  <path d="m509 445 1 8m12-7 1 10m93-12 3 9m9-11 3 7" fill="none" stroke="#ad7a58" stroke-width="3.5" stroke-linecap="round"/>
+
+  <!-- Rounded ears have soft pink interiors. -->
+  <circle class="outline" cx="515" cy="226" r="37" fill="url(#fur)"/>
+  <circle cx="515" cy="226" r="23" fill="#eca69b"/>
+  <path d="M499 220c3-10 14-14 23-9" fill="none" stroke="#ffc6b6" stroke-width="6" stroke-linecap="round"/>
+  <circle class="outline" cx="635" cy="216" r="35" fill="url(#fur)"/>
+  <circle cx="635" cy="216" r="21" fill="#eca69b"/>
+  <path d="M623 207c6-7 14-6 21-2" fill="none" stroke="#ffc6b6" stroke-width="6" stroke-linecap="round"/>
+
+  <!-- A full-cheeked, wind-ruffled hamster face. -->
+  <path class="outline" fill="url(#fur)" d="M491 269c5-25 30-47 63-52l12-11 7 10 13-8 4 11c42 3 74 22 85 56l8 4-5 12c4 38-30 67-81 73-56 6-103-12-111-48l-9-7 10-10c-1-11 0-20 4-30Z"/>
+  <path d="M494 300c10-13 28-15 41-8 14 8 21 20 42 22 22 2 37-14 53-22 15-8 36-6 44 8-3 30-32 53-78 57-46 5-86-10-99-35Z" fill="#fff2d8"/>
+  <path d="M518 246c13-13 28-18 42-17" fill="none" stroke="#ffe7bb" stroke-width="8" stroke-linecap="round"/>
+  <g fill="#5c4136">
+    <ellipse cx="539" cy="284" rx="12" ry="17" transform="rotate(-7 539 284)"/>
+    <ellipse cx="626" cy="276" rx="12" ry="17" transform="rotate(-7 626 276)"/>
+  </g>
+  <g fill="#fffdf4">
+    <ellipse cx="542" cy="279" rx="4" ry="5"/>
+    <ellipse cx="629" cy="271" rx="4" ry="5"/>
+    <circle cx="536" cy="290" r="2"/>
+    <circle cx="623" cy="282" r="2"/>
+  </g>
+  <ellipse cx="513" cy="311" rx="17" ry="11" fill="#f3ad9d" opacity=".9" transform="rotate(9 513 311)"/>
+  <ellipse cx="653" cy="300" rx="17" ry="11" fill="#f3ad9d" opacity=".9" transform="rotate(-13 653 300)"/>
+  <path d="M577 299c-5-5-1-10 6-11 8-1 14 4 10 9l-7 7Z" fill="#ac7066"/>
+  <path class="detail" d="m585 305 1 9m-15 1c6 9 12 8 15-1 6 7 12 7 17-1"/>
+  <path d="M581 322h12v9c-4 4-9 4-12 0Z" fill="#fffdf7" stroke="#ad8064" stroke-width="2.5" stroke-linejoin="round"/>
+  <g fill="none" stroke="#a67956" stroke-width="3" stroke-linecap="round">
+    <path d="m510 317-29-5m31 13-27 5m165-23 28-11m-26 19 29 1"/>
+  </g>
+
+  <!-- Scarf knot and the little paws holding on. -->
+  <path class="outline" fill="url(#scarf)" d="M536 347c22 13 58 15 86 1l8 20c-25 19-71 21-100 3Z"/>
+  <path class="outline" fill="#78ccc9" d="M534 350c-13-5-23 4-21 17 1 10 9 15 22 13l8-13Z"/>
+  <path d="M549 363c20 8 45 7 63-1" fill="none" stroke="#b7eeDF" stroke-width="5" stroke-linecap="round"/>
+  <path class="outline" fill="url(#fur)" d="M619 374c16-3 24 6 30 15l29 25c9 8 9 18 0 24-8 6-17 2-26-4l-35-24"/>
+  <path class="outline" fill="#ffe0b0" d="M663 408c8-3 19 3 23 11 5 11-1 21-10 20-9-1-20-11-21-19-1-5 2-9 8-12Z"/>
+  <path d="m670 416 7 8m-14-2 7 9" fill="none" stroke="#ad7a58" stroke-width="3" stroke-linecap="round"/>
+  <path class="outline" fill="url(#fur)" d="M529 383c-11 12-10 27-2 36 8 9 20 16 29 13 9-3 12-11 5-18l-10-11"/>
+  <path d="m544 416 8 7m-15-1 7 7" fill="none" stroke="#ad7a58" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- Tiny joyful accents and a few meadow flowers. -->
+  <g fill="#ecb76c">
+    <path d="m725 226 6 16 16 6-16 6-6 16-6-16-16-6 16-6Z"/>
+    <path d="m962 422 4 10 10 4-10 4-4 10-4-10-10-4 10-4Z"/>
+    <circle cx="698" cy="190" r="4"/>
+  </g>
+  <path d="M953 293c-4-15 13-23 20-11 10-11 25-1 19 12-5 10-20 19-20 19s-16-9-19-20Z" fill="#eaa29b" transform="rotate(13 972 294)"/>
+  <g fill="none" stroke="#8ea775" stroke-width="4" stroke-linecap="round">
+    <path d="M90 806v-37m0 27-13-9m13 1 14-14"/>
+    <path d="M1044 811v-51m0 33 15-12m-15 22-16-12"/>
+    <path d="m987 820 5-17m1 18 9-14m95 8 3-17m2 18 10-10"/>
+    <path d="m189 842 4-15m3 16 10-15m-60-10 2-13"/>
+  </g>
+  <g fill="#fff8e4">
+    <ellipse cx="90" cy="759" rx="6" ry="11"/>
+    <ellipse cx="90" cy="779" rx="6" ry="11"/>
+    <ellipse cx="80" cy="769" rx="11" ry="6"/>
+    <ellipse cx="100" cy="769" rx="11" ry="6"/>
+  </g>
+  <circle cx="90" cy="769" r="7" fill="#e9bb65"/>
+  <g fill="#f5b5ad">
+    <ellipse cx="1044" cy="749" rx="7" ry="12"/>
+    <ellipse cx="1044" cy="773" rx="7" ry="12"/>
+    <ellipse cx="1032" cy="761" rx="12" ry="7"/>
+    <ellipse cx="1056" cy="761" rx="12" ry="7"/>
+  </g>
+  <circle cx="1044" cy="761" r="8" fill="#fff2be"/>
+  <g fill="#f6eccb" opacity=".8">
+    <ellipse cx="402" cy="808" rx="8" ry="3"/>
+    <ellipse cx="775" cy="835" rx="10" ry="3"/>
+    <ellipse cx="914" cy="789" rx="5" ry="3"/>
+    <ellipse cx="275" cy="788" rx="5" ry="3"/>
+  </g>
+</svg>

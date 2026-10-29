@@ -1,0 +1,155 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" fill="none" role="img" aria-labelledby="title desc">
+  <title id="title">仓鼠骑着小猪奔跑</title>
+  <desc id="desc">一只戴着青绿色围巾的金棕色仓鼠，开心地骑在腾空奔跑的粉色小猪背上。奶油色天空下，围巾随风飘动，身后扬起小小的尘土。</desc>
+  <defs>
+    <linearGradient id="pigBody" x1="565" y1="462" x2="609" y2="720" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFC7C8"/><stop offset=".62" stop-color="#FFAFB8"/><stop offset="1" stop-color="#F398A7"/>
+    </linearGradient>
+    <linearGradient id="pigHead" x1="815" y1="440" x2="890" y2="675" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFD0CC"/><stop offset="1" stop-color="#FFACB6"/>
+    </linearGradient>
+    <linearGradient id="fur" x1="602" y1="264" x2="662" y2="425" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F4C778"/><stop offset="1" stop-color="#DFA15E"/>
+    </linearGradient>
+    <linearGradient id="cream" x1="631" y1="330" x2="632" y2="428" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF5DF"/><stop offset="1" stop-color="#FFE9C6"/>
+    </linearGradient>
+    <linearGradient id="scarf" x1="450" y1="362" x2="613" y2="432" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#71BFB5"/><stop offset="1" stop-color="#328B85"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Soft, sunny storybook landscape. -->
+  <rect width="1200" height="900" fill="#FFF9EF"/>
+  <path d="M254 601C190 495 218 371 322 323C412 281 446 178 576 183C733 189 755 273 873 280C1011 289 1073 407 1052 534C1035 639 923 722 785 730L437 728C349 723 281 678 254 601Z" fill="#FCEED8"/>
+  <circle cx="955" cy="242" r="58" fill="#F8D894"/>
+  <path d="M211 246C214 224 242 220 254 235C265 209 303 216 306 242C328 237 343 251 344 264H197C194 255 202 247 211 246Z" fill="#FFF" opacity=".88"/>
+  <path d="M830 158C834 141 857 137 868 152C880 130 909 138 911 158C930 154 944 163 948 175H817C817 166 822 160 830 158Z" fill="#FFF" opacity=".8"/>
+  <g stroke="#E7BC79" stroke-width="4" stroke-linecap="round">
+    <path d="M986 361V383M975 372H997"/>
+    <path d="M364 230V246M356 238H372"/>
+  </g>
+  <circle cx="792" cy="219" r="5" fill="#EBCB94"/>
+  <circle cx="275" cy="418" r="5" fill="#EBCB94"/>
+  <path d="M151 791C331 755 430 792 586 780C785 765 917 763 1061 789" stroke="#EAD8B8" stroke-width="4" stroke-linecap="round"/>
+  <ellipse cx="659" cy="779" rx="305" ry="26" fill="#DDBDA4" opacity=".24"/>
+  <ellipse cx="685" cy="778" rx="210" ry="15" fill="#D2A990" opacity=".17"/>
+
+  <!-- Little puffs and streaks make the direction of travel clear. -->
+  <g stroke-linecap="round" stroke-linejoin="round">
+    <g stroke="#DEB391" stroke-width="6">
+      <path d="M182 508H291"/><path d="M141 547H237"/>
+      <path d="M221 593H293"/><path d="M177 630H234"/>
+    </g>
+    <path d="M264 759C239 756 234 730 250 716C239 694 257 675 279 681C284 654 320 652 332 674C354 667 374 684 370 704C395 708 402 730 391 745" fill="#FFFDF6" stroke="#E8D1B2" stroke-width="4"/>
+    <path d="M272 714C282 703 298 706 302 718M324 680C330 686 331 693 328 700" stroke="#E8D1B2" stroke-width="4"/>
+    <circle cx="223" cy="756" r="10" fill="#F1DFC4"/>
+    <circle cx="202" cy="716" r="5" fill="#E9D1AE"/>
+  </g>
+
+  <!-- The pig's far legs and springy corkscrew tail. -->
+  <g stroke="#70474C" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M484 647C466 677 448 705 422 722L364 710C353 707 345 715 348 725C351 735 388 750 418 751C444 753 491 716 524 677Z" fill="#DF8E9F"/>
+    <path d="M365 711L348 724C352 734 367 740 381 744L390 718Z" fill="#855362"/>
+    <path d="M730 637C754 651 777 671 799 688L841 650C850 642 863 646 866 657C867 668 820 719 807 723C789 729 744 703 708 677Z" fill="#E794A3"/>
+    <path d="M841 650L821 668L843 689C856 674 865 663 866 657C863 646 850 642 841 650Z" fill="#855362"/>
+    <path d="M390 566C366 580 331 570 324 549C317 529 335 514 350 526C367 540 344 559 327 550C313 543 305 531 304 518" stroke="#70474C" stroke-width="16"/>
+    <path d="M390 566C366 580 331 570 324 549C317 529 335 514 350 526C367 540 344 559 327 550C313 543 305 531 304 518" stroke="#F8AEB6" stroke-width="9"/>
+  </g>
+
+  <!-- Round pink body, with legs stretching out on either side. -->
+  <path d="M434 492C486 461 570 460 639 470C714 477 777 490 806 531C842 581 826 647 779 682C726 722 617 730 525 709C445 691 389 654 377 598C366 550 390 516 434 492Z" fill="url(#pigBody)" stroke="#70474C" stroke-width="6.5" stroke-linejoin="round"/>
+  <path d="M423 546C442 519 477 506 518 505" stroke="#FFE2DC" stroke-width="15" stroke-linecap="round" opacity=".85"/>
+  <ellipse cx="423" cy="575" rx="8" ry="11" fill="#FFE2DC" transform="rotate(22 423 575)"/>
+  <path d="M528 674C520 702 506 733 488 747L420 742C405 741 396 750 404 762C413 776 479 783 500 775C526 765 556 721 568 696" fill="url(#pigBody)" stroke="#70474C" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M424 743C410 740 397 749 404 762C408 769 424 773 440 775L445 745Z" fill="#855362" stroke="#70474C" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M421 759L417 770" stroke="#B8828E" stroke-width="3.5" stroke-linecap="round"/>
+  <path d="M751 662C769 688 799 733 818 752C829 763 841 766 856 757L916 718C930 709 929 696 918 692C908 687 899 694 889 700L847 723L807 650" fill="url(#pigBody)" stroke="#70474C" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M890 700L909 722L916 718C930 709 929 696 918 692C908 687 899 694 890 700Z" fill="#855362" stroke="#70474C" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M909 705L918 714" stroke="#B8828E" stroke-width="3.5" stroke-linecap="round"/>
+
+  <!-- A small saddle blanket for the tiny passenger. -->
+  <path d="M553 473C596 460 675 465 714 489L702 530C669 547 600 542 560 522Z" fill="#72BEB3" stroke="#70474C" stroke-width="5.5" stroke-linejoin="round"/>
+  <path d="M570 485C608 480 663 482 696 497L686 516C653 527 607 520 578 510Z" fill="#ADD9C7"/>
+  <path d="M592 491L589 506M610 492L608 510M629 493L628 512M648 495L648 514M667 498L668 514" stroke="#F3EACA" stroke-width="4" stroke-linecap="round"/>
+
+  <!-- Far ear, then the large smiling pig face. -->
+  <path d="M877 459C876 432 903 403 930 401C940 430 937 458 915 480Z" fill="#F2A2AE" stroke="#70474C" stroke-width="6.5" stroke-linejoin="round"/>
+  <path d="M897 450C902 433 913 425 921 419C924 438 919 449 912 458Z" fill="#DB8398"/>
+  <path d="M774 481C803 443 859 431 908 450C945 464 963 496 972 539C1006 558 1010 604 988 636C964 671 918 687 869 680C819 674 778 654 758 622C737 587 744 522 774 481Z" fill="url(#pigHead)" stroke="#70474C" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M784 495C765 481 756 438 771 414C800 411 831 432 838 467C825 462 813 466 805 479" fill="#FFBCC0" stroke="#70474C" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M784 436C799 440 812 450 819 464C806 465 797 470 793 477C785 465 781 448 784 436Z" fill="#ED8E9F"/>
+  <path d="M850 472C870 468 891 474 905 485" stroke="#FFE4DB" stroke-width="10" stroke-linecap="round"/>
+  <path d="M861 536C866 520 884 516 897 530" stroke="#70474C" stroke-width="7" stroke-linecap="round"/>
+  <path d="M851 505L861 500" stroke="#BA7980" stroke-width="4" stroke-linecap="round"/>
+  <ellipse cx="848" cy="577" rx="30" ry="20" fill="#EE8798" opacity=".55" transform="rotate(13 848 577)"/>
+  <path d="M831 573L835 581M844 569L848 577" stroke="#D96F87" stroke-width="3.5" stroke-linecap="round" opacity=".6"/>
+  <path d="M884 615C899 635 924 632 936 617" stroke="#70474C" stroke-width="5.5" stroke-linecap="round"/>
+  <ellipse cx="978" cy="581" rx="57" ry="45" transform="rotate(-8 978 581)" fill="#F29BAD" stroke="#70474C" stroke-width="6"/>
+  <path d="M953 552C966 546 984 546 994 550" stroke="#FFC9CE" stroke-width="7" stroke-linecap="round"/>
+  <ellipse cx="961" cy="583" rx="7" ry="12" transform="rotate(-8 961 583)" fill="#A45970"/>
+  <ellipse cx="995" cy="579" rx="7" ry="12" transform="rotate(-8 995 579)" fill="#A45970"/>
+
+  <!-- The scarf streams backward as the hamster bounces along. -->
+  <path d="M603 411C570 382 540 390 511 384C482 378 470 355 444 360L454 380L439 393C473 400 499 413 524 407C549 401 568 424 596 432Z" fill="url(#scarf)" stroke="#514F4A" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M596 419C568 413 551 438 526 438C504 438 492 426 477 432L490 449L485 465C522 469 553 446 579 447L606 438Z" fill="#76C1B5" stroke="#514F4A" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M464 384C484 386 497 400 518 397M502 449C531 451 547 432 566 432" stroke="#B7DFCB" stroke-width="4" stroke-linecap="round"/>
+
+  <!-- The hamster's little body and fluffy belly. -->
+  <path d="M595 397C572 416 566 460 580 487C590 507 613 518 641 520C675 523 704 512 709 486C715 459 702 422 680 408Z" fill="#DDA05D" stroke="#70474C" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M622 422C606 438 599 477 613 495C624 510 660 512 675 499C692 484 679 443 665 427Z" fill="url(#cream)"/>
+  <path d="M597 466C587 469 580 481 584 491" stroke="#B97847" stroke-width="4" stroke-linecap="round"/>
+  <ellipse cx="600" cy="507" rx="25" ry="14" transform="rotate(8 600 507)" fill="#FFE5C9" stroke="#70474C" stroke-width="5"/>
+  <path d="M589 505L588 512M599 506L598 513" stroke="#C69276" stroke-width="3" stroke-linecap="round"/>
+  <ellipse cx="692" cy="512" rx="25" ry="14" transform="rotate(-9 692 512)" fill="#FFE5C9" stroke="#70474C" stroke-width="5"/>
+  <path d="M690 511L691 518M700 509L702 516" stroke="#C69276" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- Round ears and a broad, creamy cheek patch. -->
+  <g stroke="#70474C" stroke-width="6" stroke-linejoin="round">
+    <path d="M551 299C528 289 529 258 549 245C573 229 601 247 600 273Z" fill="#E8AD66"/>
+    <path d="M669 272C667 247 691 232 712 241C736 251 737 281 715 295Z" fill="#E8AD66"/>
+  </g>
+  <path d="M550 275C542 263 555 250 567 255C576 258 580 266 577 278Z" fill="#EAA4A1"/>
+  <path d="M689 273C682 262 692 250 704 255C714 259 718 270 709 280Z" fill="#EAA4A1"/>
+  <path d="M556 301C575 271 606 263 637 268C673 262 705 281 718 311C730 337 727 352 736 374L727 376L733 388L721 389C713 417 678 435 640 433C599 436 561 422 548 398L537 398L543 386L533 382C539 362 534 332 556 301Z" fill="url(#fur)" stroke="#70474C" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M629 274L623 294L638 285L647 300L651 272" fill="#FFDB9A"/>
+  <path d="M548 367C560 341 582 341 600 357C611 366 618 361 627 353C634 347 641 348 649 354C659 365 668 364 680 354C698 340 718 350 727 371L725 389C709 417 676 430 641 429C598 433 560 416 550 396Z" fill="url(#cream)"/>
+  <ellipse cx="585" cy="378" rx="18" ry="11" fill="#F3B4A5" opacity=".8"/>
+  <ellipse cx="691" cy="375" rx="18" ry="11" fill="#F3B4A5" opacity=".8"/>
+  <ellipse cx="593" cy="339" rx="9" ry="12" transform="rotate(-5 593 339)" fill="#553D39"/>
+  <ellipse cx="680" cy="337" rx="9" ry="12" transform="rotate(7 680 337)" fill="#553D39"/>
+  <circle cx="590" cy="335" r="3" fill="#FFFDF5"/>
+  <circle cx="677" cy="333" r="3" fill="#FFFDF5"/>
+  <path d="M581 314L592 310M680 309L691 313" stroke="#B78048" stroke-width="4" stroke-linecap="round"/>
+  <path d="M628 364C628 358 648 358 649 364C649 369 639 374 638 374C636 374 628 368 628 364Z" fill="#A7716B"/>
+  <path d="M638 373V380M624 378C625 389 636 389 638 381C641 389 653 386 653 377" stroke="#70474C" stroke-width="3.8" stroke-linecap="round"/>
+  <path d="M630 390C635 402 645 402 649 390" fill="#E89A9B" stroke="#70474C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <g stroke="#AD845E" stroke-width="3" stroke-linecap="round">
+    <path d="M567 371L544 366M567 382L542 383M707 368L731 361M707 380L734 380"/>
+  </g>
+  <path d="M589 422C619 436 660 437 688 422L684 442C652 456 615 448 591 438Z" fill="#4BA297" stroke="#514F4A" stroke-width="4.5" stroke-linejoin="round"/>
+  <path d="M611 435C617 425 606 415 596 418C585 421 581 431 590 439C597 447 607 443 611 435Z" fill="#90D0BF" stroke="#514F4A" stroke-width="4.5"/>
+
+  <!-- Both little paws hold a loose riding ribbon. -->
+  <path d="M708 452C759 432 778 485 819 493" stroke="#70474C" stroke-width="9" stroke-linecap="round"/>
+  <path d="M708 452C759 432 778 485 819 493" stroke="#C88760" stroke-width="4" stroke-linecap="round"/>
+  <path d="M713 462C757 497 797 516 820 493" stroke="#70474C" stroke-width="8" stroke-linecap="round"/>
+  <path d="M713 462C757 497 797 516 820 493" stroke="#E1AD77" stroke-width="3" stroke-linecap="round"/>
+  <path d="M679 452C690 460 704 468 716 462C726 456 722 445 713 443L698 440" fill="#E5AC69" stroke="#70474C" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M705 442C715 438 726 443 725 451C725 460 715 465 707 460" fill="#FFE3C4" stroke="#70474C" stroke-width="4.5" stroke-linecap="round"/>
+  <path d="M715 448L720 451" stroke="#CB987A" stroke-width="2.7" stroke-linecap="round"/>
+  <path d="M610 451C618 468 640 478 663 474L698 463C709 459 706 447 696 446L663 455L646 448" fill="#EAB774" stroke="#70474C" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M689 449C696 442 706 446 708 452C711 461 701 467 692 465" fill="#FFE3C4" stroke="#70474C" stroke-width="4.5" stroke-linecap="round"/>
+  <path d="M698 452L701 456" stroke="#CB987A" stroke-width="2.7" stroke-linecap="round"/>
+
+  <!-- A few joyful finishing marks. -->
+  <g stroke="#D6AE70" stroke-width="4" stroke-linecap="round">
+    <path d="M489 296L480 280M472 317L454 313"/>
+    <path d="M1043 467L1056 455M1053 492L1072 490"/>
+  </g>
+  <path d="M760 283C748 272 757 255 769 261C776 247 795 253 793 266C791 277 774 290 774 290Z" fill="#E8A198" transform="rotate(12 774 272)"/>
+  <g stroke="#82A590" stroke-width="4" stroke-linecap="round">
+    <path d="M182 785L178 773M193 784L199 771M1007 778L1003 765M1017 780L1024 771"/>
+  </g>
+  <g fill="#DCC6A3"><ellipse cx="292" cy="806" rx="5" ry="3"/><ellipse cx="901" cy="809" rx="6" ry="3"/><ellipse cx="971" cy="797" rx="3" ry="2"/></g>
+</svg>

@@ -1,0 +1,177 @@
+[
+  {
+    "model": "6.1sol",
+    "type": "overseas",
+    "score": 9.8,
+    "cost": 0,
+    "comment": ""
+  },
+  {
+    "model": "6Astra",
+    "type": "overseas",
+    "score": 9.5,
+    "cost": 0,
+    "comment": "线条、表情和动态最成熟，主体完成度最高。"
+  },
+  {
+    "model": "GPT6.1solUltra",
+    "type": "overseas",
+    "score": 9.8,
+    "cost": 1,
+    "comment": ""
+  },
+  {
+    "model": "GPT6AstraUltra",
+    "type": "overseas",
+    "score": 9.7,
+    "cost": 5.2,
+    "comment": ""
+  },
+  {
+    "model": "gemini4Argon",
+    "type": "overseas",
+    "score": 9.4,
+    "cost": 2.1,
+    "comment": "轮廓干净、动感强，但面部和腹带略显生硬。"
+  },
+  {
+    "model": "Kimi-k3.1-pro",
+    "type": "domestic",
+    "score": 9.2,
+    "cost": 1,
+    "comment": "围巾、鞍垫和缰绳细节丰富，构图饱满。"
+  },
+  {
+    "model": "gemini3.8flash",
+    "type": "overseas",
+    "score": 9,
+    "cost": 0.8,
+    "comment": ""
+  },
+  {
+    "model": "Qwen3.8-Max极高",
+    "type": "domestic",
+    "score": 8.7,
+    "cost": 0.5,
+    "comment": ""
+  },
+  {
+    "model": "deepseek-v4.1flash",
+    "type": "domestic",
+    "score": 8.5,
+    "cost": 0.1,
+    "comment": ""
+  },
+  {
+    "model": "Fable 5.1 with max effort",
+    "type": "overseas",
+    "score": 8.3,
+    "cost": 0,
+    "comment": "场景完整，配色柔和，骑乘与奔跑感都很自然。"
+  },
+  {
+    "model": "豆包云电脑pro高",
+    "type": "domestic",
+    "score": 8,
+    "cost": 0.4,
+    "comment": "骑乘关系清楚，场景完整，造型稍简化。"
+  },
+  {
+    "model": "Qwen3.8-Flash极高",
+    "type": "domestic",
+    "score": 7.9,
+    "cost": 0.1,
+    "comment": ""
+  },
+  {
+    "model": "deepseek-V4-Pro最大",
+    "type": "domestic",
+    "score": 7.7,
+    "cost": 0.5,
+    "comment": ""
+  },
+  {
+    "model": "Claude Fable 5.1 max",
+    "type": "overseas",
+    "score": 7.5,
+    "cost": 5.2,
+    "comment": ""
+  },
+  {
+    "model": "MiniMax-M3.1-Flash",
+    "type": "domestic",
+    "score": 7.2,
+    "cost": 0.1,
+    "comment": ""
+  },
+  {
+    "model": "Kimi-K2.8-Preview最大",
+    "type": "domestic",
+    "score": 7,
+    "cost": 0.8,
+    "comment": ""
+  },
+  {
+    "model": "Qoder自动",
+    "type": "domestic",
+    "score": 6.9,
+    "cost": 0.5,
+    "comment": "氛围活泼、有动感，细节和形体精致度一般。"
+  },
+  {
+    "model": "GLM-5.3最大",
+    "type": "domestic",
+    "score": 6.8,
+    "cost": 0.8,
+    "comment": ""
+  },
+  {
+    "model": "GLM-5.3-Flash最大",
+    "type": "domestic",
+    "score": 6.5,
+    "cost": 0.1,
+    "comment": ""
+  },
+  {
+    "model": "豆包云电脑lite高",
+    "type": "domestic",
+    "score": 6.3,
+    "cost": 0.1,
+    "comment": "场景齐全，但造型简单，骑乘接触感偏弱。"
+  },
+  {
+    "model": "豆包云电脑自动高",
+    "type": "domestic",
+    "score": 6,
+    "cost": 0.2,
+    "comment": "元素齐全，但骑手悬空较远，整体完成度较弱。"
+  },
+  {
+    "model": "Qoder快速",
+    "type": "domestic",
+    "score": 6,
+    "cost": 0.8,
+    "comment": "简洁可爱、速度感明确，但层次和细节较少。"
+  },
+  {
+    "model": "qwen3.6 35b",
+    "type": "local",
+    "score": 5.8,
+    "cost": 0,
+    "comment": "主题表达准确，猪尾、腿部和骑手遮挡较粗糙。"
+  },
+  {
+    "model": "豆包对话专家",
+    "type": "domestic",
+    "score": 5.3,
+    "cost": 0,
+    "comment": "配色舒服，但骑手与猪分离明显，骑乘关系弱。"
+  },
+  {
+    "model": "豆包对话快速",
+    "type": "domestic",
+    "score": 5,
+    "cost": 0,
+    "comment": "有基本动态，骑手略显悬空，形体较简略。"
+  }
+]

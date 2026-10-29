@@ -1,0 +1,213 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <defs>
+    <!-- 背景渐变 -->
+    <linearGradient id="skyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#E0F4FF" />
+      <stop offset="100%" stop-color="#FFF9E6" />
+    </linearGradient>
+    <linearGradient id="grassGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#A8E6CF" />
+      <stop offset="100%" stop-color="#76C893" />
+    </linearGradient>
+    <!-- 小猪身体渐变 -->
+    <linearGradient id="pigBody" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFC2D1" />
+      <stop offset="100%" stop-color="#FF9EBB" />
+    </linearGradient>
+    <!-- 仓鼠身体渐变 -->
+    <linearGradient id="hamsterFur" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFB76B" />
+      <stop offset="100%" stop-color="#F29441" />
+    </linearGradient>
+    <!-- 阴影滤镜 -->
+    <filter id="softShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="6" stdDeviation="4" flood-color="#4A3036" flood-opacity="0.12" />
+    </filter>
+  </defs>
+
+  <!-- 1. 背景：天空与草地 -->
+  <rect width="800" height="500" fill="url(#skyGrad)" rx="20" />
+  
+  <!-- 远景云朵 -->
+  <g fill="#FFFFFF" opacity="0.85">
+    <path d="M120,110 Q135,85 160,95 Q185,75 210,95 Q235,90 240,115 Q240,130 215,130 L125,130 Q105,130 120,110 Z" />
+    <path d="M580,80 Q595,55 625,65 Q650,45 680,70 Q705,65 710,90 Q710,105 685,105 L585,105 Q565,105 580,80 Z" />
+  </g>
+
+  <!-- 草地坡面 -->
+  <path d="M0,380 Q250,340 500,375 T800,365 L800,500 L0,500 Z" fill="#C7F2BA" />
+  <path d="M0,405 Q320,375 800,400 L800,500 L0,500 Z" fill="url(#grassGrad)" />
+
+  <!-- 地面投影 -->
+  <ellipse cx="425" cy="422" rx="165" ry="22" fill="#4E9F6E" opacity="0.45" />
+
+  <!-- 2. 速度线与扬尘（后层） -->
+  <g stroke="#FFFFFF" stroke-linecap="round" stroke-width="4" opacity="0.8">
+    <line x1="60" y1="220" x2="170" y2="220" />
+    <line x1="90" y1="255" x2="155" y2="255" />
+    <line x1="40" y1="310" x2="140" y2="310" />
+    <line x1="660" y1="180" x2="730" y2="180" />
+  </g>
+
+  <!-- 奔跑烟尘 -->
+  <g fill="#FFFDF7" stroke="#E2D9C8" stroke-width="3">
+    <circle cx="195" cy="395" r="22" />
+    <circle cx="165" cy="405" r="16" />
+    <circle cx="140" cy="392" r="12" />
+    <circle cx="115" cy="408" r="8" />
+  </g>
+
+  <!-- ================= 主体组（带轻微前倾动感） ================= -->
+  <g filter="url(#softShadow)">
+
+    <!-- 3. 小猪远端四肢与左耳（后层） -->
+    <g stroke="#4A3036" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round">
+      <!-- 远端后腿（向后蹬） -->
+      <path d="M295,335 L230,380 L248,395 L320,355 Z" fill="#F27D9C" />
+      <path d="M230,380 L242,372 L255,386 L248,395 Z" fill="#5C3A41" />
+      <!-- 远端前腿（向前迈） -->
+      <path d="M510,330 L585,355 L575,375 L495,352 Z" fill="#F27D9C" />
+      <path d="M585,355 L570,350 L563,368 L575,375 Z" fill="#5C3A41" />
+      <!-- 远端猪耳 -->
+      <path d="M510,220 C495,180 455,175 450,198 C445,215 480,230 500,232 Z" fill="#F27D9C" />
+    </g>
+
+    <!-- 4. 小猪卷尾巴 -->
+    <path d="M278,285 C245,275 230,245 250,235 C268,226 272,252 252,258 C235,263 222,245 225,225" 
+          fill="none" stroke="#4A3036" stroke-width="10" stroke-linecap="round" />
+    <path d="M278,285 C245,275 230,245 250,235 C268,226 272,252 252,258 C235,263 222,245 225,225" 
+          fill="none" stroke="#FF8DA7" stroke-width="4" stroke-linecap="round" />
+
+    <!-- 5. 小猪身体 -->
+    <g stroke="#4A3036" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round">
+      <!-- 圆滚滚的猪身 -->
+      <ellipse cx="420" cy="295" rx="145" ry="96" transform="rotate(-4 420 295)" fill="url(#pigBody)" />
+      <!-- 肚皮高光 -->
+      <path d="M320,350 Q420,385 515,345" fill="none" stroke="#FFD6E0" stroke-width="8" opacity="0.6" />
+    </g>
+
+    <!-- 6. 小猪背上的绿色小坐垫 -->
+    <g stroke="#4A3036" stroke-width="4" stroke-linejoin="round">
+      <!-- 肚带 -->
+      <path d="M390,200 L382,388 L402,388 L410,200 Z" fill="#8D5B4C" />
+      <!-- 坐垫 -->
+      <path d="M335,212 Q395,188 455,208 Q465,245 435,260 Q395,245 350,262 Q325,245 335,212 Z" fill="#52B788" />
+      <path d="M347,218 Q395,200 443,215 Q450,238 428,248 Q395,235 358,248 Q340,238 347,218 Z" fill="#74C69D" stroke="none" />
+    </g>
+
+    <!-- 7. 仓鼠骑士 -->
+    <!-- 迎风飘扬的小红围巾（后半截） -->
+    <path d="M365,190 C315,175 275,195 250,175 C265,205 300,218 355,210 Z" 
+          fill="#E63946" stroke="#4A3036" stroke-width="4" stroke-linejoin="round" />
+
+    <g stroke="#4A3036" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+      <!-- 仓鼠后耳 -->
+      <circle cx="375" cy="115" r="18" fill="#E07A5F" />
+      <circle cx="375" cy="115" r="10" fill="#FFC2D1" stroke="none" />
+
+      <!-- 仓鼠小短腿 -->
+      <ellipse cx="408" cy="232" rx="16" ry="11" transform="rotate(15 408 232)" fill="#FFF3E0" />
+      
+      <!-- 仓鼠圆身体（双色仓鼠：金黄背+雪白肚皮） -->
+      <path d="M350,185 C340,130 435,125 442,180 C448,220 425,235 390,235 C355,235 352,210 350,185 Z" fill="url(#hamsterFur)" />
+      <!-- 仓鼠白肚皮与膨胀的腮帮子 -->
+      <path d="M385,165 C415,155 448,162 448,188 C448,215 425,232 398,232 C378,232 375,205 385,165 Z" fill="#FFFDF9" stroke="none" />
+      <!-- 仓鼠鼓鼓的脸颊轮廓 -->
+      <path d="M425,148 C455,152 462,185 438,196" fill="#FFFDF9" />
+
+      <!-- 仓鼠前耳 -->
+      <circle cx="362" cy="122" r="19" fill="url(#hamsterFur)" />
+      <circle cx="362" cy="122" r="11" fill="#FF9EBB" stroke="none" />
+
+      <!-- 仓鼠五官 -->
+      <!-- 大眼睛 -->
+      <circle cx="418" cy="154" r="8.5" fill="#2B1E21" stroke="none" />
+      <circle cx="415" cy="151" r="3.2" fill="#FFFFFF" stroke="none" />
+      <circle cx="421" cy="157" r="1.5" fill="#FFFFFF" stroke="none" />
+      <!-- 粉鼻子与开心嘴型 -->
+      <ellipse cx="446" cy="164" rx="4.5" ry="3.5" fill="#FF758F" stroke="none" />
+      <path d="M438,172 Q445,178 442,184" fill="none" stroke="#4A3036" stroke-width="3" />
+      <!-- 仓鼠腮红 -->
+      <ellipse cx="425" cy="174" rx="10" ry="6" fill="#FF8FA3" opacity="0.7" stroke="none" />
+
+      <!-- 仓鼠脖子上的红围巾 -->
+      <path d="M355,188 Q398,202 436,188 Q440,202 428,205 Q392,215 352,202 Z" fill="#E63946" />
+
+      <!-- 仓鼠左手（拉缰绳） -->
+      <ellipse cx="428" cy="202" rx="13" ry="8" transform="rotate(-10 428 202)" fill="#FFFDF9" />
+      <!-- 仓鼠右手（高举葵花籽冲锋！） -->
+      <path d="M375,182 C360,162 365,142 380,145 C392,148 390,170 385,182" fill="#FFFDF9" />
+      
+      <!-- 手里举着的巨大葵花籽 -->
+      <g transform="translate(372, 128) rotate(-25)">
+        <path d="M0,15 C-8,-5 0,-22 8,-26 C16,-22 24,-5 16,15 C12,20 4,20 0,15 Z" fill="#3D3436" stroke="#4A3036" stroke-width="3.5" />
+        <path d="M6,-20 L6,14 M11,-17 L11,13" stroke="#FFFDF9" stroke-width="2.5" stroke-linecap="round" />
+      </g>
+    </g>
+
+    <!-- 8. 小猪头部细节与近端四肢（前层） -->
+    <g stroke="#4A3036" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round">
+      <!-- 近端后腿（向后腾空） -->
+      <path d="M315,342 C285,365 255,392 238,402 L262,415 C288,400 325,378 345,355" fill="#FF9EBB" />
+      <path d="M238,402 L252,393 L269,405 L262,415 Z" fill="#5C3A41" />
+
+      <!-- 近端前腿（向前欢快跃起） -->
+      <path d="M495,338 C530,362 565,382 590,390 L602,368 C578,355 548,332 522,315" fill="#FF9EBB" />
+      <path d="M590,390 L574,382 L585,360 L602,368 Z" fill="#5C3A41" />
+
+      <!-- 猪鼻子（翘在最前面） -->
+      <ellipse cx="565" cy="272" rx="28" ry="36" transform="rotate(-12 565 272)" fill="#FF7597" />
+      <!-- 鼻孔 -->
+      <ellipse cx="557" cy="268" rx="5.5" ry="9" transform="rotate(-12 557 268)" fill="#802F48" stroke="none" />
+      <ellipse cx="574" cy="264" rx="5.5" ry="9" transform="rotate(-12 574 264)" fill="#802F48" stroke="none" />
+
+      <!-- 小猪张嘴欢笑 -->
+      <path d="M518,302 Q540,322 552,300 Z" fill="#D6456B" />
+      <path d="M525,309 Q536,304 544,310" fill="none" stroke="#FF9EBB" stroke-width="4" />
+
+      <!-- 小猪眼睛（弯弯的笑眼/充满干劲的大眼睛） -->
+      <circle cx="512" cy="252" r="10.5" fill="#2B1E21" stroke="none" />
+      <circle cx="508" cy="248" r="4" fill="#FFFFFF" stroke="none" />
+      <circle cx="516" cy="256" r="2" fill="#FFFFFF" stroke="none" />
+      <!-- 小猪腮红 -->
+      <ellipse cx="502" cy="282" rx="16" ry="10" fill="#FF5C8A" opacity="0.55" stroke="none" />
+
+      <!-- 近端猪耳（向后飞起） -->
+      <path d="M478,225 C445,188 395,192 402,222 C407,242 452,248 475,244" fill="#FF85A6" />
+      <path d="M465,228 C442,205 415,208 418,222" fill="none" stroke="#E05A80" stroke-width="4" />
+    </g>
+
+    <!-- 9. 小缰绳（连接仓鼠小手与小猪） -->
+    <path d="M435,202 Q485,245 535,230" fill="none" stroke="#8D5B4C" stroke-width="4.5" stroke-linecap="round" />
+
+  </g>
+
+  <!-- 10. 前景装饰：飞溅的草叶、小花与动感星星 -->
+  <!-- 前景烟尘 -->
+  <g fill="#FFFDF7" stroke="#E2D9C8" stroke-width="3">
+    <circle cx="215" cy="418" r="15" />
+    <circle cx="185" cy="422" r="10" />
+  </g>
+
+  <!-- 飞起的小草叶与小花 -->
+  <g stroke="#4A3036" stroke-width="2.5" stroke-linecap="round">
+    <path d="M160,350 Q140,335 125,345" fill="none" stroke="#40916C" stroke-width="4" />
+    <path d="M620,395 Q640,380 655,390" fill="none" stroke="#40916C" stroke-width="4" />
+    <!-- 小黄花 -->
+    <g transform="translate(650, 290) rotate(20)">
+      <circle cx="0" cy="0" r="9" fill="#FFD166" />
+      <circle cx="0" cy="0" r="3.5" fill="#F4A261" stroke="none" />
+    </g>
+    <g transform="translate(190, 270) rotate(-35)">
+      <circle cx="0" cy="0" r="7" fill="#FFD166" />
+      <circle cx="0" cy="0" r="2.5" fill="#F4A261" stroke="none" />
+    </g>
+  </g>
+
+  <!-- 地面前景小草丛 -->
+  <g stroke="#40916C" stroke-width="4.5" stroke-linecap="round" fill="none">
+    <path d="M90,445 L80,425 M90,445 L92,422 M90,445 L104,430" />
+    <path d="M350,465 L342,448 M350,465 L354,445 M350,465 L364,452" />
+    <path d="M680,440 L670,420 M680,440 L683,418 M680,440 L695,425" />
+  </g>
+</svg>

@@ -1,0 +1,227 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <!-- 背景：天空渐变 -->
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#87CEEB"/>
+      <stop offset="70%" stop-color="#E0F0FF"/>
+      <stop offset="100%" stop-color="#90EE90"/>
+    </linearGradient>
+    <linearGradient id="ground" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#7CCD7C"/>
+      <stop offset="100%" stop-color="#4A8B3B"/>
+    </linearGradient>
+  </defs>
+
+  <!-- 天空 -->
+  <rect width="800" height="600" fill="url(#sky)"/>
+
+  <!-- 云朵 -->
+  <g fill="white" opacity="0.85">
+    <ellipse cx="120" cy="90" rx="60" ry="25"/>
+    <ellipse cx="160" cy="80" rx="50" ry="30"/>
+    <ellipse cx="90" cy="85" rx="40" ry="20"/>
+    <ellipse cx="600" cy="120" rx="70" ry="28"/>
+    <ellipse cx="650" cy="110" rx="55" ry="32"/>
+    <ellipse cx="560" cy="115" rx="45" ry="22"/>
+    <ellipse cx="380" cy="60" rx="50" ry="20"/>
+    <ellipse cx="420" cy="55" rx="40" ry="25"/>
+  </g>
+
+  <!-- 太阳 -->
+  <circle cx="700" cy="80" r="45" fill="#FFD700" opacity="0.9"/>
+  <g stroke="#FFD700" stroke-width="3" opacity="0.6">
+    <line x1="700" y1="20" x2="700" y2="5"/>
+    <line x1="700" y1="140" x2="700" y2="155"/>
+    <line x1="640" y1="80" x2="625" y2="80"/>
+    <line x1="760" y1="80" x2="775" y2="80"/>
+    <line x1="658" y1="38" x2="648" y2="28"/>
+    <line x1="742" y1="122" x2="752" y2="132"/>
+    <line x1="742" y1="38" x2="752" y2="28"/>
+    <line x1="658" y1="122" x2="648" y2="132"/>
+  </g>
+
+  <!-- 地面 -->
+  <ellipse cx="400" cy="520" rx="500" ry="120" fill="url(#ground)"/>
+
+  <!-- 草地细节 -->
+  <g stroke="#3A7A2A" stroke-width="2" fill="none" opacity="0.6">
+    <path d="M50,480 Q55,460 60,480"/>
+    <path d="M150,490 Q155,470 160,490"/>
+    <path d="M250,475 Q255,455 260,475"/>
+    <path d="M550,485 Q555,465 560,485"/>
+    <path d="M650,478 Q655,458 660,478"/>
+    <path d="M720,490 Q725,470 730,490"/>
+    <path d="M100,500 Q105,485 110,500"/>
+    <path d="M450,495 Q455,478 460,495"/>
+  </g>
+
+  <!-- 速度线（动感效果） -->
+  <g stroke="#AAA" stroke-width="2" opacity="0.5" stroke-dasharray="8,6">
+    <line x1="100" y1="320" x2="200" y2="320"/>
+    <line x1="80" y1="360" x2="190" y2="360"/>
+    <line x1="120" y1="400" x2="210" y2="400"/>
+    <line x1="90" y1="280" x2="180" y2="280"/>
+  </g>
+
+  <!-- 灰尘/奔跑扬起的土 -->
+  <g fill="#D2B48C" opacity="0.4">
+    <circle cx="200" cy="470" r="15"/>
+    <circle cx="170" cy="460" r="10"/>
+    <circle cx="220" cy="480" r="12"/>
+    <circle cx="185" cy="450" r="8"/>
+    <circle cx="155" cy="475" r="9"/>
+  </g>
+
+  <!-- ===== 小猪身体 ===== -->
+  <g transform="translate(380, 310)">
+    <!-- 身体 -->
+    <ellipse cx="0" cy="60" rx="110" ry="75" fill="#FFB6C1"/>
+    <ellipse cx="0" cy="60" rx="110" ry="75" fill="none" stroke="#E8909A" stroke-width="2"/>
+
+    <!-- 肚子高光 -->
+    <ellipse cx="10" cy="75" rx="70" ry="45" fill="#FFC8D5" opacity="0.6"/>
+
+    <!-- 后腿（奔跑姿态：向后蹬） -->
+    <g>
+      <path d="M-60,120 Q-80,160 -100,170 Q-110,175 -105,165 L-75,125" fill="#FFB6C1" stroke="#E8909A" stroke-width="2"/>
+      <ellipse cx="-103" cy="170" rx="12" ry="7" fill="#FF9AAA"/>
+    </g>
+    <g>
+      <path d="M-30,125 Q-20,170 -10,180 Q-5,185 0,175 L-15,130" fill="#FFB6C1" stroke="#E8909A" stroke-width="2"/>
+      <ellipse cx="-5" cy="180" rx="12" ry="7" fill="#FF9AAA"/>
+    </g>
+
+    <!-- 前腿（奔跑姿态：向前迈） -->
+    <g>
+      <path d="M60,115 Q90,140 110,135 Q118,132 112,140 L75,125" fill="#FFB6C1" stroke="#E8909A" stroke-width="2"/>
+      <ellipse cx="113" cy="137" rx="12" ry="7" fill="#FF9AAA"/>
+    </g>
+    <g>
+      <path d="M80,105 Q115,115 130,105 Q138,100 130,110 L90,115" fill="#FFB6C1" stroke="#E8909A" stroke-width="2"/>
+      <ellipse cx="132" cy="107" rx="12" ry="7" fill="#FF9AAA"/>
+    </g>
+
+    <!-- 尾巴（卷曲） -->
+    <path d="M-105,40 Q-130,20 -125,45 Q-120,65 -140,50" fill="none" stroke="#FFB6C1" stroke-width="6" stroke-linecap="round"/>
+    <path d="M-105,40 Q-130,20 -125,45 Q-120,65 -140,50" fill="none" stroke="#E8909A" stroke-width="2" stroke-linecap="round"/>
+
+    <!-- 头部 -->
+    <ellipse cx="120" cy="20" rx="60" ry="55" fill="#FFB6C1"/>
+    <ellipse cx="120" cy="20" rx="60" ry="55" fill="none" stroke="#E8909A" stroke-width="2"/>
+
+    <!-- 脸部高光 -->
+    <ellipse cx="125" cy="15" rx="40" ry="35" fill="#FFC8D5" opacity="0.4"/>
+
+    <!-- 猪鼻子 -->
+    <ellipse cx="165" cy="30" rx="22" ry="16" fill="#FF9AAA"/>
+    <ellipse cx="165" cy="30" rx="22" ry="16" fill="none" stroke="#E07080" stroke-width="1.5"/>
+    <ellipse cx="158" cy="30" rx="4" ry="5" fill="#E07080"/>
+    <ellipse cx="172" cy="30" rx="4" ry="5" fill="#E07080"/>
+
+    <!-- 眼睛（开心的眯眯眼） -->
+    <path d="M105,5 Q112,-5 120,5" fill="none" stroke="#333" stroke-width="3" stroke-linecap="round"/>
+    <path d="M135,0 Q142,-10 150,0" fill="none" stroke="#333" stroke-width="3" stroke-linecap="round"/>
+
+    <!-- 腮红 -->
+    <ellipse cx="100" cy="20" rx="10" ry="7" fill="#FF8888" opacity="0.4"/>
+    <ellipse cx="155" cy="15" rx="10" ry="7" fill="#FF8888" opacity="0.4"/>
+
+    <!-- 嘴巴（开心） -->
+    <path d="M125,45 Q135,55 145,45" fill="none" stroke="#E07080" stroke-width="2" stroke-linecap="round"/>
+
+    <!-- 耳朵 -->
+    <path d="M90,-25 Q80,-55 100,-40 Q105,-30 95,-20" fill="#FFB6C1" stroke="#E8909A" stroke-width="2"/>
+    <path d="M90,-25 Q83,-48 98,-38" fill="#FF9AAA" opacity="0.5"/>
+    <path d="M145,-30 Q150,-60 160,-40 Q158,-28 148,-25" fill="#FFB6C1" stroke="#E8909A" stroke-width="2"/>
+    <path d="M147,-30 Q151,-53 158,-38" fill="#FF9AAA" opacity="0.5"/>
+  </g>
+
+  <!-- ===== 仓鼠（骑在小猪背上） ===== -->
+  <g transform="translate(370, 240)">
+    <!-- 仓鼠身体 -->
+    <ellipse cx="0" cy="30" rx="35" ry="30" fill="#F5DEB3"/>
+    <ellipse cx="0" cy="30" rx="35" ry="30" fill="none" stroke="#D2B48C" stroke-width="1.5"/>
+
+    <!-- 仓鼠肚子 -->
+    <ellipse cx="0" cy="38" rx="22" ry="18" fill="#FFF8DC"/>
+
+    <!-- 仓鼠头部 -->
+    <ellipse cx="5" cy="-5" rx="30" ry="27" fill="#F5DEB3"/>
+    <ellipse cx="5" cy="-5" rx="30" ry="27" fill="none" stroke="#D2B48C" stroke-width="1.5"/>
+
+    <!-- 仓鼠脸部白色区域 -->
+    <ellipse cx="5" cy="2" rx="20" ry="17" fill="#FFF8DC" opacity="0.7"/>
+
+    <!-- 仓鼠耳朵 -->
+    <ellipse cx="-18" cy="-25" rx="10" ry="12" fill="#F5DEB3" stroke="#D2B48C" stroke-width="1.5"/>
+    <ellipse cx="-18" cy="-25" rx="6" ry="8" fill="#FFB6C1" opacity="0.6"/>
+    <ellipse cx="25" cy="-27" rx="10" ry="12" fill="#F5DEB3" stroke="#D2B48C" stroke-width="1.5"/>
+    <ellipse cx="25" cy="-27" rx="6" ry="8" fill="#FFB6C1" opacity="0.6"/>
+
+    <!-- 仓鼠眼睛（大而圆，开心） -->
+    <circle cx="-8" cy="-8" r="5" fill="#333"/>
+    <circle cx="-9" cy="-10" r="2" fill="white"/>
+    <circle cx="18" cy="-10" r="5" fill="#333"/>
+    <circle cx="17" cy="-12" r="2" fill="white"/>
+
+    <!-- 仓鼠鼻子 -->
+    <ellipse cx="5" cy="3" rx="3" ry="2.5" fill="#FF9999"/>
+
+    <!-- 仓鼠嘴巴 -->
+    <path d="M1,7 Q5,12 9,7" fill="none" stroke="#AA7755" stroke-width="1.5" stroke-linecap="round"/>
+
+    <!-- 仓鼠腮红 -->
+    <ellipse cx="-15" cy="2" rx="7" ry="5" fill="#FFAAAA" opacity="0.5"/>
+    <ellipse cx="25" cy="0" rx="7" ry="5" fill="#FFAAAA" opacity="0.5"/>
+
+    <!-- 仓鼠胡须 -->
+    <g stroke="#AA8866" stroke-width="1" opacity="0.6">
+      <line x1="-15" y1="3" x2="-35" y2="-2"/>
+      <line x1="-15" y1="6" x2="-35" y2="8"/>
+      <line x1="25" y1="1" x2="45" y2="-4"/>
+      <line x1="25" y1="5" x2="45" y2="6"/>
+    </g>
+
+    <!-- 仓鼠前爪（抓住猪背） -->
+    <ellipse cx="-20" cy="55" rx="8" ry="5" fill="#F5DEB3" stroke="#D2B48C" stroke-width="1"/>
+    <ellipse cx="20" cy="55" rx="8" ry="5" fill="#F5DEB3" stroke="#D2B48C" stroke-width="1"/>
+
+    <!-- 仓鼠举起的双手（开心姿势） -->
+    <g>
+      <path d="M-25,15 Q-45,-5 -40,-15" fill="none" stroke="#D2B48C" stroke-width="4" stroke-linecap="round"/>
+      <circle cx="-40" cy="-17" r="5" fill="#F5DEB3" stroke="#D2B48C" stroke-width="1"/>
+    </g>
+    <g>
+      <path d="M30,12 Q50,-8 45,-18" fill="none" stroke="#D2B48C" stroke-width="4" stroke-linecap="round"/>
+      <circle cx="45" cy="-20" r="5" fill="#F5DEB3" stroke="#D2B48C" stroke-width="1"/>
+    </g>
+  </g>
+
+  <!-- 小花装饰 -->
+  <g>
+    <circle cx="100" cy="490" r="5" fill="#FF69B4"/>
+    <circle cx="95" cy="486" r="4" fill="#FFB6C1"/>
+    <circle cx="105" cy="486" r="4" fill="#FFB6C1"/>
+    <circle cx="100" cy="483" r="4" fill="#FFB6C1"/>
+    <circle cx="100" cy="488" r="2.5" fill="#FFD700"/>
+
+    <circle cx="620" cy="480" r="5" fill="#FF6347"/>
+    <circle cx="615" cy="476" r="4" fill="#FF7F50"/>
+    <circle cx="625" cy="476" r="4" fill="#FF7F50"/>
+    <circle cx="620" cy="473" r="4" fill="#FF7F50"/>
+    <circle cx="620" cy="478" r="2.5" fill="#FFD700"/>
+
+    <circle cx="350" cy="500" r="4" fill="#9370DB"/>
+    <circle cx="346" cy="497" r="3" fill="#BA55D3"/>
+    <circle cx="354" cy="497" r="3" fill="#BA55D3"/>
+    <circle cx="350" cy="494" r="3" fill="#BA55D3"/>
+    <circle cx="350" cy="498" r="2" fill="#FFD700"/>
+  </g>
+
+  <!-- 音符（表现欢快氛围） -->
+  <g fill="#FF69B4" opacity="0.7">
+    <text x="280" y="230" font-size="24" font-family="serif">♪</text>
+    <text x="520" y="250" font-size="20" font-family="serif">♫</text>
+    <text x="310" y="200" font-size="18" font-family="serif">♪</text>
+  </g>
+</svg>

@@ -1,0 +1,60 @@
+<svg width="600" height="350" viewBox="0 0 600 350" xmlns="http://www.w3.org/2000/svg">
+  <!-- 背景 -->
+  <rect width="600" height="350" fill="#b8e8ff"/>
+  <ellipse cx="300" cy="330" rx="280" ry="35" fill="#90d890"/>
+
+  <!-- 奔跑小猪 -->
+  <g transform="translate(120,180)">
+    <!-- 猪身体 -->
+    <ellipse cx="180" cy="70" rx="110" ry="60" fill="#ffc8d0"/>
+    <!-- 猪头 -->
+    <circle cx="290" cy="50" r="42" fill="#ffc8d0"/>
+    <!-- 猪鼻子 -->
+    <ellipse cx="325" cy="55" rx="18" ry="14" fill="#ffabb8"/>
+    <circle cx="318" cy="52" r="3" fill="#774444"/>
+    <circle cx="332" cy="52" r="3" fill="#774444"/>
+    <!-- 猪耳朵 -->
+    <ellipse cx="265" cy="22" rx="14" ry="22" fill="#ffb6c2"/>
+    <ellipse cx="300" cy="20" rx="14" ry="22" fill="#ffb6c2"/>
+    <!-- 猪眼睛 -->
+    <circle cx="270" cy="42" r="5" fill="#222222"/>
+    <circle cx="288" cy="40" r="5" fill="#222222"/>
+    <!-- 跑动的腿 -->
+    <ellipse cx="110" cy="115" rx="18" ry="30" fill="#ffc8d0" transform="rotate(-20 110 115)"/>
+    <ellipse cx="160" cy="118" rx="18" ry="30" fill="#ffc8d0" transform="rotate(15 160 118)"/>
+    <ellipse cx="210" cy="115" rx="18" ry="30" fill="#ffc8d0" transform="rotate(-15 210 115)"/>
+    <ellipse cx="250" cy="110" rx="18" ry="30" fill="#ffc8d0" transform="rotate(20 250 110)"/>
+    <!-- 猪尾巴 -->
+    <path d="M70 70 C40 60, 45 40, 60 45 C75 50, 68 65, 70 70" fill="none" stroke="#ffb6c2" stroke-width="8" stroke-linecap="round"/>
+  </g>
+
+  <!-- 仓鼠（骑在背上） -->
+  <g transform="translate(170,110)">
+    <!-- 身体 -->
+    <ellipse cx="100" cy="40" rx="42" ry="32" fill="#f7d9b4"/>
+    <!-- 头 -->
+    <circle cx="135" cy="25" r="26" fill="#f7d9b4"/>
+    <!-- 耳朵 -->
+    <circle cx="118" cy="5" r="9" fill="#f2c89c"/>
+    <circle cx="150" cy="6" r="9" fill="#f2c89c"/>
+    <!-- 眼睛 -->
+    <circle cx="124" cy="22" r="3.5" fill="#222"/>
+    <circle cx="144" cy="22" r="3.5" fill="#222"/>
+    <!-- 腮帮子 -->
+    <circle cx="152" cy="32" r="7" fill="#f0c090"/>
+    <!-- 小手抓着猪背 -->
+    <ellipse cx="90" cy="62" rx="8" ry="12" fill="#f7d9b4"/>
+    <ellipse cx="112" cy="64" rx="8" ry="12" fill="#f7d9b4"/>
+    <!-- 后腿 -->
+    <ellipse cx="72" cy="48" rx="9" ry="14" fill="#f7d9b4"/>
+    <!-- 尾巴 -->
+    <path d="M58 40 Q42 32, 48 22" fill="none" stroke="#f2c89c" stroke-width="5" stroke-linecap="round"/>
+  </g>
+
+  <!-- 速度线，奔跑效果 -->
+  <g stroke="#ffffff" stroke-width="3" stroke-linecap="round" opacity="0.7">
+    <line x1="40" y1="160" x2="90" y2="155"/>
+    <line x1="30" y1="210" x2="75" y2="205"/>
+    <line x1="20" y1="260" x2="60" y2="255"/>
+  </g>
+</svg>

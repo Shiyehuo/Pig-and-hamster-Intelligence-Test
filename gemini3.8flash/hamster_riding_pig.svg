@@ -1,0 +1,707 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="100%" height="100%">
+  <defs>
+    <!-- Sky Gradient -->
+    <linearGradient id="skyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#46B4FE"/>
+      <stop offset="35%" stop-color="#8CE0FF"/>
+      <stop offset="65%" stop-color="#D8F2FE"/>
+      <stop offset="85%" stop-color="#FFF0D4"/>
+      <stop offset="100%" stop-color="#FFE0B2"/>
+    </linearGradient>
+
+    <!-- Sun Glow -->
+    <radialGradient id="sunGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="1"/>
+      <stop offset="25%" stop-color="#FFF8C4" stop-opacity="0.85"/>
+      <stop offset="55%" stop-color="#FFCE52" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#FFA01C" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Distant Mountains -->
+    <linearGradient id="farMountain" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#6BC588"/>
+      <stop offset="100%" stop-color="#329054"/>
+    </linearGradient>
+
+    <!-- Mid Rolling Hills -->
+    <linearGradient id="midHill" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#88E26C"/>
+      <stop offset="100%" stop-color="#3FA862"/>
+    </linearGradient>
+
+    <!-- Foreground Meadow Hill -->
+    <linearGradient id="frontMeadow" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#A5F255"/>
+      <stop offset="35%" stop-color="#62CE6E"/>
+      <stop offset="100%" stop-color="#247842"/>
+    </linearGradient>
+
+    <!-- Dirt Running Path -->
+    <linearGradient id="pathGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#DFC498" stop-opacity="0.85"/>
+      <stop offset="50%" stop-color="#FCE6C4" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#D7BA8A" stop-opacity="0.85"/>
+    </linearGradient>
+
+    <!-- Cloud Gradient -->
+    <linearGradient id="cloudGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="80%" stop-color="#F4F9FF"/>
+      <stop offset="100%" stop-color="#D2E5FA"/>
+    </linearGradient>
+
+    <!-- Pig Body Smooth Pastel Pink Gradient -->
+    <radialGradient id="pigBodyGrad" cx="45%" cy="32%" r="68%">
+      <stop offset="0%" stop-color="#FFF0F4"/>
+      <stop offset="35%" stop-color="#FFBED0"/>
+      <stop offset="70%" stop-color="#FF9CB5"/>
+      <stop offset="100%" stop-color="#F07293"/>
+    </radialGradient>
+
+    <!-- Pig Far Limb Gradient (Deeper in shadow) -->
+    <linearGradient id="pigFarLimbGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FF9AB3"/>
+      <stop offset="100%" stop-color="#D8567A"/>
+    </linearGradient>
+
+    <!-- Pig Near Limb Gradient -->
+    <linearGradient id="pigNearLimbGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFC5D5"/>
+      <stop offset="60%" stop-color="#FFA4BC"/>
+      <stop offset="100%" stop-color="#F07293"/>
+    </linearGradient>
+
+    <!-- Pig Snout Gradient -->
+    <radialGradient id="pigSnoutGrad" cx="35%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#FFF5F8"/>
+      <stop offset="40%" stop-color="#FFADC2"/>
+      <stop offset="85%" stop-color="#FF7A9B"/>
+      <stop offset="100%" stop-color="#DE4E74"/>
+    </radialGradient>
+
+    <!-- Pig Hoof Gradient -->
+    <linearGradient id="pigHoofGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#E2577F"/>
+      <stop offset="60%" stop-color="#B2274F"/>
+      <stop offset="100%" stop-color="#72112C"/>
+    </linearGradient>
+
+    <!-- Pig Ear Inner Gradient -->
+    <linearGradient id="pigEarInnerGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFADC2"/>
+      <stop offset="100%" stop-color="#FF4774"/>
+    </linearGradient>
+
+    <!-- Saddle Blanket Aztec / Boho Teal -->
+    <linearGradient id="blanketGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38B2AC"/>
+      <stop offset="45%" stop-color="#287E7A"/>
+      <stop offset="100%" stop-color="#16423F"/>
+    </linearGradient>
+
+    <!-- Hamster Golden Honey Fur Gradient -->
+    <radialGradient id="hamsterFurGrad" cx="38%" cy="28%" r="68%">
+      <stop offset="0%" stop-color="#FFF3DC"/>
+      <stop offset="30%" stop-color="#F6AD55"/>
+      <stop offset="75%" stop-color="#DD6B20"/>
+      <stop offset="100%" stop-color="#B54408"/>
+    </radialGradient>
+
+    <!-- Hamster White Snowy Fur -->
+    <radialGradient id="hamsterWhiteFur" cx="45%" cy="35%" r="60%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="70%" stop-color="#FFF8F2"/>
+      <stop offset="100%" stop-color="#FFEED6"/>
+    </radialGradient>
+
+    <!-- Hamster Cape / Hero Scarf (Ruby Crimson) -->
+    <linearGradient id="capeGrad" x1="0%" y1="0%" x2="100%" y2="80%">
+      <stop offset="0%" stop-color="#FF6B6B"/>
+      <stop offset="30%" stop-color="#E53E3E"/>
+      <stop offset="75%" stop-color="#B91C1C"/>
+      <stop offset="100%" stop-color="#701212"/>
+    </linearGradient>
+
+    <!-- Aviator Goggles Lens Gradient -->
+    <linearGradient id="gogglesLensGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7FE0FF"/>
+      <stop offset="40%" stop-color="#38A2EC"/>
+      <stop offset="80%" stop-color="#185C98"/>
+      <stop offset="100%" stop-color="#0C345C"/>
+    </linearGradient>
+
+    <!-- Golden Giant Sunflower Seed -->
+    <linearGradient id="sunSeedGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFDE7"/>
+      <stop offset="35%" stop-color="#FFF176"/>
+      <stop offset="75%" stop-color="#FBC02D"/>
+      <stop offset="100%" stop-color="#D78500"/>
+    </linearGradient>
+
+    <!-- Dust Cloud Puff Gradient -->
+    <radialGradient id="dustPuffGrad" cx="40%" cy="35%" r="60%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.95"/>
+      <stop offset="50%" stop-color="#FFF9F0" stop-opacity="0.8"/>
+      <stop offset="85%" stop-color="#EADCCB" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#DEC9B0" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Speed Wind Streak Gradient -->
+    <linearGradient id="windStreak" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0"/>
+      <stop offset="30%" stop-color="#FFFFFF" stop-opacity="0.8"/>
+      <stop offset="75%" stop-color="#FFFFFF" stop-opacity="0.85"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+    </linearGradient>
+
+    <!-- Soft Drop Shadow Filter -->
+    <filter id="softGlow" x="-15%" y="-15%" width="130%" height="130%">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0.8  0 0 0 0 0.2  0 0 0 0 0.35  0 0 0 0.18 0"/>
+      <feBlend in="SourceGraphic" in2="blur" mode="normal"/>
+    </filter>
+
+    <!-- Ground Contact Shadow Blur -->
+    <filter id="groundShadowBlur" x="-20%" y="-40%" width="140%" height="200%">
+      <feGaussianBlur stdDeviation="16"/>
+    </filter>
+
+    <!-- Sakura Petal Gradient -->
+    <linearGradient id="petalGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="55%" stop-color="#FFB3C6"/>
+      <stop offset="100%" stop-color="#FF527B"/>
+    </linearGradient>
+  </defs>
+
+  <!-- ================= 1. SKY & SUN ================= -->
+  <rect width="1200" height="800" fill="url(#skyGrad)"/>
+
+  <!-- Golden Radiant Sun -->
+  <circle cx="1030" cy="150" r="140" fill="url(#sunGlow)"/>
+  <circle cx="1030" cy="150" r="52" fill="#FFFBE6"/>
+  <!-- Decorative Sun Rays -->
+  <g stroke="#FFD868" stroke-width="2.5" stroke-linecap="round" opacity="0.5">
+    <line x1="1030" y1="75" x2="1030" y2="50"/>
+    <line x1="1030" y1="225" x2="1030" y2="250"/>
+    <line x1="955" y1="150" x2="930" y2="150"/>
+    <line x1="1105" y1="150" x2="1130" y2="150"/>
+    <line x1="978" y1="98" x2="960" y2="80"/>
+    <line x1="1082" y1="202" x2="1100" y2="220"/>
+    <line x1="978" y1="202" x2="960" y2="220"/>
+    <line x1="1082" y1="98" x2="1100" y2="80"/>
+  </g>
+
+  <!-- Fluffy Storybook Clouds -->
+  <!-- Left Cloud -->
+  <g fill="url(#cloudGrad)" opacity="0.95">
+    <ellipse cx="140" cy="190" rx="60" ry="32"/>
+    <ellipse cx="185" cy="165" rx="50" ry="38"/>
+    <ellipse cx="230" cy="180" rx="45" ry="30"/>
+    <ellipse cx="180" cy="195" rx="75" ry="25"/>
+  </g>
+  <!-- Middle High Cloud -->
+  <g fill="url(#cloudGrad)" opacity="0.9">
+    <ellipse cx="500" cy="120" rx="55" ry="28"/>
+    <ellipse cx="540" cy="98" rx="48" ry="34"/>
+    <ellipse cx="585" cy="115" rx="42" ry="26"/>
+  </g>
+  <!-- Right Fast Cloud -->
+  <g fill="#FFFFFF" opacity="0.85">
+    <ellipse cx="760" cy="100" rx="45" ry="16"/>
+    <ellipse cx="785" cy="92" rx="30" ry="20"/>
+    <ellipse cx="740" cy="102" rx="25" ry="12"/>
+  </g>
+
+  <!-- Distant Mountain (Layer 1) -->
+  <path d="M -50,550 Q 180,410 400,460 T 900,430 Q 1050,400 1250,510 L 1250,800 L -50,800 Z" fill="url(#farMountain)" opacity="0.8"/>
+
+  <!-- Mid Mountain & Rolling Green Hills (Layer 2) -->
+  <path d="M -50,580 Q 220,460 520,510 T 1080,490 Q 1180,510 1250,560 L 1250,800 L -50,800 Z" fill="url(#midHill)" opacity="0.9"/>
+
+  <!-- Distant Fairytale Windmill on the hill -->
+  <g transform="translate(320, 440) scale(0.65)" opacity="0.75">
+    <polygon points="20,70 28,15 36,15 44,70" fill="#EDF2F7"/>
+    <polygon points="24,15 32,5 40,15" fill="#E53E3E"/>
+    <g transform="rotate(30 32 15)">
+      <line x1="32" y1="-25" x2="32" y2="55" stroke="#4A5568" stroke-width="2"/>
+      <line x1="-8" y1="15" x2="72" y2="15" stroke="#4A5568" stroke-width="2"/>
+      <polygon points="32,-25 42,-15 32,5" fill="#CBD5E0"/>
+      <polygon points="32,55 22,45 32,25" fill="#CBD5E0"/>
+      <polygon points="-8,15 2,5 22,15" fill="#CBD5E0"/>
+      <polygon points="72,15 62,25 42,15" fill="#CBD5E0"/>
+      <circle cx="32" cy="15" r="3.5" fill="#2D3748"/>
+    </g>
+  </g>
+
+  <!-- Distant Green Bushes -->
+  <g fill="#277C49" opacity="0.6">
+    <circle cx="160" cy="545" r="18"/>
+    <circle cx="185" cy="540" r="22"/>
+    <circle cx="210" cy="546" r="16"/>
+    <circle cx="910" cy="515" r="24"/>
+    <circle cx="940" cy="520" r="18"/>
+  </g>
+
+  <!-- ================= 2. FOREGROUND MEADOW & DIRT TRACK ================= -->
+  <!-- Lush Foreground Meadow Hill -->
+  <path d="M -50,640 Q 250,555 600,580 T 1250,605 L 1250,850 L -50,850 Z" fill="url(#frontMeadow)"/>
+
+  <!-- Winding Running Dirt Road -->
+  <path d="M -50,710 Q 300,625 680,645 T 1250,665 L 1250,830 Q 750,820 350,820 T -50,840 Z" fill="url(#pathGradient)"/>
+
+  <!-- Cute Wildflowers and Grass Clumps -->
+  <g transform="translate(130, 650) scale(0.85)">
+    <circle cx="0" cy="0" r="4.5" fill="#ECC94B"/>
+    <circle cx="-7" cy="0" r="4" fill="#FFFFFF"/>
+    <circle cx="7" cy="0" r="4" fill="#FFFFFF"/>
+    <circle cx="0" cy="-7" r="4" fill="#FFFFFF"/>
+    <circle cx="0" cy="7" r="4" fill="#FFFFFF"/>
+  </g>
+  <g transform="translate(280, 625) scale(0.75)">
+    <circle cx="0" cy="0" r="4" fill="#FF758F"/>
+    <circle cx="-6" cy="0" r="3.5" fill="#FFE0E9"/>
+    <circle cx="6" cy="0" r="3.5" fill="#FFE0E9"/>
+    <circle cx="0" cy="-6" r="3.5" fill="#FFE0E9"/>
+    <circle cx="0" cy="6" r="3.5" fill="#FFE0E9"/>
+  </g>
+  <g transform="translate(850, 635) scale(0.85)">
+    <circle cx="0" cy="0" r="4.5" fill="#ECC94B"/>
+    <circle cx="-7" cy="0" r="4" fill="#FFFFFF"/>
+    <circle cx="7" cy="0" r="4" fill="#FFFFFF"/>
+    <circle cx="0" cy="-7" r="4" fill="#FFFFFF"/>
+    <circle cx="0" cy="7" r="4" fill="#FFFFFF"/>
+  </g>
+
+  <!-- Grass Blades -->
+  <g fill="#236B3E" opacity="0.8">
+    <path d="M 160,655 Q 166,635 178,630 Q 172,646 169,657 Z"/>
+    <path d="M 169,657 Q 176,640 188,638 Q 180,652 176,660 Z"/>
+    <path d="M 880,645 Q 888,625 902,622 Q 893,638 890,650 Z"/>
+  </g>
+
+  <!-- ================= 3. MOTION DUST PUFFS & SUSPENDED SHADOWS ================= -->
+  <!-- Billowing Dynamic Cartoon Dust Behind Pig's Hooves -->
+  <g id="dustClouds">
+    <ellipse cx="230" cy="670" rx="55" ry="34" fill="url(#dustPuffGrad)"/>
+    <ellipse cx="190" cy="650" rx="42" ry="32" fill="url(#dustPuffGrad)"/>
+    <ellipse cx="270" cy="660" rx="38" ry="26" fill="url(#dustPuffGrad)"/>
+
+    <ellipse cx="340" cy="675" rx="60" ry="36" fill="url(#dustPuffGrad)"/>
+    <ellipse cx="300" cy="650" rx="46" ry="32" fill="url(#dustPuffGrad)"/>
+    <ellipse cx="380" cy="665" rx="42" ry="28" fill="url(#dustPuffGrad)"/>
+
+    <!-- Tiny energetic speed poofs -->
+    <circle cx="150" cy="640" r="14" fill="#FFFFFF" opacity="0.6"/>
+    <circle cx="125" cy="648" r="9" fill="#FFFFFF" opacity="0.5"/>
+    <circle cx="280" cy="625" r="16" fill="#FFFFFF" opacity="0.65"/>
+    <circle cx="410" cy="645" r="18" fill="#FFFFFF" opacity="0.6"/>
+
+    <!-- Dust Swirl Lines -->
+    <path d="M 170,670 Q 210,640 240,665 T 280,650" fill="none" stroke="#E6D3BE" stroke-width="3" stroke-linecap="round" opacity="0.75"/>
+    <path d="M 290,680 Q 335,645 370,670" fill="none" stroke="#E6D3BE" stroke-width="3" stroke-linecap="round" opacity="0.8"/>
+  </g>
+
+  <!-- Ground Shadows of Leaping Pig & Hamster -->
+  <g id="groundShadows">
+    <ellipse cx="610" cy="695" rx="220" ry="24" fill="#1C3822" opacity="0.32" filter="url(#groundShadowBlur)"/>
+    <ellipse cx="440" cy="695" rx="75" ry="16" fill="#142B1A" opacity="0.45" filter="url(#groundShadowBlur)"/>
+    <ellipse cx="780" cy="690" rx="85" ry="18" fill="#142B1A" opacity="0.48" filter="url(#groundShadowBlur)"/>
+  </g>
+
+  <!-- ================= 4. THE GALLOPING PIG ================= -->
+  <!-- Entire Pig & Hamster Group with a 3.5-degree gallop inclination -->
+  <g id="pigAndHamster" transform="rotate(-3.5 620 480)">
+
+    <!-- ========== PIG: LEFT / FAR LEGS (BEHIND BODY) ========== -->
+    <!-- Far Left Hind Leg (Extended high backward into the sky) -->
+    <g id="pigFarHindLeg">
+      <path d="M 430,480
+               C 380,500 320,520 280,555
+               C 265,570 275,590 295,588
+               C 330,580 375,540 435,510 Z" fill="url(#pigFarLimbGrad)"/>
+      <!-- Lower leg & Hoof -->
+      <path d="M 285,570 L 250,592 C 240,598 242,608 252,610 L 278,606 C 288,602 298,590 302,580 Z" fill="#D8567A"/>
+      <path d="M 250,592 L 226,605 C 220,609 224,618 232,619 L 258,615 C 264,612 272,608 278,606 Z" fill="url(#pigHoofGrad)"/>
+      <line x1="240" y1="605" x2="244" y2="616" stroke="#520B1F" stroke-width="2"/>
+    </g>
+
+    <!-- Far Left Front Leg (Extended forward high into the sky) -->
+    <g id="pigFarFrontLeg">
+      <path d="M 680,510
+               C 730,515 780,530 820,550
+               C 840,560 842,575 825,583
+               C 800,592 755,565 705,545 Z" fill="url(#pigFarLimbGrad)"/>
+      <path d="M 820,560 L 870,580 C 885,587 888,597 878,604 L 852,602 C 838,599 820,585 810,575 Z" fill="#D8567A"/>
+      <path d="M 870,580 L 900,593 C 908,597 906,607 898,610 L 872,607 C 866,605 858,601 852,602 Z" fill="url(#pigHoofGrad)"/>
+      <line x1="885" y1="593" x2="888" y2="606" stroke="#520B1F" stroke-width="2"/>
+    </g>
+
+    <!-- ========== PIG: CURLY TAIL ========== -->
+    <g id="pigTail">
+      <path d="M 370,450 C 330,440 295,410 320,380 C 335,360 365,365 365,385 C 365,405 340,415 330,400 C 325,392 332,382 342,385" fill="none" stroke="#D84C70" stroke-width="12" stroke-linecap="round"/>
+      <path d="M 370,450 C 330,440 295,410 320,380 C 335,360 365,365 365,385 C 365,405 340,415 330,400 C 325,392 332,382 342,385" fill="none" stroke="#FFAEC0" stroke-width="8" stroke-linecap="round"/>
+      <circle cx="342" cy="385" r="3.5" fill="#FFE5EB"/>
+    </g>
+
+    <!-- ========== PIG: MAIN PLUMP BODY ========== -->
+    <g id="pigBodyMain">
+      <!-- Seamless, organic, chubby piggy body -->
+      <path d="M 395,435
+               C 345,475 345,565 410,620
+               C 485,680 635,685 725,640
+               C 785,605 795,530 765,465
+               C 725,400 630,375 525,385
+               C 460,390 420,410 395,435 Z" fill="url(#pigBodyGrad)" filter="url(#softGlow)"/>
+
+      <!-- Creamy Highlights on Back and Rump -->
+      <ellipse cx="465" cy="425" rx="60" ry="25" transform="rotate(-15 465 425)" fill="#FFFFFF" opacity="0.32"/>
+      <ellipse cx="645" cy="415" rx="55" ry="18" transform="rotate(-6 645 415)" fill="#FFFFFF" opacity="0.28"/>
+    </g>
+
+    <!-- ========== PIG: NEAR / FOREGROUND LEGS ========== -->
+    <!-- Near Right Hind Leg: Silky smooth, organic thigh curves -->
+    <g id="pigNearHindLeg">
+      <!-- Thigh smoothly merging with body and shin -->
+      <path d="M 445,525
+               C 420,555 410,610 440,650
+               C 465,680 495,680 520,645
+               C 540,615 535,560 505,525
+               C 485,505 465,505 445,525 Z" fill="url(#pigNearLimbGrad)"/>
+      <!-- Shin -->
+      <path d="M 455,640 L 435,670 C 430,678 435,687 445,689 L 472,686 C 484,683 490,670 490,655 Z" fill="#FFAEC0"/>
+      <!-- Cloven Hoof -->
+      <path d="M 435,670 L 418,690 C 412,696 416,704 424,705 L 452,702 C 460,700 466,694 468,688 Z" fill="url(#pigHoofGrad)"/>
+      <line x1="435" y1="690" x2="438" y2="702" stroke="#520B1F" stroke-width="2.5"/>
+      <!-- Soft highlight line on thigh -->
+      <path d="M 465,550 C 452,580 450,620 468,645" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" opacity="0.35"/>
+    </g>
+
+    <!-- Near Right Front Leg: Smooth forearm bent forward joyfully -->
+    <g id="pigNearFrontLeg">
+      <path d="M 685,525
+               C 715,535 755,565 765,605
+               C 772,630 758,650 735,650
+               C 710,650 690,615 675,575 Z" fill="url(#pigNearLimbGrad)"/>
+      <!-- Foreleg reaching forward -->
+      <path d="M 748,605 L 785,640 C 795,650 808,650 812,640 L 808,620 C 802,605 782,590 768,590 Z" fill="#FFAEC0"/>
+      <!-- Cloven Hoof -->
+      <path d="M 785,640 L 818,668 C 825,674 835,670 838,662 L 834,642 C 828,635 818,630 812,640 Z" fill="url(#pigHoofGrad)"/>
+      <line x1="812" y1="650" x2="825" y2="662" stroke="#520B1F" stroke-width="2.5"/>
+      <path d="M 710,545 C 730,565 745,595 755,625" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" opacity="0.35"/>
+    </g>
+
+    <!-- ========== SADDLE & SADDLE BLANKET ========== -->
+    <g id="saddleGroup">
+      <path d="M 500,400
+               C 545,395 625,395 665,408
+               C 672,430 670,460 660,470
+               C 615,475 550,475 505,465
+               C 495,445 492,420 500,400 Z" fill="url(#blanketGrad)"/>
+      <path d="M 502,460 C 550,470 610,470 658,465" fill="none" stroke="#ECC94B" stroke-width="4" stroke-dasharray="6 3.5"/>
+      <circle cx="515" cy="471" r="3" fill="#E53E3E"/>
+      <circle cx="545" cy="474" r="3" fill="#ECC94B"/>
+      <circle cx="575" cy="476" r="3" fill="#E53E3E"/>
+      <circle cx="605" cy="475" r="3" fill="#ECC94B"/>
+      <circle cx="635" cy="472" r="3" fill="#E53E3E"/>
+
+      <!-- Leather Saddle Pad -->
+      <ellipse cx="580" cy="420" rx="55" ry="17" fill="#C05621"/>
+      <ellipse cx="580" cy="418" rx="50" ry="14" fill="#D69E2E"/>
+      <!-- Girth Strap around pig's tummy -->
+      <path d="M 575,432 C 580,490 580,560 570,625" fill="none" stroke="#7B341E" stroke-width="6" stroke-linecap="round"/>
+      <path d="M 575,432 C 580,490 580,560 570,625" fill="none" stroke="#ECC94B" stroke-width="1.8" stroke-dasharray="5 3"/>
+      <rect x="568" y="525" width="12" height="10" rx="2" fill="#ECC94B" stroke="#975A16" stroke-width="1.5"/>
+    </g>
+
+    <!-- ========== PIG HEAD COMPLETE ========== -->
+    <g id="pigHeadComplete">
+      <!-- Left Ear (Far ear) -->
+      <g id="pigFarEar" transform="rotate(-25 720 340)">
+        <path d="M 710,365 C 690,325 675,275 705,255 C 730,240 760,265 762,305 C 765,345 740,370 710,365 Z" fill="#F07293"/>
+        <path d="M 715,350 C 705,320 695,285 715,270 C 730,260 745,280 747,310 C 750,335 735,350 715,350 Z" fill="url(#pigEarInnerGrad)"/>
+      </g>
+
+      <!-- Head Base -->
+      <circle cx="765" cy="460" r="110" fill="url(#pigBodyGrad)" filter="url(#softGlow)"/>
+
+      <!-- Right Ear (Near ear, flapping back dynamically along neck) -->
+      <g id="pigNearEar">
+        <path d="M 750,390 C 720,345 660,325 685,295 C 710,270 755,295 780,345 C 795,375 780,405 750,390 Z" fill="url(#pigBodyGrad)"/>
+        <path d="M 748,378 C 725,345 685,325 700,305 C 718,285 745,310 762,345 C 775,370 760,385 748,378 Z" fill="url(#pigEarInnerGrad)"/>
+        <path d="M 740,392 C 760,378 775,375 790,390" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" opacity="0.4"/>
+      </g>
+
+      <!-- Joyful Smiling Pig Eyes -->
+      <!-- Right Eye -->
+      <g id="pigEyeRight" transform="translate(800, 405)">
+        <path d="M 0,22 Q 18,2 36,22" fill="none" stroke="#2B1019" stroke-width="6" stroke-linecap="round"/>
+        <path d="M 32,15 Q 40,12 42,4" fill="none" stroke="#2B1019" stroke-width="3.5" stroke-linecap="round"/>
+        <path d="M 4,-4 Q 18,-14 34,-6" fill="none" stroke="#A72445" stroke-width="3.5" stroke-linecap="round"/>
+      </g>
+
+      <!-- Left Eye -->
+      <g id="pigEyeLeft" transform="translate(735, 395)">
+        <path d="M 0,20 Q 14,3 28,20" fill="none" stroke="#2B1019" stroke-width="5" stroke-linecap="round"/>
+        <path d="M 2,-2 Q 14,-10 26,-4" fill="none" stroke="#A72445" stroke-width="3" stroke-linecap="round"/>
+      </g>
+
+      <!-- Big Rosy Glowing Cheeks -->
+      <ellipse cx="750" cy="505" rx="32" ry="20" fill="#FF3366" opacity="0.45"/>
+      <ellipse cx="865" cy="485" rx="26" ry="16" fill="#FF3366" opacity="0.38"/>
+      <circle cx="742" cy="500" r="3.5" fill="#FFFFFF" opacity="0.8"/>
+      <circle cx="755" cy="508" r="2.5" fill="#FFFFFF" opacity="0.8"/>
+      <circle cx="860" cy="482" r="3" fill="#FFFFFF" opacity="0.75"/>
+
+      <!-- Wide Joyful Open Smile with Pink Tongue -->
+      <g id="pigSmile" transform="translate(815, 510)">
+        <path d="M 0,0 Q 25,35 50,2" fill="none" stroke="#7A1130" stroke-width="4.5" stroke-linecap="round"/>
+        <path d="M 3,2 Q 25,36 47,4 Q 25,24 3,2 Z" fill="#881337"/>
+        <path d="M 10,12 Q 25,32 40,14 Q 25,18 10,12 Z" fill="#FF758F"/>
+      </g>
+
+      <!-- Cute Plump Pig Snout -->
+      <g id="pigSnoutGroup" transform="translate(850, 435) rotate(10)">
+        <ellipse cx="32" cy="34" rx="44" ry="32" fill="#C53055" opacity="0.3"/>
+        <ellipse cx="30" cy="30" rx="44" ry="32" fill="url(#pigSnoutGrad)"/>
+        <path d="M -5,22 C 10,9 48,9 65,22" fill="none" stroke="#FFFFFF" stroke-width="4.5" stroke-linecap="round" opacity="0.6"/>
+        <ellipse cx="18" cy="31" rx="8.5" ry="11" transform="rotate(-8 18 31)" fill="#7A0E2A"/>
+        <ellipse cx="42" cy="32" rx="8.5" ry="11" transform="rotate(8 42 32)" fill="#7A0E2A"/>
+        <circle cx="16" cy="34" r="2.5" fill="#E25B81" opacity="0.7"/>
+        <circle cx="40" cy="35" r="2.5" fill="#E25B81" opacity="0.7"/>
+        <!-- Snort steam puffs -->
+        <circle cx="72" cy="18" r="7" fill="#FFFFFF" opacity="0.75"/>
+        <circle cx="88" cy="10" r="11" fill="#FFFFFF" opacity="0.6"/>
+        <circle cx="108" cy="2" r="15" fill="#FFFFFF" opacity="0.45"/>
+      </g>
+
+      <!-- Festive Collar with Golden Bell around Pig's Neck -->
+      <g id="pigCollar">
+        <!-- Red Leather Collar band below chin -->
+        <path d="M 725,505 C 750,540 780,560 815,550" fill="none" stroke="#C53030" stroke-width="12" stroke-linecap="round"/>
+        <path d="M 725,505 C 750,540 780,560 815,550" fill="none" stroke="#ECC94B" stroke-width="2.5" stroke-dasharray="6 4" stroke-linecap="round"/>
+
+        <!-- Shiny Golden Bell -->
+        <g transform="translate(770, 545)">
+          <circle cx="0" cy="0" r="14" fill="#ECC94B" stroke="#975A16" stroke-width="2"/>
+          <ellipse cx="-4" cy="-4" rx="4" ry="6" transform="rotate(-30 -4 -4)" fill="#FFFDE7"/>
+          <circle cx="0" cy="4" r="3.5" fill="#744210"/>
+          <line x1="0" y1="4" x2="0" y2="12" stroke="#744210" stroke-width="2.5"/>
+        </g>
+      </g>
+
+    </g> <!-- End pigHeadComplete -->
+
+    <!-- ================= 5. THE HEROIC HAMSTER RIDER ================= -->
+    <g id="hamsterHero" transform="translate(540, 205) rotate(-6)">
+
+      <!-- HAMSTER FLUTTERING RED CAPE / HERO SCARF -->
+      <g id="hamsterCape">
+        <!-- Main Wing Tail -->
+        <path d="M 25,140
+                 C -35,145 -110,130 -180,85
+                 C -220,60 -255,68 -280,50
+                 C -245,90 -195,120 -130,145
+                 C -70,168 -15,170 25,160 Z" fill="url(#capeGrad)" filter="url(#softGlow)"/>
+
+        <!-- Underside Tail -->
+        <path d="M 20,150
+                 C -50,165 -130,175 -200,145
+                 C -240,130 -270,142 -295,125
+                 C -250,155 -195,190 -120,195
+                 C -60,200 -5,180 25,165 Z" fill="#991B1B"/>
+
+        <path d="M 25,142 C -50,145 -130,130 -200,90" fill="none" stroke="#FCA5A5" stroke-width="3.5" opacity="0.6"/>
+        <path d="M 15,158 C -60,172 -140,180 -210,150" fill="none" stroke="#7F1D1D" stroke-width="3" opacity="0.7"/>
+      </g>
+
+      <!-- Hamster Chubby Paws Gripping the Saddle -->
+      <ellipse cx="30" cy="188" rx="14" ry="9" fill="#FFAEC0" stroke="#DD6B20" stroke-width="1.8"/>
+      <ellipse cx="80" cy="190" rx="15" ry="9" fill="#FFAEC0" stroke="#DD6B20" stroke-width="1.8"/>
+      <circle cx="74" cy="191" r="2" fill="#FFFFFF"/>
+
+      <!-- Hamster Tiny Tail -->
+      <circle cx="5" cy="155" r="11" fill="#FFF2D6"/>
+      <circle cx="3" cy="154" r="8" fill="#F6AD55"/>
+
+      <!-- Hamster Chubby Body -->
+      <ellipse cx="60" cy="140" rx="58" ry="54" fill="url(#hamsterFurGrad)" filter="url(#softGlow)"/>
+
+      <!-- Hamster White Snowy Belly & Chest -->
+      <path d="M 38,125
+               C 38,98 88,98 94,125
+               C 100,160 90,185 66,188
+               C 42,185 34,155 38,125 Z" fill="url(#hamsterWhiteFur)"/>
+
+      <!-- Hamster Head -->
+      <ellipse cx="78" cy="85" rx="52" ry="46" fill="url(#hamsterFurGrad)"/>
+
+      <!-- White Cheeks and Snout Patch -->
+      <path d="M 45,85
+               C 38,98 38,120 55,128
+               C 78,135 102,135 120,126
+               C 132,115 132,98 120,85
+               C 105,94 65,94 45,85 Z" fill="url(#hamsterWhiteFur)"/>
+
+      <!-- Left Ear (Far ear) -->
+      <g id="hamsterEarLeft" transform="translate(42, 38) rotate(-18)">
+        <ellipse cx="0" cy="0" rx="16" ry="18" fill="#C05621"/>
+        <ellipse cx="1" cy="2" rx="11" ry="13" fill="#FFAEC0"/>
+      </g>
+
+      <!-- Right Ear (Near ear) -->
+      <g id="hamsterEarRight" transform="translate(102, 40) rotate(16)">
+        <ellipse cx="0" cy="0" rx="17" ry="20" fill="#C05621"/>
+        <ellipse cx="-1" cy="2" rx="12" ry="14" fill="#FFAEC0"/>
+        <path d="M -11,-10 Q 0,-20 11,-10" fill="none" stroke="#FBD38D" stroke-width="2.5"/>
+      </g>
+
+      <!-- Aviator Pilot Goggles on Forehead -->
+      <g id="hamsterGoggles" transform="translate(74, 50) rotate(5)">
+        <path d="M -50,6 C -30,-5 40,-5 62,4" fill="none" stroke="#5A2807" stroke-width="6" stroke-linecap="round"/>
+        <path d="M -50,6 C -30,-5 40,-5 62,4" fill="none" stroke="#D69E2E" stroke-width="2" stroke-linecap="round"/>
+
+        <!-- Left Lens -->
+        <circle cx="-16" cy="0" r="16" fill="#D69E2E" stroke="#5A2807" stroke-width="3"/>
+        <circle cx="-16" cy="0" r="12.5" fill="url(#gogglesLensGrad)"/>
+        <path d="M -24,-6 L -16,-12 L -12,-6 L -20,0 Z" fill="#FFFFFF" opacity="0.8"/>
+        <circle cx="-10" cy="5" r="3" fill="#FFFFFF" opacity="0.85"/>
+
+        <!-- Bridge -->
+        <rect x="-4" y="-4" width="8" height="6" rx="2" fill="#ECC94B" stroke="#5A2807" stroke-width="2"/>
+
+        <!-- Right Lens -->
+        <circle cx="18" cy="0" r="16" fill="#D69E2E" stroke="#5A2807" stroke-width="3"/>
+        <circle cx="18" cy="0" r="12.5" fill="url(#gogglesLensGrad)"/>
+        <path d="M 10,-6 L 18,-12 L 22,-6 L 14,0 Z" fill="#FFFFFF" opacity="0.8"/>
+        <circle cx="24" cy="5" r="3" fill="#FFFFFF" opacity="0.85"/>
+      </g>
+
+      <!-- Big Chubby Cheek Pouches with Rosy Blush -->
+      <ellipse cx="46" cy="98" rx="20" ry="15" fill="#FF3366" opacity="0.55"/>
+      <ellipse cx="114" cy="98" rx="20" ry="15" fill="#FF3366" opacity="0.55"/>
+      <circle cx="42" cy="95" r="3.5" fill="#FFFFFF" opacity="0.8"/>
+      <circle cx="118" cy="95" r="3.5" fill="#FFFFFF" opacity="0.8"/>
+
+      <!-- Hamster Tiny Pink Nose & Smile -->
+      <polygon points="78,92 73,86 83,86" fill="#E53E3E"/>
+      <path d="M 78,92 L 78,96" stroke="#881337" stroke-width="2"/>
+      <path d="M 71,97 Q 78,103 85,97" fill="none" stroke="#881337" stroke-width="2.5" stroke-linecap="round"/>
+
+      <!-- Twitching Long Whiskers -->
+      <g stroke="#975A16" stroke-width="2" stroke-linecap="round" opacity="0.85">
+        <line x1="44" y1="92" x2="10" y2="84"/>
+        <line x1="42" y1="96" x2="12" y2="98"/>
+        <line x1="44" y1="101" x2="18" y2="110"/>
+        <line x1="114" y1="92" x2="148" y2="88"/>
+        <line x1="116" y1="96" x2="152" y2="98"/>
+        <line x1="114" y1="101" x2="144" y2="109"/>
+      </g>
+
+      <!-- Sparkling Kawaii Eyes -->
+      <g id="hamsterEyeLeft" transform="translate(56, 70)">
+        <ellipse cx="0" cy="0" rx="10" ry="13" fill="#180A10"/>
+        <ellipse cx="-3" cy="-4" rx="4.5" ry="6" fill="#FFFFFF"/>
+        <circle cx="3" cy="5" r="2.5" fill="#FFFFFF"/>
+        <polygon points="-1,3 0,0 1,3 0,5" fill="#FFFFFF"/>
+        <path d="M -9,-14 Q 0,-21 9,-13" fill="none" stroke="#881337" stroke-width="3" stroke-linecap="round"/>
+      </g>
+
+      <g id="hamsterEyeRight" transform="translate(100, 70)">
+        <ellipse cx="0" cy="0" rx="10" ry="13" fill="#180A10"/>
+        <ellipse cx="-3" cy="-4" rx="4.5" ry="6" fill="#FFFFFF"/>
+        <circle cx="3" cy="5" r="2.5" fill="#FFFFFF"/>
+        <polygon points="-1,3 0,0 1,3 0,5" fill="#FFFFFF"/>
+        <path d="M -8,-13 Q 0,-21 10,-14" fill="none" stroke="#881337" stroke-width="3" stroke-linecap="round"/>
+      </g>
+
+      <!-- Hero Scarf Knot -->
+      <path d="M 52,118 C 68,126 95,126 108,118 C 104,132 60,132 52,118 Z" fill="#B91C1C"/>
+      <circle cx="80" cy="124" r="7" fill="#E53E3E"/>
+      <circle cx="80" cy="124" r="3.5" fill="#ECC94B"/>
+
+      <!-- Hamster Left Hand: Gripping the reins -->
+      <g id="hamsterGripHand">
+        <ellipse cx="112" cy="128" rx="10" ry="8" fill="#FFAEC0" stroke="#DD6B20" stroke-width="1.8"/>
+        <circle cx="109" cy="126" r="2.5" fill="#FFFFFF"/>
+      </g>
+
+      <!-- Hamster Right Hand: Waving Giant Sunflower Seed -->
+      <g id="hamsterRaisedHand" transform="translate(42, 60)">
+        <path d="M 5,45 C -6,32 -12,15 -14,-5 C -7,-6 2,10 16,35 Z" fill="url(#hamsterFurGrad)"/>
+        <circle cx="-14" cy="-7" r="10" fill="#FFAEC0" stroke="#DD6B20" stroke-width="1.8"/>
+        <circle cx="-16" cy="-9" r="2.5" fill="#FFFFFF"/>
+
+        <!-- The Golden Giant Sunflower Seed -->
+        <g transform="translate(-18, -26) rotate(-22)">
+          <path d="M 0,26 C -10,18 -12,-12 0,-30 C 12,-12 10,18 0,26 Z" fill="url(#sunSeedGrad)" stroke="#744210" stroke-width="2.5"/>
+          <path d="M 0,23 C -5,14 -6,-10 0,-27" fill="none" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" opacity="0.85"/>
+          <path d="M 0,23 C 5,14 6,-10 0,-27" fill="none" stroke="#B7791F" stroke-width="2" stroke-linecap="round"/>
+          <polygon points="0,-12 3,-19 0,-26 -3,-19" fill="#FFFFFF"/>
+          <circle cx="5" cy="5" r="2.5" fill="#FFFFFF" opacity="0.9"/>
+        </g>
+      </g>
+
+    </g> <!-- End hamsterHero -->
+
+    <!-- ========== NATURAL CATENARY REINS CONNECTING TO PIG COLLAR ========== -->
+    <!-- Elegantly loops under pig's cheek blush and connects right into collar! -->
+    <g id="reinsGroup">
+      <path d="M 648,328 Q 695,440 768,542" fill="none" stroke="#5A2807" stroke-width="4.5" stroke-linecap="round"/>
+      <path d="M 648,328 Q 695,440 768,542" fill="none" stroke="#ECC94B" stroke-width="1.8" stroke-dasharray="6 3.5" stroke-linecap="round"/>
+    </g>
+
+  </g> <!-- End pigAndHamster -->
+
+  <!-- ================= 6. FOREGROUND PARTICLES, PETALS & SPEED LINES ================= -->
+  <!-- Horizontal Speed Wind Lines -->
+  <g>
+    <rect x="80" y="240" width="240" height="3.5" rx="2" fill="url(#windStreak)"/>
+    <rect x="190" y="290" width="180" height="3" rx="1.5" fill="url(#windStreak)"/>
+    <rect x="40" y="380" width="290" height="4.5" rx="2" fill="url(#windStreak)"/>
+    <rect x="140" y="440" width="220" height="4" rx="2" fill="url(#windStreak)"/>
+    <rect x="740" y="210" width="260" height="3" rx="1.5" fill="url(#windStreak)"/>
+    <rect x="880" y="270" width="200" height="3" rx="1.5" fill="url(#windStreak)"/>
+    <rect x="780" y="380" width="340" height="4" rx="2" fill="url(#windStreak)"/>
+    <rect x="220" y="660" width="220" height="3.5" rx="2" fill="url(#windStreak)"/>
+    <rect x="90" y="700" width="310" height="4.5" rx="2" fill="url(#windStreak)"/>
+  </g>
+
+  <!-- Flying Sakura Petals & Spring Leaves Dancing in the Slipstream -->
+  <g id="flyingParticles">
+    <path d="M 330,280 C 318,260 340,240 355,250 C 370,262 350,292 330,280 Z" fill="url(#petalGrad)" transform="rotate(35 340 265)"/>
+    <path d="M 240,410 C 230,395 245,380 260,390 C 270,400 255,420 240,410 Z" fill="url(#petalGrad)" transform="rotate(-35 250 400)"/>
+    <path d="M 1000,310 C 990,290 1010,275 1025,285 C 1040,298 1020,328 1000,310 Z" fill="url(#petalGrad)" transform="rotate(70 1010 300)"/>
+    <path d="M 700,670 C 690,655 705,640 720,650 C 730,660 715,680 700,670 Z" fill="url(#petalGrad)" transform="rotate(15 710 660)"/>
+    <path d="M 150,500 C 140,485 155,470 170,480 C 180,490 165,510 150,500 Z" fill="url(#petalGrad)" transform="rotate(-20 160 490)"/>
+
+    <!-- Lucky Green Four-Leaf Clover Leaf -->
+    <g transform="translate(460, 300) rotate(42) scale(0.85)">
+      <path d="M 0,0 C -12,-16 -28,0 0,22 C 28,0 12,-16 0,0 Z" fill="#68D391"/>
+      <line x1="0" y1="22" x2="0" y2="30" stroke="#2F855A" stroke-width="2"/>
+    </g>
+    <!-- Clover Leaf 2 -->
+    <g transform="translate(880, 250) rotate(-28) scale(0.75)">
+      <path d="M 0,0 C -12,-16 -28,0 0,22 C 28,0 12,-16 0,0 Z" fill="#48BB78"/>
+    </g>
+
+    <!-- Golden Sparkle Stars of Joy -->
+    <g fill="#ECC94B">
+      <path d="M 960,220 L 963,228 L 971,231 L 963,234 L 960,242 L 957,234 L 949,231 L 957,228 Z"/>
+      <path d="M 530,170 L 532,175 L 538,177 L 532,179 L 530,185 L 528,179 L 522,177 L 528,175 Z"/>
+      <path d="M 1060,420 L 1062,425 L 1068,427 L 1062,429 L 1060,435 L 1058,429 L 1052,427 L 1058,425 Z"/>
+      <path d="M 430,340 L 432,344 L 437,346 L 432,348 L 430,353 L 428,348 L 423,346 L 428,344 Z"/>
+    </g>
+  </g>
+
+  <!-- ================= 7. TITLE BADGE (CHIC, MODERN & SUBTLE) ================= -->
+  <g transform="translate(50, 48)">
+    <rect x="0" y="0" width="185" height="40" rx="20" fill="#FFFFFF" fill-opacity="0.9" stroke="#FFAEC0" stroke-width="2.5" filter="url(#softGlow)"/>
+    <circle cx="22" cy="20" r="10" fill="#FF758F"/>
+    <circle cx="22" cy="20" r="5" fill="#FFFFFF"/>
+    <text x="42" y="26" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif" font-size="16" font-weight="bold" fill="#7B341E" letter-spacing="1.8">
+      冲啊！小猪骑士
+    </text>
+  </g>
+
+</svg>

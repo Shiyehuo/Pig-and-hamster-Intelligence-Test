@@ -1,0 +1,627 @@
+function escapeHtml(text) {
+  return String(text)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
+function jsonForHtml(value) {
+  return JSON.stringify(value).replace(/</g, '\\u003c');
+}
+
+function buildHtml({ cards, ranking, isLive, dirName, title }) {
+  const initialData = jsonForHtml(cards);
+  const rankingData = jsonForHtml(ranking);
+  const modeFlag = isLive ? 'true' : 'false';
+  return `<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>${escapeHtml(title)}</title>
+  <style>
+    :root {
+      --bg: #f5f7fa;
+      --card-bg: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+      --shadow: 0 4px 12px rgba(0,0,0,0.08);
+      --accent: #3b82f6;
+      --accent-bg: rgba(59,130,246,0.08);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #111827;
+        --card-bg: #1f2937;
+        --text: #f9fafb;
+        --muted: #9ca3af;
+        --border: #374151;
+        --shadow: 0 4px 12px rgba(0,0,0,0.25);
+        --accent-bg: rgba(96,165,250,0.12);
+      }
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 32px 24px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+    header, .leaderboard, .chart-section, .panel { max-width: 1600px; margin-left: auto; margin-right: auto; }
+    header { margin-bottom: 24px; text-align: center; }
+    h1 { margin: 0 0 8px; font-size: 1.75rem; }
+    .count { color: var(--muted); font-size: 0.95rem; }
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin-top: 12px;
+    }
+    .toolbar button {
+      padding: 6px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--card-bg);
+      color: var(--text);
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+    .toolbar button.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+    .toolbar button:hover:not(.active) { background: var(--accent-bg); }
+    .status { display: inline-flex; align-items: center; gap: 6px; color: var(--muted); font-size: 0.85rem; margin-left: 12px; }
+    .dot { width: 7px; height: 7px; border-radius: 50%; background: #ef4444; }
+    .dot.online { background: #22c55e; }
+    .leaderboard, .chart-section {
+      margin-bottom: 28px;
+      padding: 22px 24px;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+    }
+    .leaderboard h2, .chart-section h2 { margin: 0 0 6px; font-size: 1.25rem; }
+    .rank-note { margin: 0 0 14px; color: var(--muted); font-size: 0.9rem; }
+    .rank-table-wrap { overflow-x: auto; }
+    .rank-table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+    .rank-table th, .rank-table td { padding: 10px 10px; text-align: left; border-bottom: 1px solid var(--border); vertical-align: middle; }
+    .rank-table th { color: var(--muted); font-weight: 600; white-space: nowrap; }
+    .rank-table tr:last-child td { border-bottom: none; }
+    .rank-table tr.dragging { opacity: 0.4; }
+    .rank-table tr.group-header td { background: var(--accent-bg); font-weight: 700; color: var(--text); border-bottom: 1px solid var(--border); }
+    .rank-num { width: 44px; font-weight: 700; color: var(--muted); }
+    .rank-model { min-width: 160px; font-weight: 600; }
+    .rank-score { width: 84px; }
+    .rank-score input, .rank-cost input { width: 64px; padding: 4px 6px; border: 1px solid var(--border); border-radius: 6px; background: var(--bg); color: var(--text); }
+    .rank-cost { width: 90px; }
+    .rank-type { width: 100px; }
+    .rank-type select { width: 92px; padding: 4px 6px; border: 1px solid var(--border); border-radius: 6px; background: var(--bg); color: var(--text); }
+    .rank-comment { min-width: 220px; color: var(--muted); }
+    .drag-handle { cursor: grab; color: var(--muted); font-size: 1.1rem; padding-right: 4px; user-select: none; }
+    .drag-handle:active { cursor: grabbing; }
+    .top-1 .rank-num { color: #d4a000; }
+    .top-2 .rank-num { color: #64748b; }
+    .top-3 .rank-num { color: #b45309; }
+    .save-state { color: var(--muted); font-size: 0.85rem; margin-top: 10px; min-height: 1.2em; }
+
+    /* Chart */
+    .chart-wrap { position: relative; width: 100%; overflow: hidden; }
+    .chart-wrap svg { display: block; width: 100%; height: auto; }
+    .chart-controls { display: flex; gap: 10px; align-items: center; margin-bottom: 12px; flex-wrap: wrap; }
+    .chart-controls label { color: var(--muted); font-size: 0.88rem; }
+    .chart-controls select { padding: 4px 8px; border: 1px solid var(--border); border-radius: 6px; background: var(--bg); color: var(--text); font-size: 0.88rem; }
+    .chart-legend { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 10px; }
+    .chart-legend-item { display: flex; align-items: center; gap: 5px; font-size: 0.85rem; color: var(--muted); }
+    .chart-legend-dot { width: 10px; height: 10px; border-radius: 50%; }
+    .chart-tooltip {
+      position: absolute; pointer-events: none; opacity: 0;
+      background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px;
+      padding: 8px 12px; font-size: 0.85rem; box-shadow: var(--shadow);
+      transition: opacity 0.15s; z-index: 10; white-space: nowrap;
+    }
+    .chart-tooltip.visible { opacity: 1; }
+
+    .panel { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+    .group-title { grid-column: 1 / -1; font-size: 1.15rem; font-weight: 700; margin: 8px 0 0; color: var(--text); border-bottom: 1px solid var(--border); padding-bottom: 8px; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.3s;
+      animation: fadeIn 0.3s ease;
+    }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    .card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.12); }
+    .card.flash { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(59,130,246,0.2); }
+    .svg-wrap { flex: 1; display: flex; align-items: center; justify-content: center; padding: 20px; min-height: 220px; background: linear-gradient(135deg, rgba(0,0,0,0.02), rgba(0,0,0,0.04)); }
+    .svg-wrap img { max-width: 100%; max-height: 360px; width: auto; height: auto; display: block; }
+    .model-name { padding: 14px 16px; text-align: center; font-weight: 600; border-top: 1px solid var(--border); word-break: break-word; }
+    .card-meta { display: block; margin-top: 4px; color: var(--muted); font-size: 0.8rem; font-weight: 500; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>${escapeHtml(title)}</h1>
+    <div id="count" class="count"></div>
+    <div class="toolbar">
+      <button data-mode="name" class="sort-btn">默认（名称）</button>
+      <button data-mode="rank" class="sort-btn active">按我的排名</button>
+      <button data-mode="type" class="sort-btn">按类型分组</button>
+      <button data-mode="cost" class="sort-btn">按性价比</button>
+      <button id="resetBtn">恢复默认排名</button>
+      <span id="liveStatus" class="status" style="display:none"><span class="dot online"></span>实时同步中</span>
+    </div>
+  </header>
+  <section class="leaderboard">
+    <h2>可编辑水平排名</h2>
+    <p class="rank-note">拖拽行可调整排名；点击分数、成本或类型可直接修改。成本单位自定义（如元/次、分/次），用于性价比排序和图表展示。</p>
+    <div class="rank-table-wrap">
+      <table class="rank-table">
+        <thead><tr><th>排序</th><th>排名</th><th>模型</th><th>评分</th><th>成本</th><th>类型</th><th>简评</th></tr></thead>
+        <tbody id="rankBody"></tbody>
+      </table>
+    </div>
+    <p id="saveState" class="save-state"></p>
+  </section>
+  <section class="chart-section">
+    <h2>性能 - 成本图</h2>
+    <p class="rank-note">横轴为成本，纵轴为评分。右上角表示"高价高分"，左上角表示"低价高分"（性价比最优）。仅展示已填写成本且评分 > 0 的模型。</p>
+    <div class="chart-controls">
+      <label>图表类型：</label>
+      <select id="chartType">
+        <option value="scatter">散点图</option>
+        <option value="bubble">气泡图（按评分）</option>
+      </select>
+      <label>成本排序：</label>
+      <select id="chartSort">
+        <option value="cost-asc">成本从低到高</option>
+        <option value="cost-desc">成本从高到低</option>
+        <option value="score-desc">评分从高到低</option>
+      </select>
+    </div>
+    <div class="chart-wrap" id="chartWrap">
+      <div class="chart-tooltip" id="chartTooltip"></div>
+    </div>
+    <div class="chart-legend" id="chartLegend"></div>
+  </section>
+  <main id="panel" class="panel"></main>
+  <script id="initial" type="application/json">${initialData}</script>
+  <script id="ranking" type="application/json">${rankingData}</script>
+  <script>
+    const IS_LIVE = ${modeFlag};
+    const STORAGE_KEY = 'svgRankingOverride';
+    const initialCards = JSON.parse(document.getElementById('initial').textContent);
+    const initialRanking = JSON.parse(document.getElementById('ranking').textContent);
+    const panel = document.getElementById('panel');
+    const countEl = document.getElementById('count');
+    const rankBody = document.getElementById('rankBody');
+    const saveState = document.getElementById('saveState');
+    const liveStatus = document.getElementById('liveStatus');
+    const resetBtn = document.getElementById('resetBtn');
+    const sortBtns = document.querySelectorAll('.sort-btn');
+    const chartWrap = document.getElementById('chartWrap');
+    const chartTooltip = document.getElementById('chartTooltip');
+    const chartTypeSelect = document.getElementById('chartType');
+    const chartSortSelect = document.getElementById('chartSort');
+    const chartLegend = document.getElementById('chartLegend');
+
+    let cards = initialCards.slice();
+    let ranking = loadRanking();
+    let viewMode = 'rank';
+    let dragSrcEl = null;
+
+    const TYPE_LABELS = { overseas: '海外', domestic: '国产', local: '本地' };
+    const TYPE_COLORS = { overseas: '#3b82f6', domestic: '#f59e0b', local: '#10b981' };
+
+    if (IS_LIVE) {
+      liveStatus.style.display = 'inline-flex';
+      connectLive();
+    }
+
+    function loadRanking() {
+      if (!IS_LIVE) {
+        try {
+          const saved = localStorage.getItem(STORAGE_KEY);
+          if (saved) return JSON.parse(saved);
+        } catch {}
+      }
+      return initialRanking.slice();
+    }
+
+    function saveRanking() {
+      if (IS_LIVE) {
+        fetch('/api/ranking', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(ranking)
+        })
+        .then(r => r.json())
+        .then(() => { setSaveState('已保存到服务器'); renderChart(); })
+        .catch(() => setSaveState('保存失败，请检查网络'));
+      } else {
+        try {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(ranking));
+          setSaveState('已保存到浏览器本地');
+          renderChart();
+        } catch {
+          setSaveState('本地保存失败');
+        }
+      }
+    }
+
+    function setSaveState(text) {
+      saveState.textContent = text;
+      setTimeout(() => { if (saveState.textContent === text) saveState.textContent = ''; }, 2000);
+    }
+
+    function escapeHtml(text) {
+      return String(text).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
+
+    function getRankedItems() {
+      const available = new Set(cards.map(c => c.model));
+      return ranking.filter(r => available.has(r.model));
+    }
+
+    function getRankMap() {
+      return new Map(getRankedItems().map((r, i) => [r.model, { ...r, rank: i + 1 }]));
+    }
+
+    function sortItems(items, mode) {
+      if (mode === 'rank') return items.slice();
+      if (mode === 'name') return items.slice().sort((a, b) => a.model.localeCompare(b.model, 'zh-CN'));
+      if (mode === 'type') {
+        const order = ['overseas', 'domestic', 'local'];
+        return items.slice().sort((a, b) => {
+          const ta = order.indexOf(a.type) !== -1 ? order.indexOf(a.type) : 99;
+          const tb = order.indexOf(b.type) !== -1 ? order.indexOf(b.type) : 99;
+          if (ta !== tb) return ta - tb;
+          const ra = ranking.findIndex(x => x.model === a.model);
+          const rb = ranking.findIndex(x => x.model === b.model);
+          return ra - rb;
+        });
+      }
+      if (mode === 'cost') {
+        return items.slice().sort((a, b) => {
+          const ca = Number(a.cost) || 0;
+          const cb = Number(b.cost) || 0;
+          if (ca === 0 && cb === 0) return 0;
+          if (ca === 0) return 1;
+          if (cb === 0) return -1;
+          const sa = Number(a.score) || 0;
+          const sb = Number(b.score) || 0;
+          const ratioA = sa / ca;
+          const ratioB = sb / cb;
+          return ratioB - ratioA;
+        });
+      }
+      return items;
+    }
+
+    function renderRanking() {
+      const items = sortItems(getRankedItems(), viewMode);
+      rankBody.innerHTML = '';
+      let lastType = null;
+      items.forEach((r, idx) => {
+        if (viewMode === 'type' && r.type !== lastType) {
+          const groupRow = document.createElement('tr');
+          groupRow.className = 'group-header';
+          groupRow.innerHTML = '<td colspan="7">' + escapeHtml(TYPE_LABELS[r.type] || r.type || '未分类') + '</td>';
+          rankBody.appendChild(groupRow);
+          lastType = r.type;
+        }
+        const realRank = ranking.findIndex(x => x.model === r.model) + 1;
+        const tr = document.createElement('tr');
+        tr.className = realRank <= 3 ? 'top-' + realRank : '';
+        tr.draggable = true;
+        tr.dataset.model = r.model;
+        tr.dataset.index = realRank - 1;
+        tr.innerHTML =
+          '<td><span class="drag-handle">⋮⋮</span></td>' +
+          '<td class="rank-num">' + realRank + '</td>' +
+          '<td class="rank-model">' + escapeHtml(r.model) + '</td>' +
+          '<td class="rank-score"><input type="number" step="0.1" min="0" max="10" value="' + Number(r.score).toFixed(1) + '"></td>' +
+          '<td class="rank-cost"><input type="number" step="0.01" min="0" value="' + (Number(r.cost) || 0) + '" placeholder="0"></td>' +
+          '<td class="rank-type">' + typeSelectHtml(r.type) + '</td>' +
+          '<td class="rank-comment">' + escapeHtml(r.comment || '') + '</td>';
+        addRowEvents(tr);
+        rankBody.appendChild(tr);
+      });
+    }
+
+    function typeSelectHtml(current) {
+      let html = '<select>';
+      for (const [key, label] of Object.entries(TYPE_LABELS)) {
+        html += '<option value="' + key + '"' + (current === key ? ' selected' : '') + '>' + label + '</option>';
+      }
+      html += '</select>';
+      return html;
+    }
+
+    function addRowEvents(tr) {
+      tr.addEventListener('dragstart', handleDragStart);
+      tr.addEventListener('dragover', handleDragOver);
+      tr.addEventListener('drop', handleDrop);
+      tr.addEventListener('dragend', handleDragEnd);
+      const inputs = tr.querySelectorAll('input');
+      inputs[0].addEventListener('change', (e) => {
+        const model = tr.dataset.model;
+        const item = ranking.find(x => x.model === model);
+        if (item) { item.score = parseFloat(e.target.value) || 0; saveRanking(); renderCards(); }
+      });
+      inputs[1].addEventListener('change', (e) => {
+        const model = tr.dataset.model;
+        const item = ranking.find(x => x.model === model);
+        if (item) { item.cost = parseFloat(e.target.value) || 0; saveRanking(); }
+      });
+      const select = tr.querySelector('select');
+      select.addEventListener('change', (e) => {
+        const model = tr.dataset.model;
+        const item = ranking.find(x => x.model === model);
+        if (item) { item.type = e.target.value; saveRanking(); render(); }
+      });
+    }
+
+    function handleDragStart(e) {
+      if (viewMode !== 'rank') { e.preventDefault(); return; }
+      dragSrcEl = this;
+      this.classList.add('dragging');
+      e.dataTransfer.effectAllowed = 'move';
+    }
+    function handleDragOver(e) {
+      if (viewMode !== 'rank') return;
+      e.preventDefault();
+      e.dataTransfer.dropEffect = 'move';
+    }
+    function handleDrop(e) {
+      if (viewMode !== 'rank' || !dragSrcEl || dragSrcEl === this) return;
+      e.preventDefault();
+      const srcModel = dragSrcEl.dataset.model;
+      const dstModel = this.dataset.model;
+      const srcIdx = ranking.findIndex(x => x.model === srcModel);
+      const dstIdx = ranking.findIndex(x => x.model === dstModel);
+      if (srcIdx === -1 || dstIdx === -1) return;
+      const [moved] = ranking.splice(srcIdx, 1);
+      ranking.splice(dstIdx, 0, moved);
+      saveRanking();
+      render();
+    }
+    function handleDragEnd() { this.classList.remove('dragging'); dragSrcEl = null; }
+
+    function renderCards() {
+      const rankMap = getRankMap();
+      const existing = new Map();
+      panel.querySelectorAll('.card').forEach(c => existing.set(c.dataset.src, c));
+      panel.innerHTML = '';
+      countEl.textContent = '共 ' + cards.length + ' 个模型';
+
+      let orderCards = cards.slice();
+      if (viewMode === 'rank') {
+        orderCards.sort((a, b) => {
+          const ra = rankMap.has(a.model) ? rankMap.get(a.model).rank : 9999;
+          const rb = rankMap.has(b.model) ? rankMap.get(b.model).rank : 9999;
+          return ra - rb;
+        });
+      } else if (viewMode === 'name') {
+        orderCards.sort((a, b) => a.model.localeCompare(b.model, 'zh-CN'));
+      } else if (viewMode === 'type') {
+        const typeOrder = ['overseas', 'domestic', 'local'];
+        orderCards.sort((a, b) => {
+          const ra = rankMap.get(a.model);
+          const rb = rankMap.get(b.model);
+          const ta = ra ? (typeOrder.indexOf(ra.type) !== -1 ? typeOrder.indexOf(ra.type) : 99) : 99;
+          const tb = rb ? (typeOrder.indexOf(rb.type) !== -1 ? typeOrder.indexOf(rb.type) : 99) : 99;
+          if (ta !== tb) return ta - tb;
+          return (ra ? ra.rank : 9999) - (rb ? rb.rank : 9999);
+        });
+      } else if (viewMode === 'cost') {
+        orderCards.sort((a, b) => {
+          const ra = rankMap.get(a.model);
+          const rb = rankMap.get(b.model);
+          const ca = ra ? (Number(ra.cost) || 0) : 0;
+          const cb = rb ? (Number(rb.cost) || 0) : 0;
+          if (ca === 0 && cb === 0) return 0;
+          if (ca === 0) return 1;
+          if (cb === 0) return -1;
+          const sa = ra ? (Number(ra.score) || 0) : 0;
+          const sb = rb ? (Number(rb.score) || 0) : 0;
+          return (sb / cb) - (sa / ca);
+        });
+      }
+
+      let lastType = null;
+      orderCards.forEach(c => {
+        const rank = rankMap.get(c.model);
+        if (viewMode === 'type' && rank && rank.type !== lastType) {
+          const h2 = document.createElement('h2');
+          h2.className = 'group-title';
+          h2.textContent = TYPE_LABELS[rank.type] || rank.type || '未分类';
+          panel.appendChild(h2);
+          lastType = rank.type;
+        }
+        const old = existing.get(c.src);
+        const card = document.createElement('div');
+        card.className = 'card' + (old ? '' : ' flash');
+        card.dataset.src = c.src;
+        const costStr = rank && rank.cost ? ' · 成本 ' + Number(rank.cost).toFixed(2) : '';
+        const meta = rank
+          ? '<span class="card-meta">#' + rank.rank + ' · ' + Number(rank.score).toFixed(1) + ' 分 · ' + (TYPE_LABELS[rank.type] || rank.type || '未分类') + costStr + '</span>'
+          : '<span class="card-meta">未评级</span>';
+        card.innerHTML = '<div class="svg-wrap"><img src="' + escapeHtml(c.src) + '" alt="' + escapeHtml(c.model) + '" loading="lazy" /></div><div class="model-name">' + escapeHtml(c.model) + meta + '</div>';
+        panel.appendChild(card);
+        if (!old) setTimeout(() => card.classList.remove('flash'), 1200);
+      });
+    }
+
+    function renderChart() {
+      const data = ranking.filter(r => Number(r.cost) > 0 && Number(r.score) > 0);
+      if (data.length === 0) {
+        chartWrap.querySelector('svg')?.remove();
+        chartWrap.insertAdjacentHTML('afterbegin', '<p style="color:var(--muted);text-align:center;padding:40px 0;">暂无数据。请在排名表中填写成本和评分。</p>');
+        chartLegend.innerHTML = '';
+        return;
+      }
+      chartWrap.querySelector('p')?.remove();
+
+      const sortMode = chartSortSelect.value;
+      if (sortMode === 'cost-asc') data.sort((a, b) => a.cost - b.cost);
+      else if (sortMode === 'cost-desc') data.sort((a, b) => b.cost - a.cost);
+      else if (sortMode === 'score-desc') data.sort((a, b) => b.score - a.score);
+
+      const W = 900, H = 500;
+      const pad = { top: 40, right: 40, bottom: 60, left: 60 };
+      const plotW = W - pad.left - pad.right;
+      const plotH = H - pad.top - pad.bottom;
+
+      const maxCost = Math.max(...data.map(d => d.cost)) * 1.1;
+      const minCost = 0;
+      const maxScore = 10;
+      const minScore = 0;
+
+      const xScale = v => pad.left + ((v - minCost) / (maxCost - minCost)) * plotW;
+      const yScale = v => pad.top + plotH - ((v - minScore) / (maxScore - minScore)) * plotH;
+
+      const chartType = chartTypeSelect.value;
+      let svg = '<svg viewBox="0 0 ' + W + ' ' + H + '" xmlns="http://www.w3.org/2000/svg">';
+
+      // Grid lines
+      svg += '<g class="grid">';
+      for (let i = 0; i <= 5; i++) {
+        const y = pad.top + (plotH / 5) * i;
+        const scoreVal = (maxScore - (maxScore / 5) * i).toFixed(1);
+        svg += '<line x1="' + pad.left + '" y1="' + y + '" x2="' + (W - pad.right) + '" y2="' + y + '" stroke="var(--border)" stroke-width="0.5" />';
+        svg += '<text x="' + (pad.left - 8) + '" y="' + (y + 4) + '" text-anchor="end" fill="var(--muted)" font-size="11">' + scoreVal + '</text>';
+      }
+      for (let i = 0; i <= 5; i++) {
+        const x = pad.left + (plotW / 5) * i;
+        const costVal = ((maxCost / 5) * i).toFixed(2);
+        svg += '<line x1="' + x + '" y1="' + pad.top + '" x2="' + x + '" y2="' + (H - pad.bottom) + '" stroke="var(--border)" stroke-width="0.5" />';
+        svg += '<text x="' + x + '" y="' + (H - pad.bottom + 18) + '" text-anchor="middle" fill="var(--muted)" font-size="11">' + costVal + '</text>';
+      }
+      svg += '</g>';
+
+      // Axes
+      svg += '<line x1="' + pad.left + '" y1="' + pad.top + '" x2="' + pad.left + '" y2="' + (H - pad.bottom) + '" stroke="var(--text)" stroke-width="1.5" />';
+      svg += '<line x1="' + pad.left + '" y1="' + (H - pad.bottom) + '" x2="' + (W - pad.right) + '" y2="' + (H - pad.bottom) + '" stroke="var(--text)" stroke-width="1.5" />';
+
+      // Axis labels
+      svg += '<text x="' + (W / 2) + '" y="' + (H - 10) + '" text-anchor="middle" fill="var(--text)" font-size="13" font-weight="600">成本</text>';
+      svg += '<text x="16" y="' + (H / 2) + '" text-anchor="middle" fill="var(--text)" font-size="13" font-weight="600" transform="rotate(-90, 16, ' + (H / 2) + ')">评分</text>';
+
+      // Ideal zone label
+      svg += '<text x="' + (pad.left + 8) + '" y="' + (pad.top + 18) + '" fill="var(--muted)" font-size="11" opacity="0.6">← 低价高分（性价比优）</text>';
+      svg += '<text x="' + (W - pad.right - 8) + '" y="' + (pad.top + 18) + '" text-anchor="end" fill="var(--muted)" font-size="11" opacity="0.6">高价高分 →</text>';
+
+      // Data points
+      data.forEach((d, i) => {
+        const cx = xScale(d.cost);
+        const cy = yScale(d.score);
+        const color = TYPE_COLORS[d.type] || '#6b7280';
+        const r = chartType === 'bubble' ? Math.max(6, d.score * 2.5) : 7;
+        svg += '<circle cx="' + cx + '" cy="' + cy + '" r="' + r + '" fill="' + color + '" fill-opacity="0.75" stroke="' + color + '" stroke-width="1.5" data-idx="' + i + '" class="chart-dot" />';
+        svg += '<text x="' + cx + '" y="' + (cy - r - 5) + '" text-anchor="middle" fill="var(--text)" font-size="10" font-weight="500">' + escapeHtml(d.model.length > 14 ? d.model.slice(0, 12) + '…' : d.model) + '</text>';
+      });
+
+      svg += '</svg>';
+      chartWrap.querySelector('svg')?.remove();
+      chartWrap.insertAdjacentHTML('afterbegin', svg);
+
+      // Tooltip events
+      chartWrap.querySelectorAll('.chart-dot').forEach(dot => {
+        dot.addEventListener('mouseenter', (e) => {
+          const idx = parseInt(dot.getAttribute('data-idx'));
+          const d = data[idx];
+          const ratio = (d.score / d.cost).toFixed(2);
+          chartTooltip.innerHTML = '<strong>' + escapeHtml(d.model) + '</strong><br>评分: ' + d.score + '<br>成本: ' + d.cost + '<br>性价比: ' + ratio;
+          chartTooltip.classList.add('visible');
+        });
+        dot.addEventListener('mousemove', (e) => {
+          const rect = chartWrap.getBoundingClientRect();
+          chartTooltip.style.left = (e.clientX - rect.left + 12) + 'px';
+          chartTooltip.style.top = (e.clientY - rect.top - 10) + 'px';
+        });
+        dot.addEventListener('mouseleave', () => {
+          chartTooltip.classList.remove('visible');
+        });
+      });
+
+      // Legend
+      chartLegend.innerHTML = '';
+      for (const [key, label] of Object.entries(TYPE_LABELS)) {
+        const count = data.filter(d => d.type === key).length;
+        if (count === 0) continue;
+        chartLegend.innerHTML += '<span class="chart-legend-item"><span class="chart-legend-dot" style="background:' + (TYPE_COLORS[key] || '#6b7280') + '"></span>' + label + ' (' + count + ')</span>';
+      }
+    }
+
+    function render() { renderRanking(); renderCards(); renderChart(); }
+
+    function setViewMode(mode) {
+      viewMode = mode;
+      sortBtns.forEach(b => b.classList.toggle('active', b.dataset.mode === mode));
+      render();
+    }
+
+    sortBtns.forEach(btn => btn.addEventListener('click', () => setViewMode(btn.dataset.mode)));
+    chartTypeSelect.addEventListener('change', renderChart);
+    chartSortSelect.addEventListener('change', renderChart);
+
+    resetBtn.addEventListener('click', () => {
+      if (confirm('确定恢复为默认排名？')) {
+        ranking = initialRanking.slice();
+        if (!IS_LIVE) localStorage.removeItem(STORAGE_KEY);
+        saveRanking();
+        setViewMode('rank');
+      }
+    });
+
+    function connectLive() {
+      const source = new EventSource('/events');
+      source.onopen = () => {};
+      source.onmessage = (e) => {
+        try {
+          cards = JSON.parse(e.data);
+          render();
+        } catch (err) { console.error(err); }
+      };
+      source.onerror = () => {};
+    }
+
+    render();
+  </script>
+</body>
+</html>`;
+}
+
+function dedupeRanking(ranking) {
+  const seen = new Set();
+  const out = [];
+  for (const r of ranking) {
+    if (seen.has(r.model)) continue;
+    seen.add(r.model);
+    out.push(r);
+  }
+  return out;
+}
+
+function syncRanking(cards, ranking) {
+  const existing = new Set(ranking.map(r => r.model));
+  let changed = false;
+  for (const c of cards) {
+    if (!existing.has(c.model)) {
+      existing.add(c.model);
+      ranking.push({ model: c.model, type: 'local', score: 0, cost: 0, comment: '' });
+      changed = true;
+    }
+  }
+  return { ranking: dedupeRanking(ranking), changed };
+}
+
+module.exports = { buildHtml, syncRanking, dedupeRanking };

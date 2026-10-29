@@ -1,0 +1,131 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 560" width="900" height="560">
+  <!-- 背景 -->
+  <rect width="900" height="560" fill="#dff3fb"/>
+  <circle cx="780" cy="90" r="55" fill="#ffe58a"/>
+  <g fill="#ffffff" opacity="0.9">
+    <ellipse cx="180" cy="110" rx="70" ry="26"/>
+    <ellipse cx="240" cy="95" rx="50" ry="22"/>
+    <ellipse cx="520" cy="70" rx="60" ry="22"/>
+    <ellipse cx="575" cy="85" rx="42" ry="18"/>
+  </g>
+  <!-- 远山 -->
+  <path d="M0 400 Q150 280 300 400 Z" fill="#bfe3c2"/>
+  <path d="M240 410 Q420 260 600 410 Z" fill="#a9d8ae"/>
+  <path d="M560 405 Q720 300 900 405 Z" fill="#bfe3c2"/>
+
+  <!-- 地面 -->
+  <rect y="420" width="900" height="140" fill="#8fd07a"/>
+  <path d="M0 420 Q450 400 900 420 L900 440 Q450 420 0 440 Z" fill="#7cc267"/>
+  <!-- 速度线 -->
+  <g stroke="#ffffff" stroke-width="6" stroke-linecap="round" opacity="0.8">
+    <line x1="60" y1="330" x2="150" y2="330"/>
+    <line x1="30" y1="370" x2="130" y2="370"/>
+    <line x1="80" y1="410" x2="170" y2="410"/>
+  </g>
+  <!-- 尘土 -->
+  <g fill="#e8d8b0" opacity="0.85">
+    <circle cx="180" cy="505" r="14"/>
+    <circle cx="150" cy="518" r="10"/>
+    <circle cx="120" cy="510" r="8"/>
+    <circle cx="210" cy="518" r="9"/>
+  </g>
+
+  <!-- 小草 -->
+  <g stroke="#5aa04a" stroke-width="4" stroke-linecap="round" fill="none">
+    <path d="M320 520 q4 -18 0 -26"/>
+    <path d="M330 520 q8 -14 14 -18"/>
+    <path d="M700 500 q4 -18 0 -26"/>
+    <path d="M712 500 q8 -14 14 -18"/>
+    <path d="M820 540 q4 -18 0 -26"/>
+  </g>
+
+  <!-- ===== 小猪 ===== -->
+  <g>
+    <!-- 后腿（奔跑蹬地） -->
+    <path d="M560 470 q40 10 55 55 l-22 10 q-18 -35 -45 -42 Z" fill="#f9a8c0"/>
+    <path d="M520 480 q30 20 38 62 l-24 6 q-12 -32 -32 -48 Z" fill="#f79ab5"/>
+    <!-- 身体 -->
+    <ellipse cx="500" cy="450" rx="150" ry="92" fill="#fbb1c8"/>
+    <!-- 身体高光 -->
+    <ellipse cx="470" cy="425" rx="95" ry="50" fill="#ffc9da" opacity="0.8"/>
+    <!-- 前腿（向前伸展） -->
+    <path d="M420 490 q-30 30 -28 62 l24 4 q4 -28 24 -48 Z" fill="#fbb1c8"/>
+    <path d="M470 500 q-18 34 -10 62 l24 0 q-4 -28 8 -52 Z" fill="#f79ab5"/>
+    <!-- 蹄子 -->
+    <ellipse cx="392" cy="558" rx="16" ry="9" fill="#e2789c"/>
+    <ellipse cx="462" cy="562" rx="16" ry="9" fill="#e2789c"/>
+    <ellipse cx="592" cy="542" rx="16" ry="9" fill="#e2789c"/>
+    <ellipse cx="540" cy="548" rx="16" ry="9" fill="#e2789c"/>
+    <!-- 尾巴 -->
+    <path d="M645 430 q30 -18 22 -40 q-6 -16 -22 -10 q10 -2 10 10 q0 14 -22 26" fill="none" stroke="#f79ab5" stroke-width="9" stroke-linecap="round"/>
+    <!-- 耳朵 -->
+    <path d="M368 380 q-26 -36 4 -48 q30 -10 34 26 Z" fill="#f9a8c0"/>
+    <path d="M372 376 q-16 -24 4 -32 q18 -6 20 18 Z" fill="#e88aa9"/>
+    <!-- 头 -->
+    <ellipse cx="370" cy="420" rx="78" ry="66" fill="#fbb1c8"/>
+    <!-- 眼睛 -->
+    <circle cx="340" cy="402" r="9" fill="#3a2b33"/>
+    <circle cx="343" cy="399" r="3" fill="#ffffff"/>
+    <!-- 腮红 -->
+    <ellipse cx="330" cy="440" rx="14" ry="9" fill="#f78fb0" opacity="0.7"/>
+    <!-- 猪鼻 -->
+    <ellipse cx="316" cy="428" rx="24" ry="18" fill="#f283a8"/>
+    <ellipse cx="309" cy="428" rx="5" ry="7" fill="#c95f83"/>
+    <ellipse cx="325" cy="428" rx="5" ry="7" fill="#c95f83"/>
+    <!-- 微笑嘴 -->
+    <path d="M320 452 q14 10 28 2" fill="none" stroke="#c95f83" stroke-width="4" stroke-linecap="round"/>
+  </g>
+
+  <!-- ===== 仓鼠 ===== -->
+  <g>
+    <!-- 尾巴（小短尾） -->
+    <circle cx="560" cy="320" r="8" fill="#f2d3ac"/>
+    <!-- 后腿（贴着猪背） -->
+    <ellipse cx="528" cy="372" rx="24" ry="16" fill="#eec48f"/>
+    <!-- 身体 -->
+    <ellipse cx="510" cy="330" rx="58" ry="48" fill="#f6dcae"/>
+    <!-- 肚皮 -->
+    <ellipse cx="506" cy="344" rx="36" ry="26" fill="#fdf1d8"/>
+    <!-- 手臂（抓紧猪鬃，兴奋前伸） -->
+    <path d="M478 322 q-26 6 -34 26 l14 10 q10 -16 28 -20 Z" fill="#f6dcae"/>
+    <!-- 前爪 -->
+    <circle cx="452" cy="356" r="10" fill="#eec48f"/>
+    <!-- 耳朵 -->
+    <circle cx="468" cy="272" r="16" fill="#f6dcae"/>
+    <circle cx="468" cy="272" r="9" fill="#e8a9a0"/>
+    <circle cx="536" cy="278" r="16" fill="#f6dcae"/>
+    <circle cx="536" cy="278" r="9" fill="#e8a9a0"/>
+    <!-- 头 -->
+    <circle cx="498" cy="296" r="42" fill="#f6dcae"/>
+    <!-- 脸颊鼓包 -->
+    <circle cx="528" cy="308" r="16" fill="#fbe9c6"/>
+    <!-- 眼睛（开心眯眼） -->
+    <path d="M478 288 q6 -8 12 0" fill="none" stroke="#4a3a2a" stroke-width="5" stroke-linecap="round"/>
+    <path d="M508 288 q6 -8 12 0" fill="none" stroke="#4a3a2a" stroke-width="5" stroke-linecap="round"/>
+    <!-- 鼻子和嘴 -->
+    <circle cx="496" cy="302" r="4" fill="#c97b6a"/>
+    <path d="M490 312 q8 8 16 0" fill="none" stroke="#c97b6a" stroke-width="4" stroke-linecap="round"/>
+    <!-- 腮红 -->
+    <ellipse cx="470" cy="304" rx="9" ry="6" fill="#f5a9a0" opacity="0.8"/>
+    <ellipse cx="526" cy="316" rx="9" ry="6" fill="#f5a9a0" opacity="0.8"/>
+    <!-- 呼啸的风/汗滴表现速度感 -->
+    <path d="M556 288 q14 -4 20 -14" fill="none" stroke="#9fd8ef" stroke-width="5" stroke-linecap="round"/>
+    <path d="M560 306 q16 0 24 -8" fill="none" stroke="#9fd8ef" stroke-width="4" stroke-linecap="round"/>
+  </g>
+
+  <!-- 飘动的小花 -->
+  <g>
+    <circle cx="260" cy="530" r="6" fill="#ff8fb3"/>
+    <circle cx="252" cy="530" r="6" fill="#ff8fb3"/>
+    <circle cx="256" cy="523" r="6" fill="#ff8fb3"/>
+    <circle cx="256" cy="537" r="6" fill="#ff8fb3"/>
+    <circle cx="256" cy="530" r="5" fill="#ffd45e"/>
+  </g>
+  <g>
+    <circle cx="760" cy="545" r="6" fill="#c39bff"/>
+    <circle cx="752" cy="545" r="6" fill="#c39bff"/>
+    <circle cx="756" cy="538" r="6" fill="#c39bff"/>
+    <circle cx="756" cy="552" r="6" fill="#c39bff"/>
+    <circle cx="756" cy="545" r="5" fill="#ffd45e"/>
+  </g>
+</svg>

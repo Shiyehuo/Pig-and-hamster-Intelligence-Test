@@ -1,0 +1,280 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 640" width="900" height="640">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#6FBFF0"/>
+      <stop offset="55%" stop-color="#B9E4FA"/>
+      <stop offset="100%" stop-color="#EAF8FF"/>
+    </linearGradient>
+    <linearGradient id="pig" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFC9D4"/>
+      <stop offset="100%" stop-color="#FF8FA8"/>
+    </linearGradient>
+    <linearGradient id="ham" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F7C06E"/>
+      <stop offset="100%" stop-color="#DE9636"/>
+    </linearGradient>
+    <linearGradient id="sad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F4546F"/>
+      <stop offset="100%" stop-color="#C81D3F"/>
+    </linearGradient>
+    <linearGradient id="scf" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FF6B6B"/>
+      <stop offset="100%" stop-color="#D62828"/>
+    </linearGradient>
+    <linearGradient id="grd" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#93DB80"/>
+      <stop offset="100%" stop-color="#5FAE56"/>
+    </linearGradient>
+  </defs>
+
+  <!-- sky -->
+  <rect x="0" y="0" width="900" height="640" fill="url(#sky)"/>
+
+  <!-- sun -->
+  <circle cx="800" cy="105" r="80" fill="#FFE98A" opacity="0.5"/>
+  <circle cx="800" cy="105" r="48" fill="#FFD93D"/>
+
+  <!-- clouds -->
+  <g fill="#FFFFFF" opacity="0.92">
+    <g>
+      <ellipse cx="130" cy="105" rx="30" ry="18"/>
+      <ellipse cx="170" cy="88" rx="36" ry="22"/>
+      <ellipse cx="212" cy="105" rx="28" ry="16"/>
+      <ellipse cx="168" cy="108" rx="30" ry="16"/>
+    </g>
+    <g opacity="0.9">
+      <ellipse cx="505" cy="68" rx="24" ry="14"/>
+      <ellipse cx="532" cy="55" rx="28" ry="17"/>
+      <ellipse cx="560" cy="68" rx="22" ry="13"/>
+    </g>
+    <g opacity="0.85">
+      <ellipse cx="700" cy="215" rx="20" ry="12"/>
+      <ellipse cx="725" cy="208" rx="24" ry="14"/>
+      <ellipse cx="748" cy="216" rx="18" ry="11"/>
+    </g>
+  </g>
+
+  <!-- birds -->
+  <g stroke="#5A7184" fill="none" stroke-linecap="round">
+    <path d="M 288 62 Q 294 54 300 62 Q 306 54 312 62" stroke-width="4"/>
+    <path d="M 356 44 Q 361 37 366 44 Q 371 37 376 44" stroke-width="3.5"/>
+  </g>
+
+  <!-- hills -->
+  <ellipse cx="470" cy="600" rx="560" ry="215" fill="#BDE9AC"/>
+  <ellipse cx="150" cy="615" rx="330" ry="155" fill="#A6E192"/>
+  <ellipse cx="800" cy="620" rx="310" ry="145" fill="#A6E192"/>
+
+  <!-- ground -->
+  <path d="M 0 505 Q 460 468 900 505 L 900 640 L 0 640 Z" fill="url(#grd)"/>
+
+  <!-- shadow under pig -->
+  <ellipse cx="450" cy="508" rx="210" ry="24" fill="#174A17" opacity="0.15"/>
+
+  <!-- dust puffs -->
+  <g fill="#FFFFFF">
+    <circle cx="255" cy="492" r="24" opacity="0.55"/>
+    <circle cx="215" cy="508" r="17" opacity="0.45"/>
+    <circle cx="175" cy="500" r="12" opacity="0.4"/>
+    <circle cx="130" cy="512" r="15" opacity="0.4"/>
+    <circle cx="95" cy="503" r="10" opacity="0.35"/>
+  </g>
+
+  <!-- pig back legs -->
+  <g stroke="#FF9DB4" stroke-width="34" stroke-linecap="round">
+    <line x1="335" y1="435" x2="225" y2="480"/>
+    <line x1="370" y1="445" x2="415" y2="495"/>
+  </g>
+  <g fill="#E76F8C">
+    <ellipse cx="218" cy="486" rx="15" ry="10"/>
+    <ellipse cx="420" cy="501" rx="14" ry="9.5"/>
+  </g>
+
+  <!-- pig tail -->
+  <path d="M 285 332 C 240 314, 226 352, 258 368 C 290 384, 312 348, 282 330"
+        fill="none" stroke="#FF9DB4" stroke-width="11" stroke-linecap="round"/>
+
+  <!-- pig body -->
+  <ellipse cx="430" cy="385" rx="155" ry="100" fill="url(#pig)"/>
+  <ellipse cx="415" cy="420" rx="105" ry="55" fill="#FFE3E9" opacity="0.92"/>
+  <ellipse cx="370" cy="330" rx="65" ry="28" fill="#FFFFFF" opacity="0.3"/>
+
+  <!-- saddle girth -->
+  <path d="M 372 318 C 375 430, 485 430, 488 318" fill="none" stroke="#C81D3F" stroke-width="10" opacity="0.8"/>
+
+  <!-- pig front legs -->
+  <g stroke="#FF9DB4" stroke-width="34" stroke-linecap="round">
+    <line x1="545" y1="435" x2="660" y2="478"/>
+    <line x1="560" y1="428" x2="508" y2="462"/>
+  </g>
+  <g fill="#E76F8C">
+    <ellipse cx="667" cy="485" rx="15" ry="10"/>
+    <ellipse cx="501" cy="467" rx="13" ry="9"/>
+  </g>
+
+  <!-- pig head -->
+  <path d="M 585 238 C 572 196, 540 200, 545 246 C 548 262, 566 266, 585 254 Z" fill="#FFA8BA"/>
+  <circle cx="620" cy="295" r="70" fill="url(#pig)"/>
+  <ellipse cx="600" cy="262" rx="24" ry="12" fill="#FFFFFF" opacity="0.25"/>
+  <path d="M 622 222 Q 612 204 627 202 Q 622 216 632 220" fill="none" stroke="#E76F8C" stroke-width="6" stroke-linecap="round"/>
+  <ellipse cx="670" cy="318" rx="44" ry="32" fill="#FFD9E1"/>
+  <g fill="#D96A85">
+    <ellipse cx="662" cy="316" rx="6.5" ry="9.5"/>
+    <ellipse cx="688" cy="316" rx="6.5" ry="9.5"/>
+  </g>
+
+  <!-- halter -->
+  <g fill="none" stroke="#C81D3F" stroke-linecap="round">
+    <path d="M 642 300 C 658 290, 692 292, 704 306" stroke-width="7"/>
+    <line x1="662" y1="242" x2="668" y2="296" stroke-width="6"/>
+  </g>
+
+  <!-- pig face -->
+  <g stroke="#7A3B4A" stroke-width="6.5" stroke-linecap="round" fill="none">
+    <path d="M 578 268 Q 594 250 610 268"/>
+    <path d="M 628 268 Q 644 250 660 268"/>
+  </g>
+  <ellipse cx="576" cy="302" rx="15" ry="9.5" fill="#FF7D97" opacity="0.55"/>
+  <ellipse cx="662" cy="302" rx="15" ry="9.5" fill="#FF7D97" opacity="0.55"/>
+  <path d="M 636 340 Q 650 352 666 340" fill="none" stroke="#D96A85" stroke-width="5" stroke-linecap="round"/>
+  <path d="M 648 232 C 666 188, 706 196, 700 244 C 696 266, 668 270, 650 252 Z" fill="url(#pig)"/>
+  <path d="M 658 238 C 668 208, 688 212, 686 238 C 684 250, 670 254, 660 244 Z" fill="#F4799B"/>
+
+  <!-- saddle -->
+  <rect x="362" y="284" width="134" height="40" rx="18" fill="url(#sad)"/>
+  <rect x="362" y="284" width="134" height="11" rx="5.5" fill="#FFD166"/>
+
+  <!-- rein -->
+  <path d="M 668 340 C 600 365, 515 305, 456 246" fill="none" stroke="#C81D3F" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="668" cy="342" r="6" fill="#FFD166" stroke="#C81D3F" stroke-width="3"/>
+
+  <!-- hamster -->
+  <circle cx="406" cy="262" r="7" fill="#DE9636"/>
+  <g fill="#F0A94B">
+    <ellipse cx="440" cy="286" rx="11" ry="6.5"/>
+    <ellipse cx="468" cy="286" rx="11" ry="6.5"/>
+  </g>
+  <ellipse cx="452" cy="238" rx="47" ry="41" fill="url(#ham)"/>
+  <ellipse cx="452" cy="252" rx="30" ry="24" fill="#FFF3E2"/>
+  <ellipse cx="452" cy="226" rx="26" ry="10" fill="#D08A2E" opacity="0.35"/>
+
+  <!-- scarf -->
+  <path d="M 416 226 C 382 228, 360 240, 326 236 C 340 246, 366 252, 390 248 C 404 245, 412 236, 416 230 Z" fill="#E64545" opacity="0.95"/>
+  <path d="M 414 218 C 380 210, 356 222, 318 208 C 330 216, 356 234, 378 238 C 400 240, 410 230, 414 224 Z" fill="url(#scf)"/>
+  <rect x="412" y="210" width="80" height="21" rx="10.5" fill="url(#scf)"/>
+
+  <!-- hamster head -->
+  <circle cx="452" cy="180" r="40" fill="url(#ham)"/>
+  <g>
+    <circle cx="418" cy="148" r="13" fill="url(#ham)"/>
+    <circle cx="486" cy="148" r="13" fill="url(#ham)"/>
+    <circle cx="418" cy="148" r="6.5" fill="#F5B7A1"/>
+    <circle cx="486" cy="148" r="6.5" fill="#F5B7A1"/>
+  </g>
+  <g fill="#33261C">
+    <circle cx="435" cy="174" r="8.5"/>
+    <circle cx="469" cy="174" r="8.5"/>
+  </g>
+  <g fill="#FFFFFF">
+    <circle cx="438" cy="171" r="3.2"/>
+    <circle cx="472" cy="171" r="3.2"/>
+    <circle cx="433" cy="177" r="1.4" opacity="0.7"/>
+    <circle cx="467" cy="177" r="1.4" opacity="0.7"/>
+  </g>
+  <ellipse cx="452" cy="194" rx="5.5" ry="4" fill="#E57A8A"/>
+  <g fill="#FFF6E9" opacity="0.95">
+    <ellipse cx="429" cy="196" rx="11.5" ry="8.5"/>
+    <ellipse cx="475" cy="196" rx="11.5" ry="8.5"/>
+  </g>
+  <ellipse cx="421" cy="200" rx="6.5" ry="3.5" fill="#F9A8A8" opacity="0.8"/>
+  <ellipse cx="483" cy="200" rx="6.5" ry="3.5" fill="#F9A8A8" opacity="0.8"/>
+  <path d="M 445 203 Q 452 209 459 203" fill="none" stroke="#B96A2E" stroke-width="2.5" stroke-linecap="round"/>
+  <g stroke="#C98A3A" stroke-width="2.5" stroke-linecap="round" opacity="0.85">
+    <line x1="426" y1="194" x2="390" y2="186"/>
+    <line x1="426" y1="198" x2="392" y2="200"/>
+    <line x1="426" y1="202" x2="392" y2="214"/>
+    <line x1="478" y1="194" x2="514" y2="186"/>
+    <line x1="478" y1="198" x2="512" y2="200"/>
+    <line x1="478" y1="202" x2="512" y2="214"/>
+  </g>
+  <g fill="#F2B25C">
+    <circle cx="440" cy="240" r="9"/>
+    <circle cx="464" cy="240" r="9"/>
+  </g>
+
+  <!-- speed lines -->
+  <g stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" fill="none">
+    <line x1="60" y1="330" x2="170" y2="330" opacity="0.7"/>
+    <line x1="90" y1="375" x2="185" y2="375" opacity="0.7"/>
+    <line x1="30" y1="420" x2="130" y2="420" opacity="0.55"/>
+    <line x1="130" y1="285" x2="200" y2="285" opacity="0.6"/>
+    <line x1="310" y1="175" x2="375" y2="175" opacity="0.7"/>
+    <line x1="290" y1="225" x2="350" y2="225" opacity="0.6"/>
+    <line x1="250" y1="385" x2="330" y2="385" opacity="0.5"/>
+  </g>
+
+  <!-- butterfly -->
+  <g>
+    <ellipse cx="326" cy="112" rx="10" ry="15" transform="rotate(28 326 112)" fill="#C9A6FF" opacity="0.95"/>
+    <ellipse cx="352" cy="112" rx="10" ry="15" transform="rotate(-28 352 112)" fill="#C9A6FF" opacity="0.95"/>
+    <ellipse cx="328" cy="128" rx="6" ry="9" transform="rotate(45 328 128)" fill="#B48CF0"/>
+    <ellipse cx="350" cy="128" rx="6" ry="9" transform="rotate(-45 350 128)" fill="#B48CF0"/>
+    <ellipse cx="339" cy="118" rx="2.5" ry="8" fill="#5A4A8A"/>
+    <g stroke="#5A4A8A" stroke-width="1.5" fill="none">
+      <path d="M 338 111 Q 333 103 328 101"/>
+      <path d="M 340 111 Q 345 103 350 101"/>
+    </g>
+  </g>
+
+  <!-- foreground grass -->
+  <g stroke="#4C9A46" stroke-width="4.5" stroke-linecap="round" fill="none">
+    <path d="M 52 640 Q 50 616 44 600"/>
+    <path d="M 55 640 Q 57 618 64 604"/>
+    <path d="M 58 640 Q 60 620 66 610"/>
+    <path d="M 212 640 Q 210 620 206 608"/>
+    <path d="M 215 640 Q 218 622 224 610"/>
+    <path d="M 427 640 Q 425 622 420 610"/>
+    <path d="M 430 640 Q 433 624 439 612"/>
+    <path d="M 697 640 Q 695 624 690 612"/>
+    <path d="M 700 640 Q 703 626 709 614"/>
+    <path d="M 855 640 Q 853 622 848 608"/>
+    <path d="M 858 640 Q 861 624 866 612"/>
+  </g>
+
+  <!-- flowers -->
+  <g>
+    <path d="M 125 640 Q 127 615 123 588" fill="none" stroke="#4C9A46" stroke-width="3.5" stroke-linecap="round"/>
+    <g transform="translate(123 578)">
+      <g fill="#FFFFFF">
+        <ellipse cx="0" cy="-11" rx="6" ry="11"/>
+        <ellipse cx="0" cy="-11" rx="6" ry="11" transform="rotate(72)"/>
+        <ellipse cx="0" cy="-11" rx="6" ry="11" transform="rotate(144)"/>
+        <ellipse cx="0" cy="-11" rx="6" ry="11" transform="rotate(216)"/>
+        <ellipse cx="0" cy="-11" rx="6" ry="11" transform="rotate(288)"/>
+      </g>
+      <circle r="6" fill="#FFD93D"/>
+    </g>
+    <path d="M 812 640 Q 810 605 808 572" fill="none" stroke="#4C9A46" stroke-width="3.5" stroke-linecap="round"/>
+    <g transform="translate(808 562)">
+      <g fill="#FFD6E4">
+        <ellipse cx="0" cy="-9" rx="5" ry="9"/>
+        <ellipse cx="0" cy="-9" rx="5" ry="9" transform="rotate(72)"/>
+        <ellipse cx="0" cy="-9" rx="5" ry="9" transform="rotate(144)"/>
+        <ellipse cx="0" cy="-9" rx="5" ry="9" transform="rotate(216)"/>
+        <ellipse cx="0" cy="-9" rx="5" ry="9" transform="rotate(288)"/>
+      </g>
+      <circle r="5" fill="#FF8FB3"/>
+    </g>
+    <path d="M 390 640 Q 388 618 385 604" fill="none" stroke="#4C9A46" stroke-width="3" stroke-linecap="round"/>
+    <g transform="translate(385 594)">
+      <g fill="#FFF6C9">
+        <ellipse cx="0" cy="-8" rx="4.5" ry="8"/>
+        <ellipse cx="0" cy="-8" rx="4.5" ry="8" transform="rotate(72)"/>
+        <ellipse cx="0" cy="-8" rx="4.5" ry="8" transform="rotate(144)"/>
+        <ellipse cx="0" cy="-8" rx="4.5" ry="8" transform="rotate(216)"/>
+        <ellipse cx="0" cy="-8" rx="4.5" ry="8" transform="rotate(288)"/>
+      </g>
+      <circle r="4.5" fill="#FF9F43"/>
+    </g>
+  </g>
+</svg>
