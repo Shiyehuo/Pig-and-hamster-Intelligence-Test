@@ -1114,30 +1114,6 @@ function buildHtml({ cards, ranking, isLive, dirName, title }) {
       }
     });
 
-    resetBtn.addEventListener('click', () => {
-      if (confirm('确定恢复为默认排名？')) {
-        ranking = normalizeRanking(initialRanking);
-        tableSort = null;
-        undoStack = [];
-        if (!IS_LIVE) localStorage.removeItem(STORAGE_KEY);
-        saveRanking();
-        updateUndoBtn();
-        setViewMode('rank');
-      }
-    });
-
-    resetBtn.addEventListener('click', () => {
-      if (confirm('确定恢复为默认排名？')) {
-        ranking = normalizeRanking(initialRanking);
-        tableSort = null;
-        undoStack = [];
-        if (!IS_LIVE) localStorage.removeItem(STORAGE_KEY);
-        saveRanking();
-        updateUndoBtn();
-        setViewMode('rank');
-      }
-    });
-
     function connectLive() {
       const source = new EventSource('/events');
       source.onmessage = (e) => {

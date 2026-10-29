@@ -195,7 +195,6 @@
       <button data-mode="type" class="sort-btn">按类型分组</button>
       <button data-mode="cost" class="sort-btn">按性价比</button>
       <button id="undoBtn" disabled title="快捷键 Ctrl+Z">撤销</button>
-      <button id="resetBtn">恢复默认排名</button>
       <span id="liveStatus" class="status" style="display:none"><span class="dot online"></span>实时同步中</span>
     </div>
   </header>
@@ -267,7 +266,6 @@
     const rankBody = document.getElementById('rankBody');
     const saveState = document.getElementById('saveState');
     const liveStatus = document.getElementById('liveStatus');
-    const resetBtn = document.getElementById('resetBtn');
     const undoBtn = document.getElementById('undoBtn');
     const sortBtns = document.querySelectorAll('.sort-btn');
     const searchBox = document.getElementById('searchBox');
@@ -1097,18 +1095,6 @@
         if (tag === 'INPUT' || tag === 'TEXTAREA') return;
         e.preventDefault();
         undo();
-      }
-    });
-
-    resetBtn.addEventListener('click', () => {
-      if (confirm('确定恢复为默认排名？')) {
-        ranking = normalizeRanking(initialRanking);
-        tableSort = null;
-        undoStack = [];
-        if (!IS_LIVE) localStorage.removeItem(STORAGE_KEY);
-        saveRanking();
-        updateUndoBtn();
-        setViewMode('rank');
       }
     });
 
