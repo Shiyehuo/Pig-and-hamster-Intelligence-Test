@@ -1,9 +1,10 @@
 const fs = require('fs');
 const path = require('path');
 const { buildHtml, syncRanking } = require('./panel-template.js');
+const { createRankingStore } = require('./ranking-store.js');
 
 const root = __dirname;
-const rankingPath = path.join(root, 'ranking.json');
+const rankingStore = createRankingStore(root);
 
 function scanSvgs() {
   const entries = fs.readdirSync(root, { withFileTypes: true });
@@ -26,20 +27,14 @@ function scanSvgs() {
 }
 
 function loadRanking() {
-  if (!fs.existsSync(rankingPath)) return [];
-  try {
-    return JSON.parse(fs.readFileSync(rankingPath, 'utf8'));
-  } catch (err) {
-    console.warn('ranking.json 读取失败：', err.message);
-    return [];
-  }
+  return rankingStore.load();
 }
 
 const cards = scanSvgs();
 const ranking = loadRanking();
 const { ranking: syncedRanking, changed } = syncRanking(cards, ranking);
 if (changed) {
-  fs.writeFileSync(rankingPath, JSON.stringify(syncedRanking, null, 2) + '\n', 'utf8');
+  rankingStore.save(syncedRanking);
   console.log(`已自动补齐排名：${syncedRanking.filter(r => !ranking.some(x => x.model === r.model)).map(r => r.model).join('、')}`);
 }
 const html = buildHtml({

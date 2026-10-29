@@ -3,9 +3,10 @@ const path = require('path');
 const http = require('http');
 const { URL } = require('url');
 const { buildHtml, syncRanking, dedupeRanking } = require('./panel-template.js');
+const { createRankingStore } = require('./ranking-store.js');
 
 const root = __dirname;
-const rankingPath = path.join(root, 'ranking.json');
+const rankingStore = createRankingStore(root);
 const port = process.env.PORT || 3456;
 let clients = [];
 let lastPayload = null;
@@ -37,17 +38,11 @@ function scanSvgs() {
 }
 
 function loadRanking() {
-  if (!fs.existsSync(rankingPath)) return [];
-  try {
-    return JSON.parse(fs.readFileSync(rankingPath, 'utf8'));
-  } catch (err) {
-    console.warn('ranking.json 读取失败：', err.message);
-    return [];
-  }
+  return rankingStore.load();
 }
 
 function saveRanking(data) {
-  fs.writeFileSync(rankingPath, JSON.stringify(dedupeRanking(data), null, 2) + '\n', 'utf8');
+  rankingStore.save(dedupeRanking(data));
 }
 
 function payloadEqual(a, b) {
@@ -65,6 +60,17 @@ function broadcast(cards) {
   });
 }
 
+function broadcastRanking(ranking) {
+  const data = JSON.stringify(ranking);
+  clients = clients.filter((res) => {
+    if (res.writableEnded || res.destroyed) return false;
+    try {
+      res.write(`event: ranking\ndata: ${data}\n\n`);
+      return true;
+    } catch { return false; }
+  });
+}
+
 let debounceTimer = null;
 function scheduleBroadcast() {
   clearTimeout(debounceTimer);
@@ -72,7 +78,10 @@ function scheduleBroadcast() {
     const cards = scanSvgs();
     const ranking = loadRanking();
     const { ranking: syncedRanking, changed } = syncRanking(cards, ranking);
-    if (changed) saveRanking(syncedRanking);
+    if (changed) {
+      saveRanking(syncedRanking);
+      broadcastRanking(syncedRanking);
+    }
     if (!payloadEqual(cards, lastPayload)) {
       lastPayload = cards;
       broadcast(cards);
@@ -163,7 +172,9 @@ const server = http.createServer((req, res) => {
     readBody(req).then(body => {
       const data = JSON.parse(body);
       if (!Array.isArray(data)) throw new Error('invalid');
-      saveRanking(data);
+      const clean = dedupeRanking(data);
+      saveRanking(clean);
+      broadcastRanking(clean);
       res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8' });
       res.end(JSON.stringify({ ok: true }));
     }).catch(err => {
@@ -180,6 +191,7 @@ const server = http.createServer((req, res) => {
       'Connection': 'keep-alive',
     });
     res.write(`event: update\ndata: ${JSON.stringify(scanSvgs())}\n\n`);
+    res.write(`event: ranking\ndata: ${JSON.stringify(loadRanking())}\n\n`);
     clients.push(res);
     req.on('close', () => { clients = clients.filter(c => c !== res); });
     return;

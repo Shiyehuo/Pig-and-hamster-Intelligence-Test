@@ -70,8 +70,9 @@ function buildHtml({ cards, ranking, isLive, dirName, title }) {
       cursor: pointer;
       font-size: 0.9rem;
     }
+    .toolbar button:disabled { opacity: 0.4; cursor: default; }
     .toolbar button.active { background: var(--accent); color: #fff; border-color: var(--accent); }
-    .toolbar button:hover:not(.active) { background: var(--accent-bg); }
+    .toolbar button:hover:not(.active):not(:disabled) { background: var(--accent-bg); }
     .status { display: inline-flex; align-items: center; gap: 6px; color: var(--muted); font-size: 0.85rem; margin-left: 12px; }
     .dot { width: 7px; height: 7px; border-radius: 50%; background: #ef4444; }
     .dot.online { background: #22c55e; }
@@ -84,14 +85,32 @@ function buildHtml({ cards, ranking, isLive, dirName, title }) {
       box-shadow: var(--shadow);
     }
     .leaderboard h2, .chart-section h2 { margin: 0 0 6px; font-size: 1.25rem; }
+    .rank-head { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; align-items: flex-start; }
+    .rank-tools { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+    .search-box {
+      padding: 6px 10px; border: 1px solid var(--border); border-radius: 8px;
+      background: var(--bg); color: var(--text); font-size: 0.88rem; width: 210px;
+    }
+    .check-label { display: inline-flex; align-items: center; gap: 5px; color: var(--muted); font-size: 0.88rem; white-space: nowrap; cursor: pointer; user-select: none; }
+    .mini-btn {
+      padding: 5px 10px; border: 1px solid var(--border); border-radius: 7px;
+      background: var(--card-bg); color: var(--text); cursor: pointer; font-size: 0.82rem;
+    }
+    .mini-btn:hover { background: var(--accent-bg); }
+    .mini-btn.danger { color: #dc2626; border-color: rgba(220,38,38,0.4); }
+    .mini-btn.danger:hover { background: rgba(220,38,38,0.08); }
     .rank-note { margin: 0 0 14px; color: var(--muted); font-size: 0.9rem; }
     .rank-table-wrap { overflow-x: auto; }
     .rank-table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
     .rank-table th, .rank-table td { padding: 10px 10px; text-align: left; border-bottom: 1px solid var(--border); vertical-align: middle; }
     .rank-table th { color: var(--muted); font-weight: 600; white-space: nowrap; }
+    .rank-table th.sortable { cursor: pointer; user-select: none; }
+    .rank-table th.sortable:hover { color: var(--text); }
+    .sort-arrow { font-size: 0.75rem; color: var(--accent); }
     .rank-table tr:last-child td { border-bottom: none; }
     .rank-table tr.dragging { opacity: 0.4; }
     .rank-table tr.group-header td { background: var(--accent-bg); font-weight: 700; color: var(--text); border-bottom: 1px solid var(--border); }
+    .rank-table tr.row-highlight td { background: var(--accent-bg); }
     .rank-num { width: 44px; font-weight: 700; color: var(--muted); }
     .rank-model { min-width: 160px; font-weight: 600; }
     .rank-score { width: 84px; }
@@ -99,23 +118,55 @@ function buildHtml({ cards, ranking, isLive, dirName, title }) {
     .rank-cost { width: 90px; }
     .rank-type { width: 100px; }
     .rank-type select { width: 92px; padding: 4px 6px; border: 1px solid var(--border); border-radius: 6px; background: var(--bg); color: var(--text); }
-    .rank-comment { min-width: 220px; color: var(--muted); }
+    .rank-move { width: 96px; white-space: nowrap; }
     .drag-handle { cursor: grab; color: var(--muted); font-size: 1.1rem; padding-right: 4px; user-select: none; }
     .drag-handle:active { cursor: grabbing; }
+    .move-btn {
+      border: 1px solid var(--border); background: var(--card-bg); color: var(--text);
+      border-radius: 5px; width: 20px; height: 20px; line-height: 1; padding: 0;
+      cursor: pointer; font-size: 0.75rem; margin-left: 2px;
+    }
+    .move-btn:hover:not(:disabled) { background: var(--accent-bg); }
+    .move-btn:disabled { opacity: 0.3; cursor: default; }
+    .rank-comment { min-width: 220px; color: var(--muted); cursor: text; }
+    .comment-empty { color: var(--muted); opacity: 0.55; font-style: italic; }
+    .comment-editor {
+      width: 100%; min-width: 200px; padding: 6px 8px;
+      border: 1px solid var(--accent); border-radius: 6px;
+      background: var(--bg); color: var(--text); font: inherit; font-size: 0.9rem; resize: vertical;
+    }
     .top-1 .rank-num { color: #d4a000; }
     .top-2 .rank-num { color: #64748b; }
     .top-3 .rank-num { color: #b45309; }
     .save-state { color: var(--muted); font-size: 0.85rem; margin-top: 10px; min-height: 1.2em; }
+    .stale-box { margin-top: 6px; border-top: 1px dashed var(--border); padding-top: 10px; color: var(--muted); font-size: 0.87rem; }
+    .stale-box summary { cursor: pointer; }
+    .stale-row { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 6px 0; border-bottom: 1px dashed var(--border); }
+    .stale-row:last-of-type { border-bottom: none; }
 
     /* Chart */
-    .chart-wrap { position: relative; width: 100%; overflow: hidden; }
-    .chart-wrap svg { display: block; width: 100%; height: auto; }
-    .chart-controls { display: flex; gap: 10px; align-items: center; margin-bottom: 12px; flex-wrap: wrap; }
+    .chart-summary { display: flex; gap: 10px; flex-wrap: wrap; margin: 4px 0 14px; }
+    .chip { background: var(--accent-bg); border: 1px solid var(--border); border-radius: 999px; padding: 5px 12px; font-size: 0.83rem; color: var(--text); }
+    .chip b { color: var(--muted); font-weight: 600; margin-right: 6px; }
+    .chart-controls { display: flex; gap: 14px; align-items: center; margin-bottom: 12px; flex-wrap: wrap; }
     .chart-controls label { color: var(--muted); font-size: 0.88rem; }
     .chart-controls select { padding: 4px 8px; border: 1px solid var(--border); border-radius: 6px; background: var(--bg); color: var(--text); font-size: 0.88rem; }
+    .chart-wrap { position: relative; width: 100%; overflow: hidden; }
+    .chart-wrap svg { display: block; width: 100%; height: auto; }
+    .chart-empty { color: var(--muted); text-align: center; padding: 40px 0; margin: 0; }
+    .chart-svg .grid-line { stroke: var(--border); stroke-width: 0.5; }
+    .chart-svg .axis-line { stroke: var(--text); stroke-width: 1.5; }
+    .chart-svg .axis-label { fill: var(--muted); font-size: 11px; }
+    .chart-svg .axis-title { fill: var(--text); font-size: 13px; font-weight: 600; }
+    .chart-svg .chart-note { fill: var(--muted); font-size: 11px; opacity: 0.7; }
+    .chart-svg .point-label { fill: var(--text); font-size: 10px; font-weight: 500; }
+    .chart-svg .frontier-line { fill: none; stroke: var(--accent); stroke-width: 2; stroke-dasharray: 6 5; opacity: 0.75; }
+    .chart-svg .chart-dot { cursor: pointer; }
+    .chart-svg .chart-dot:hover { filter: brightness(1.2); }
     .chart-legend { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 10px; }
     .chart-legend-item { display: flex; align-items: center; gap: 5px; font-size: 0.85rem; color: var(--muted); }
     .chart-legend-dot { width: 10px; height: 10px; border-radius: 50%; }
+    .frontier-sample { width: 20px; height: 0; border-top: 2px dashed var(--accent); display: inline-block; }
     .chart-tooltip {
       position: absolute; pointer-events: none; opacity: 0;
       background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px;
@@ -144,6 +195,10 @@ function buildHtml({ cards, ranking, isLive, dirName, title }) {
     .svg-wrap img { max-width: 100%; max-height: 360px; width: auto; height: auto; display: block; }
     .model-name { padding: 14px 16px; text-align: center; font-weight: 600; border-top: 1px solid var(--border); word-break: break-word; }
     .card-meta { display: block; margin-top: 4px; color: var(--muted); font-size: 0.8rem; font-weight: 500; }
+    @media (max-width: 720px) {
+      .search-box { width: 100%; }
+      .rank-tools { width: 100%; }
+    }
   </style>
 </head>
 <body>
@@ -155,24 +210,44 @@ function buildHtml({ cards, ranking, isLive, dirName, title }) {
       <button data-mode="rank" class="sort-btn active">按我的排名</button>
       <button data-mode="type" class="sort-btn">按类型分组</button>
       <button data-mode="cost" class="sort-btn">按性价比</button>
-      <button id="resetBtn">恢复默认排名</button>
+      <button id="undoBtn" disabled title="快捷键 Ctrl+Z">撤销</button>
       <span id="liveStatus" class="status" style="display:none"><span class="dot online"></span>实时同步中</span>
     </div>
   </header>
   <section class="leaderboard">
-    <h2>可编辑水平排名</h2>
-    <p class="rank-note">拖拽行可调整排名；点击分数、成本或类型可直接修改。成本单位自定义（如元/次、分/次），用于性价比排序和图表展示。</p>
+    <div class="rank-head">
+      <div>
+        <h2>可编辑水平排名</h2>
+        <p class="rank-note">拖拽行或使用 ↑↓ 调整排名；点击分数、成本、类型、简评可直接修改；点击表头可按该列排序。Ctrl+Z 撤销。</p>
+      </div>
+      <div class="rank-tools">
+        <input id="searchBox" class="search-box" type="search" placeholder="搜索模型或简评…" />
+        <label class="check-label"><input type="checkbox" id="unratedOnly" /> 只看未评分</label>
+        <button id="exportCsvBtn" class="mini-btn">导出 CSV</button>
+        <button id="exportMdBtn" class="mini-btn">导出 Markdown</button>
+      </div>
+    </div>
     <div class="rank-table-wrap">
       <table class="rank-table">
-        <thead><tr><th>排序</th><th>排名</th><th>模型</th><th>评分</th><th>成本</th><th>类型</th><th>简评</th></tr></thead>
+        <thead><tr>
+          <th>排序</th>
+          <th>排名</th>
+          <th class="sortable" data-sort="model">模型 <span class="sort-arrow"></span></th>
+          <th class="sortable" data-sort="score">评分 <span class="sort-arrow"></span></th>
+          <th class="sortable" data-sort="cost">成本 <span class="sort-arrow"></span></th>
+          <th>类型</th>
+          <th>简评</th>
+        </tr></thead>
         <tbody id="rankBody"></tbody>
       </table>
     </div>
     <p id="saveState" class="save-state"></p>
+    <div id="staleBox"></div>
   </section>
   <section class="chart-section">
     <h2>性能 - 成本图</h2>
-    <p class="rank-note">横轴为成本，纵轴为评分。右上角表示"高价高分"，左上角表示"低价高分"（性价比最优）。仅展示已填写成本且评分 > 0 的模型。</p>
+    <p class="rank-note">横轴为成本，纵轴为评分。左上角表示低价高分（性价比优）；虚线为 Pareto 性价比前沿。点击数据点可定位到对应表格行和卡片。仅展示已填写成本且评分 &gt; 0 的模型。</p>
+    <div id="chartSummary" class="chart-summary"></div>
     <div class="chart-controls">
       <label>图表类型：</label>
       <select id="chartType">
@@ -185,9 +260,12 @@ function buildHtml({ cards, ranking, isLive, dirName, title }) {
         <option value="cost-desc">成本从高到低</option>
         <option value="score-desc">评分从高到低</option>
       </select>
+      <label class="check-label"><input type="checkbox" id="logScale" /> 对数成本轴</label>
     </div>
     <div class="chart-wrap" id="chartWrap">
       <div class="chart-tooltip" id="chartTooltip"></div>
+      <p class="chart-empty" id="chartEmpty">暂无数据。请在排名表中填写成本和评分。</p>
+      <div id="chartSvgHost"></div>
     </div>
     <div class="chart-legend" id="chartLegend"></div>
   </section>
@@ -204,18 +282,31 @@ function buildHtml({ cards, ranking, isLive, dirName, title }) {
     const rankBody = document.getElementById('rankBody');
     const saveState = document.getElementById('saveState');
     const liveStatus = document.getElementById('liveStatus');
-    const resetBtn = document.getElementById('resetBtn');
+    const undoBtn = document.getElementById('undoBtn');
     const sortBtns = document.querySelectorAll('.sort-btn');
+    const searchBox = document.getElementById('searchBox');
+    const unratedOnlyEl = document.getElementById('unratedOnly');
+    const staleBox = document.getElementById('staleBox');
+    const exportCsvBtn = document.getElementById('exportCsvBtn');
+    const exportMdBtn = document.getElementById('exportMdBtn');
     const chartWrap = document.getElementById('chartWrap');
     const chartTooltip = document.getElementById('chartTooltip');
+    const chartEmpty = document.getElementById('chartEmpty');
+    const chartSvgHost = document.getElementById('chartSvgHost');
     const chartTypeSelect = document.getElementById('chartType');
     const chartSortSelect = document.getElementById('chartSort');
+    const logScaleCheck = document.getElementById('logScale');
     const chartLegend = document.getElementById('chartLegend');
+    const chartSummary = document.getElementById('chartSummary');
 
     let cards = initialCards.slice();
     let ranking = loadRanking();
     let viewMode = 'rank';
     let dragSrcEl = null;
+    let tableSort = null;
+    let searchQuery = '';
+    let onlyUnrated = false;
+    let undoStack = [];
 
     const TYPE_LABELS = { overseas: '海外', domestic: '国产', local: '本地' };
     const TYPE_COLORS = { overseas: '#3b82f6', domestic: '#f59e0b', local: '#10b981' };
@@ -225,14 +316,24 @@ function buildHtml({ cards, ranking, isLive, dirName, title }) {
       connectLive();
     }
 
+    function normalizeRanking(list) {
+      return (Array.isArray(list) ? list : []).map(r => ({
+        model: String(r.model),
+        type: r.type || 'local',
+        score: Number(r.score) || 0,
+        cost: Number(r.cost) || 0,
+        comment: r.comment || ''
+      }));
+    }
+
     function loadRanking() {
       if (!IS_LIVE) {
         try {
           const saved = localStorage.getItem(STORAGE_KEY);
-          if (saved) return JSON.parse(saved);
+          if (saved) return normalizeRanking(JSON.parse(saved));
         } catch {}
       }
-      return initialRanking.slice();
+      return normalizeRanking(initialRanking);
     }
 
     function saveRanking() {
@@ -261,13 +362,70 @@ function buildHtml({ cards, ranking, isLive, dirName, title }) {
       setTimeout(() => { if (saveState.textContent === text) saveState.textContent = ''; }, 2000);
     }
 
+    function pushHistory() {
+      undoStack.push(JSON.stringify(ranking));
+      if (undoStack.length > 30) undoStack.shift();
+      updateUndoBtn();
+    }
+
+    function updateUndoBtn() {
+      undoBtn.disabled = undoStack.length === 0;
+    }
+
+    function undo() {
+      if (!undoStack.length) return;
+      ranking = normalizeRanking(JSON.parse(undoStack.pop()));
+      saveRanking();
+      render();
+      updateUndoBtn();
+      setSaveState('已撤销上一步');
+    }
+
     function escapeHtml(text) {
       return String(text).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
     }
 
+    function clampScore(v) {
+      const n = parseFloat(v);
+      if (!isFinite(n)) return 0;
+      return Math.min(10, Math.max(0, n));
+    }
+    function clampCost(v) {
+      const n = parseFloat(v);
+      if (!isFinite(n)) return 0;
+      return Math.max(0, n);
+    }
+
+    function formatCost(v) {
+      const n = Number(v);
+      if (!isFinite(n)) return '0';
+      if (n >= 100) return String(Math.round(n));
+      if (n >= 10) return n.toFixed(1).replace(/\\.0$/, '');
+      if (n >= 1) return n.toFixed(2).replace(/0+$/, '').replace(/\\.$/, '');
+      if (n >= 0.01) return n.toFixed(3).replace(/0+$/, '').replace(/\\.$/, '');
+      return n.toPrecision(2);
+    }
+
+    function getAvailableModels() {
+      return new Set(cards.map(c => c.model));
+    }
+
     function getRankedItems() {
-      const available = new Set(cards.map(c => c.model));
+      const available = getAvailableModels();
       return ranking.filter(r => available.has(r.model));
+    }
+
+    function getVisibleRankedItems() {
+      let items = getRankedItems();
+      const q = searchQuery.trim().toLowerCase();
+      if (q) {
+        items = items.filter(r =>
+          r.model.toLowerCase().includes(q) ||
+          String(r.comment || '').toLowerCase().includes(q)
+        );
+      }
+      if (onlyUnrated) items = items.filter(r => !(Number(r.score) > 0));
+      return items;
     }
 
     function getRankMap() {
@@ -297,42 +455,85 @@ function buildHtml({ cards, ranking, isLive, dirName, title }) {
           if (cb === 0) return -1;
           const sa = Number(a.score) || 0;
           const sb = Number(b.score) || 0;
-          const ratioA = sa / ca;
-          const ratioB = sb / cb;
-          return ratioB - ratioA;
+          return (sb / cb) - (sa / ca);
         });
       }
       return items;
     }
 
+    function sortItemsForTable(items) {
+      if (!tableSort) return sortItems(items, viewMode);
+      const key = tableSort.key;
+      const dir = tableSort.dir;
+      return items.slice().sort((a, b) => {
+        if (key === 'model') return a.model.localeCompare(b.model, 'zh-CN') * dir;
+        if (key === 'score') return ((Number(a.score) || 0) - (Number(b.score) || 0)) * dir;
+        if (key === 'cost') {
+          const av = Number(a.cost) > 0 ? Number(a.cost) : Infinity;
+          const bv = Number(b.cost) > 0 ? Number(b.cost) : Infinity;
+          if (av === bv) return 0;
+          return (av - bv) * dir;
+        }
+        return 0;
+      });
+    }
+
     function renderRanking() {
-      const items = sortItems(getRankedItems(), viewMode);
+      const items = sortItemsForTable(getVisibleRankedItems());
+      const manualOrder = viewMode === 'rank' && !tableSort;
+      const ranked = getRankedItems();
+      const rankOf = new Map(ranked.map((r, i) => [r.model, i + 1]));
       rankBody.innerHTML = '';
       let lastType = null;
-      items.forEach((r, idx) => {
-        if (viewMode === 'type' && r.type !== lastType) {
+      if (!items.length) {
+        rankBody.innerHTML = '<tr><td colspan="7" style="text-align:center;color:var(--muted);padding:24px;">没有符合条件的条目</td></tr>';
+        updateHeaderArrows();
+        renderStale();
+        return;
+      }
+      items.forEach(r => {
+        if (viewMode === 'type' && !tableSort && r.type !== lastType) {
           const groupRow = document.createElement('tr');
           groupRow.className = 'group-header';
           groupRow.innerHTML = '<td colspan="7">' + escapeHtml(TYPE_LABELS[r.type] || r.type || '未分类') + '</td>';
           rankBody.appendChild(groupRow);
           lastType = r.type;
         }
-        const realRank = ranking.findIndex(x => x.model === r.model) + 1;
+        const realRank = rankOf.get(r.model) || 0;
         const tr = document.createElement('tr');
         tr.className = realRank <= 3 ? 'top-' + realRank : '';
         tr.draggable = true;
         tr.dataset.model = r.model;
-        tr.dataset.index = realRank - 1;
         tr.innerHTML =
-          '<td><span class="drag-handle">⋮⋮</span></td>' +
+          '<td class="rank-move">' +
+            '<span class="drag-handle" title="拖拽排序">⋮⋮</span>' +
+            '<button class="move-btn" data-dir="-1" title="上移"' + (manualOrder ? '' : ' disabled') + '>↑</button>' +
+            '<button class="move-btn" data-dir="1" title="下移"' + (manualOrder ? '' : ' disabled') + '>↓</button>' +
+          '</td>' +
           '<td class="rank-num">' + realRank + '</td>' +
           '<td class="rank-model">' + escapeHtml(r.model) + '</td>' +
           '<td class="rank-score"><input type="number" step="0.1" min="0" max="10" value="' + Number(r.score).toFixed(1) + '"></td>' +
           '<td class="rank-cost"><input type="number" step="0.01" min="0" value="' + (Number(r.cost) || 0) + '" placeholder="0"></td>' +
           '<td class="rank-type">' + typeSelectHtml(r.type) + '</td>' +
-          '<td class="rank-comment">' + escapeHtml(r.comment || '') + '</td>';
-        addRowEvents(tr);
+          '<td class="rank-comment" title="点击编辑简评">' +
+            (r.comment ? escapeHtml(r.comment) : '<span class="comment-empty">点击添加简评</span>') +
+          '</td>';
+        addRowEvents(tr, r.model);
         rankBody.appendChild(tr);
+      });
+      updateHeaderArrows();
+      renderStale();
+    }
+
+    function updateHeaderArrows() {
+      document.querySelectorAll('th.sortable').forEach(th => {
+        const arrow = th.querySelector('.sort-arrow');
+        if (!arrow) return;
+        if (tableSort && tableSort.key === th.dataset.sort) {
+          arrow.textContent = tableSort.dir > 0 ? '↑' : '↓';
+        } else {
+          arrow.textContent = '';
+        }
       });
     }
 
@@ -345,64 +546,209 @@ function buildHtml({ cards, ranking, isLive, dirName, title }) {
       return html;
     }
 
-    function addRowEvents(tr) {
+    function addRowEvents(tr, model) {
       tr.addEventListener('dragstart', handleDragStart);
       tr.addEventListener('dragover', handleDragOver);
       tr.addEventListener('drop', handleDrop);
       tr.addEventListener('dragend', handleDragEnd);
+
       const inputs = tr.querySelectorAll('input');
       inputs[0].addEventListener('change', (e) => {
-        const model = tr.dataset.model;
         const item = ranking.find(x => x.model === model);
-        if (item) { item.score = parseFloat(e.target.value) || 0; saveRanking(); renderCards(); }
+        if (!item) return;
+        const val = clampScore(e.target.value);
+        e.target.value = val.toFixed(1);
+        if (val !== item.score) {
+          pushHistory();
+          item.score = val;
+          saveRanking();
+          renderCards();
+        }
       });
+      inputs[0].addEventListener('keydown', (e) => { if (e.key === 'Enter') e.target.blur(); });
       inputs[1].addEventListener('change', (e) => {
-        const model = tr.dataset.model;
         const item = ranking.find(x => x.model === model);
-        if (item) { item.cost = parseFloat(e.target.value) || 0; saveRanking(); }
+        if (!item) return;
+        const val = clampCost(e.target.value);
+        e.target.value = String(val);
+        if (val !== item.cost) {
+          pushHistory();
+          item.cost = val;
+          saveRanking();
+          renderCards();
+        }
       });
+      inputs[1].addEventListener('keydown', (e) => { if (e.key === 'Enter') e.target.blur(); });
+
       const select = tr.querySelector('select');
       select.addEventListener('change', (e) => {
-        const model = tr.dataset.model;
         const item = ranking.find(x => x.model === model);
-        if (item) { item.type = e.target.value; saveRanking(); render(); }
+        if (item) {
+          pushHistory();
+          item.type = e.target.value;
+          saveRanking();
+          render();
+        }
+      });
+
+      tr.querySelectorAll('.move-btn').forEach(btn => {
+        btn.addEventListener('click', () => moveModel(model, Number(btn.dataset.dir)));
       });
     }
 
+    function renderCommentCell(td, comment) {
+      td.innerHTML = '';
+      if (comment) {
+        td.textContent = comment;
+      } else {
+        const span = document.createElement('span');
+        span.className = 'comment-empty';
+        span.textContent = '点击添加简评';
+        td.appendChild(span);
+      }
+    }
+
+    function startCommentEdit(td, model) {
+      const item = ranking.find(x => x.model === model);
+      if (!item) return;
+      const original = item.comment || '';
+      td.innerHTML = '';
+      const ta = document.createElement('textarea');
+      ta.className = 'comment-editor';
+      ta.rows = 2;
+      ta.value = original;
+      td.appendChild(ta);
+      ta.focus();
+      ta.setSelectionRange(ta.value.length, ta.value.length);
+      let done = false;
+      const commit = (save) => {
+        if (done) return;
+        done = true;
+        let finalComment = original;
+        if (save) {
+          finalComment = ta.value.trim();
+          if (finalComment !== original) {
+            pushHistory();
+            item.comment = finalComment;
+            saveRanking();
+          }
+        }
+        renderCommentCell(td, finalComment);
+      };
+      ta.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); commit(true); }
+        else if (e.key === 'Escape') { e.preventDefault(); commit(false); }
+      });
+      ta.addEventListener('blur', () => commit(true));
+    }
+
+    function moveModel(model, dir) {
+      if (viewMode !== 'rank' || tableSort) return;
+      const items = getRankedItems();
+      const i = items.findIndex(x => x.model === model);
+      const j = i + dir;
+      if (i < 0 || j < 0 || j >= items.length) return;
+      const targetModel = items[j].model;
+      const srcIdx = ranking.findIndex(x => x.model === model);
+      const dstIdx = ranking.findIndex(x => x.model === targetModel);
+      if (srcIdx === -1 || dstIdx === -1) return;
+      pushHistory();
+      const [moved] = ranking.splice(srcIdx, 1);
+      const newDst = ranking.findIndex(x => x.model === targetModel);
+      const insertAt = dir > 0 ? newDst + 1 : newDst;
+      ranking.splice(insertAt, 0, moved);
+      saveRanking();
+      render();
+    }
+
     function handleDragStart(e) {
-      if (viewMode !== 'rank') { e.preventDefault(); return; }
+      if (viewMode !== 'rank' || tableSort) { e.preventDefault(); return; }
       dragSrcEl = this;
       this.classList.add('dragging');
       e.dataTransfer.effectAllowed = 'move';
     }
     function handleDragOver(e) {
-      if (viewMode !== 'rank') return;
+      if (viewMode !== 'rank' || tableSort) return;
       e.preventDefault();
       e.dataTransfer.dropEffect = 'move';
     }
     function handleDrop(e) {
-      if (viewMode !== 'rank' || !dragSrcEl || dragSrcEl === this) return;
+      if (viewMode !== 'rank' || tableSort || !dragSrcEl || dragSrcEl === this) return;
       e.preventDefault();
       const srcModel = dragSrcEl.dataset.model;
       const dstModel = this.dataset.model;
       const srcIdx = ranking.findIndex(x => x.model === srcModel);
       const dstIdx = ranking.findIndex(x => x.model === dstModel);
       if (srcIdx === -1 || dstIdx === -1) return;
+      pushHistory();
       const [moved] = ranking.splice(srcIdx, 1);
-      ranking.splice(dstIdx, 0, moved);
+      const newDst = ranking.findIndex(x => x.model === dstModel);
+      ranking.splice(newDst, 0, moved);
       saveRanking();
       render();
     }
     function handleDragEnd() { this.classList.remove('dragging'); dragSrcEl = null; }
+
+    function renderStale() {
+      staleBox.innerHTML = '';
+      const available = getAvailableModels();
+      const stale = ranking.filter(r => !available.has(r.model));
+      if (!stale.length) return;
+      const details = document.createElement('details');
+      details.className = 'stale-box';
+      const summary = document.createElement('summary');
+      summary.textContent = '已失效条目（模型目录已删除） · ' + stale.length + ' 个';
+      details.appendChild(summary);
+      stale.forEach(r => {
+        const row = document.createElement('div');
+        row.className = 'stale-row';
+        const name = document.createElement('span');
+        name.textContent = r.model + ' · ' + (Number(r.score) || 0).toFixed(1) + ' 分 · 成本 ' + formatCost(r.cost);
+        const del = document.createElement('button');
+        del.className = 'mini-btn danger';
+        del.textContent = '删除';
+        del.addEventListener('click', () => {
+          pushHistory();
+          ranking = ranking.filter(x => x.model !== r.model);
+          saveRanking();
+          render();
+        });
+        row.appendChild(name);
+        row.appendChild(del);
+        details.appendChild(row);
+      });
+      const clearBtn = document.createElement('button');
+      clearBtn.className = 'mini-btn danger';
+      clearBtn.style.marginTop = '8px';
+      clearBtn.textContent = '全部清理（' + stale.length + '）';
+      clearBtn.addEventListener('click', () => {
+        if (!confirm('删除全部 ' + stale.length + ' 个失效条目？')) return;
+        pushHistory();
+        ranking = ranking.filter(x => available.has(x.model));
+        saveRanking();
+        render();
+      });
+      details.appendChild(clearBtn);
+      staleBox.appendChild(details);
+    }
 
     function renderCards() {
       const rankMap = getRankMap();
       const existing = new Map();
       panel.querySelectorAll('.card').forEach(c => existing.set(c.dataset.src, c));
       panel.innerHTML = '';
-      countEl.textContent = '共 ' + cards.length + ' 个模型';
+      const q = searchQuery.trim().toLowerCase();
 
       let orderCards = cards.slice();
+      if (q) orderCards = orderCards.filter(c => c.model.toLowerCase().includes(q));
+      if (onlyUnrated) {
+        orderCards = orderCards.filter(c => {
+          const r = rankMap.get(c.model);
+          return !r || !(Number(r.score) > 0);
+        });
+      }
+      countEl.textContent = '显示 ' + orderCards.length + ' / 共 ' + cards.length + ' 个模型';
+
       if (viewMode === 'rank') {
         orderCards.sort((a, b) => {
           const ra = rankMap.has(a.model) ? rankMap.get(a.model).rank : 9999;
@@ -450,7 +796,8 @@ function buildHtml({ cards, ranking, isLive, dirName, title }) {
         const card = document.createElement('div');
         card.className = 'card' + (old ? '' : ' flash');
         card.dataset.src = c.src;
-        const costStr = rank && rank.cost ? ' · 成本 ' + Number(rank.cost).toFixed(2) : '';
+        card.dataset.model = c.model;
+        const costStr = rank && Number(rank.cost) > 0 ? ' · 成本 ' + formatCost(rank.cost) : '';
         const meta = rank
           ? '<span class="card-meta">#' + rank.rank + ' · ' + Number(rank.score).toFixed(1) + ' 分 · ' + (TYPE_LABELS[rank.type] || rank.type || '未分类') + costStr + '</span>'
           : '<span class="card-meta">未评级</span>';
@@ -460,141 +807,359 @@ function buildHtml({ cards, ranking, isLive, dirName, title }) {
       });
     }
 
+    function computeFrontier(list) {
+      const sortedList = list.slice().sort((a, b) => a.cost - b.cost || b.score - a.score);
+      const front = [];
+      let best = -Infinity;
+      for (const d of sortedList) {
+        if (d.score > best) {
+          front.push(d);
+          best = d.score;
+        }
+      }
+      return front;
+    }
+
     function renderChart() {
-      const data = ranking.filter(r => Number(r.cost) > 0 && Number(r.score) > 0);
-      if (data.length === 0) {
-        chartWrap.querySelector('svg')?.remove();
-        chartWrap.insertAdjacentHTML('afterbegin', '<p style="color:var(--muted);text-align:center;padding:40px 0;">暂无数据。请在排名表中填写成本和评分。</p>');
-        chartLegend.innerHTML = '';
+      const available = getAvailableModels();
+      const data = ranking.filter(r => available.has(r.model) && Number(r.cost) > 0 && Number(r.score) > 0);
+      chartLegend.innerHTML = '';
+      chartSummary.innerHTML = '';
+      chartTooltip.classList.remove('visible');
+      if (!data.length) {
+        chartSvgHost.innerHTML = '';
+        chartEmpty.style.display = 'block';
         return;
       }
-      chartWrap.querySelector('p')?.remove();
+      chartEmpty.style.display = 'none';
 
+      const logScale = logScaleCheck.checked;
+      const chartType = chartTypeSelect.value;
       const sortMode = chartSortSelect.value;
-      if (sortMode === 'cost-asc') data.sort((a, b) => a.cost - b.cost);
-      else if (sortMode === 'cost-desc') data.sort((a, b) => b.cost - a.cost);
-      else if (sortMode === 'score-desc') data.sort((a, b) => b.score - a.score);
+      const view = data.slice();
+      if (sortMode === 'cost-asc') view.sort((a, b) => a.cost - b.cost);
+      else if (sortMode === 'cost-desc') view.sort((a, b) => b.cost - a.cost);
+      else view.sort((a, b) => b.score - a.score);
 
-      const W = 900, H = 500;
-      const pad = { top: 40, right: 40, bottom: 60, left: 60 };
+      const W = 920, H = 520;
+      const pad = { top: 44, right: 48, bottom: 64, left: 72 };
       const plotW = W - pad.left - pad.right;
       const plotH = H - pad.top - pad.bottom;
 
-      const maxCost = Math.max(...data.map(d => d.cost)) * 1.1;
-      const minCost = 0;
-      const maxScore = 10;
-      const minScore = 0;
+      const costs = data.map(d => d.cost);
+      const maxCostVal = Math.max.apply(null, costs);
+      const minCostVal = Math.min.apply(null, costs);
+      let lo, hi;
+      if (logScale) {
+        lo = Math.log10(Math.max(minCostVal * 0.85, 1e-6));
+        hi = Math.log10(Math.max(maxCostVal * 1.15, Math.pow(10, lo + 1)));
+      } else {
+        lo = 0;
+        hi = Math.max(maxCostVal * 1.15, 1);
+      }
+      if (hi - lo < 1e-9) hi = lo + 1;
 
-      const xScale = v => pad.left + ((v - minCost) / (maxCost - minCost)) * plotW;
-      const yScale = v => pad.top + plotH - ((v - minScore) / (maxScore - minScore)) * plotH;
+      const xScale = (v) => {
+        if (!logScale) return pad.left + ((v - lo) / (hi - lo)) * plotW;
+        const x = Math.log10(Math.max(v, Math.pow(10, lo)));
+        return pad.left + ((x - lo) / (hi - lo)) * plotW;
+      };
+      const yScale = (v) => pad.top + plotH - (v / 10) * plotH;
 
-      const chartType = chartTypeSelect.value;
-      let svg = '<svg viewBox="0 0 ' + W + ' ' + H + '" xmlns="http://www.w3.org/2000/svg">';
+      const frontier = computeFrontier(data);
+      const frontierSet = new Set(frontier.map(d => d.model));
 
-      // Grid lines
-      svg += '<g class="grid">';
+      let svg = '<svg viewBox="0 0 ' + W + ' ' + H + '" class="chart-svg" role="img" aria-label="性能成本图">';
+
       for (let i = 0; i <= 5; i++) {
         const y = pad.top + (plotH / 5) * i;
-        const scoreVal = (maxScore - (maxScore / 5) * i).toFixed(1);
-        svg += '<line x1="' + pad.left + '" y1="' + y + '" x2="' + (W - pad.right) + '" y2="' + y + '" stroke="var(--border)" stroke-width="0.5" />';
-        svg += '<text x="' + (pad.left - 8) + '" y="' + (y + 4) + '" text-anchor="end" fill="var(--muted)" font-size="11">' + scoreVal + '</text>';
+        const scoreVal = (10 - 2 * i).toFixed(1);
+        svg += '<line class="grid-line" x1="' + pad.left + '" y1="' + y + '" x2="' + (W - pad.right) + '" y2="' + y + '"></line>';
+        svg += '<text class="axis-label" x="' + (pad.left - 10) + '" y="' + (y + 4) + '" text-anchor="end">' + scoreVal + '</text>';
       }
       for (let i = 0; i <= 5; i++) {
         const x = pad.left + (plotW / 5) * i;
-        const costVal = ((maxCost / 5) * i).toFixed(2);
-        svg += '<line x1="' + x + '" y1="' + pad.top + '" x2="' + x + '" y2="' + (H - pad.bottom) + '" stroke="var(--border)" stroke-width="0.5" />';
-        svg += '<text x="' + x + '" y="' + (H - pad.bottom + 18) + '" text-anchor="middle" fill="var(--muted)" font-size="11">' + costVal + '</text>';
+        const t = lo + (hi - lo) * (i / 5);
+        const costVal = logScale ? Math.pow(10, t) : t;
+        svg += '<line class="grid-line" x1="' + x + '" y1="' + pad.top + '" x2="' + x + '" y2="' + (H - pad.bottom) + '"></line>';
+        svg += '<text class="axis-label" x="' + x + '" y="' + (H - pad.bottom + 18) + '" text-anchor="middle">' + formatCost(costVal) + '</text>';
       }
-      svg += '</g>';
 
-      // Axes
-      svg += '<line x1="' + pad.left + '" y1="' + pad.top + '" x2="' + pad.left + '" y2="' + (H - pad.bottom) + '" stroke="var(--text)" stroke-width="1.5" />';
-      svg += '<line x1="' + pad.left + '" y1="' + (H - pad.bottom) + '" x2="' + (W - pad.right) + '" y2="' + (H - pad.bottom) + '" stroke="var(--text)" stroke-width="1.5" />';
+      if (frontier.length > 1) {
+        const points = frontier.map(d => xScale(d.cost) + ',' + yScale(d.score)).join(' ');
+        svg += '<polyline class="frontier-line" points="' + points + '"></polyline>';
+      }
 
-      // Axis labels
-      svg += '<text x="' + (W / 2) + '" y="' + (H - 10) + '" text-anchor="middle" fill="var(--text)" font-size="13" font-weight="600">成本</text>';
-      svg += '<text x="16" y="' + (H / 2) + '" text-anchor="middle" fill="var(--text)" font-size="13" font-weight="600" transform="rotate(-90, 16, ' + (H / 2) + ')">评分</text>';
+      svg += '<line class="axis-line" x1="' + pad.left + '" y1="' + pad.top + '" x2="' + pad.left + '" y2="' + (H - pad.bottom) + '"></line>';
+      svg += '<line class="axis-line" x1="' + pad.left + '" y1="' + (H - pad.bottom) + '" x2="' + (W - pad.right) + '" y2="' + (H - pad.bottom) + '"></line>';
+      svg += '<text class="axis-title" x="' + (W / 2) + '" y="' + (H - 12) + '" text-anchor="middle">成本' + (logScale ? '（对数）' : '') + '</text>';
+      svg += '<text class="axis-title" x="20" y="' + (H / 2) + '" text-anchor="middle" transform="rotate(-90, 20, ' + (H / 2) + ')">评分</text>';
+      svg += '<text class="chart-note" x="' + (pad.left + 8) + '" y="' + (pad.top - 16) + '">← 低价高分（性价比优）</text>';
+      svg += '<text class="chart-note" x="' + (W - pad.right - 8) + '" y="' + (pad.top - 16) + '" text-anchor="end">高价高分 →</text>';
 
-      // Ideal zone label
-      svg += '<text x="' + (pad.left + 8) + '" y="' + (pad.top + 18) + '" fill="var(--muted)" font-size="11" opacity="0.6">← 低价高分（性价比优）</text>';
-      svg += '<text x="' + (W - pad.right - 8) + '" y="' + (pad.top + 18) + '" text-anchor="end" fill="var(--muted)" font-size="11" opacity="0.6">高价高分 →</text>';
-
-      // Data points
-      data.forEach((d, i) => {
+      // Greedy label placement, higher scores get priority
+      const labelOrder = data.slice().sort((a, b) => b.score - a.score);
+      const placedRects = [];
+      const labeled = new Set();
+      labelOrder.forEach(d => {
         const cx = xScale(d.cost);
         const cy = yScale(d.score);
+        const r = chartType === 'bubble' ? Math.max(6, Math.min(20, d.score * 2.4)) : 7;
+        const text = d.model.length > 16 ? d.model.slice(0, 14) + '…' : d.model;
+        const w = text.length * 6.8 + 6;
+        const h = 14;
+        const rect = { x: cx - w / 2, y: cy - r - 18, w: w, h: h };
+        if (rect.x < 2 || rect.x + w > W - 2) return;
+        const overlaps = placedRects.some(p =>
+          !(rect.x + rect.w < p.x || rect.x > p.x + p.w || rect.y + rect.h < p.y || rect.y > p.y + p.h)
+        );
+        if (overlaps) return;
+        placedRects.push(rect);
+        labeled.add(d.model);
+      });
+
+      view.forEach((d, idx) => {
+        const cx = xScale(d.cost);
+        const cy = yScale(d.score);
+        const r = chartType === 'bubble' ? Math.max(6, Math.min(20, d.score * 2.4)) : 7;
         const color = TYPE_COLORS[d.type] || '#6b7280';
-        const r = chartType === 'bubble' ? Math.max(6, d.score * 2.5) : 7;
-        svg += '<circle cx="' + cx + '" cy="' + cy + '" r="' + r + '" fill="' + color + '" fill-opacity="0.75" stroke="' + color + '" stroke-width="1.5" data-idx="' + i + '" class="chart-dot" />';
-        svg += '<text x="' + cx + '" y="' + (cy - r - 5) + '" text-anchor="middle" fill="var(--text)" font-size="10" font-weight="500">' + escapeHtml(d.model.length > 14 ? d.model.slice(0, 12) + '…' : d.model) + '</text>';
+        const onFront = frontierSet.has(d.model);
+        svg += '<circle class="chart-dot" data-dot-idx="' + idx + '" cx="' + cx + '" cy="' + cy + '" r="' + r + '" fill="' + color + '" fill-opacity="0.72" stroke="' + color + '" stroke-width="' + (onFront ? 3 : 1.5) + '"></circle>';
+      });
+      view.forEach(d => {
+        if (!labeled.has(d.model)) return;
+        const cx = xScale(d.cost);
+        const cy = yScale(d.score);
+        const r = chartType === 'bubble' ? Math.max(6, Math.min(20, d.score * 2.4)) : 7;
+        const text = d.model.length > 16 ? d.model.slice(0, 14) + '…' : d.model;
+        svg += '<text class="point-label" x="' + cx + '" y="' + (cy - r - 6) + '" text-anchor="middle">' + escapeHtml(text) + '</text>';
       });
 
       svg += '</svg>';
-      chartWrap.querySelector('svg')?.remove();
-      chartWrap.insertAdjacentHTML('afterbegin', svg);
+      chartSvgHost.innerHTML = svg;
 
-      // Tooltip events
-      chartWrap.querySelectorAll('.chart-dot').forEach(dot => {
-        dot.addEventListener('mouseenter', (e) => {
-          const idx = parseInt(dot.getAttribute('data-idx'));
-          const d = data[idx];
-          const ratio = (d.score / d.cost).toFixed(2);
-          chartTooltip.innerHTML = '<strong>' + escapeHtml(d.model) + '</strong><br>评分: ' + d.score + '<br>成本: ' + d.cost + '<br>性价比: ' + ratio;
+      chartSvgHost.querySelectorAll('.chart-dot').forEach(dot => {
+        const idx = parseInt(dot.getAttribute('data-dot-idx'), 10);
+        const d = view[idx];
+        dot.addEventListener('mouseenter', () => {
+          const rankedItems = getRankedItems();
+          const rankIdx = rankedItems.findIndex(x => x.model === d.model);
+          const ratio = d.score / d.cost;
+          chartTooltip.innerHTML =
+            '<strong>' + escapeHtml(d.model) + '</strong><br>' +
+            '排名: #' + (rankIdx + 1) + '<br>' +
+            '评分: ' + Number(d.score).toFixed(1) + '<br>' +
+            '成本: ' + formatCost(d.cost) + '<br>' +
+            '类型: ' + (TYPE_LABELS[d.type] || d.type || '未分类') + '<br>' +
+            '性价比: ' + ratio.toFixed(2);
           chartTooltip.classList.add('visible');
         });
         dot.addEventListener('mousemove', (e) => {
           const rect = chartWrap.getBoundingClientRect();
-          chartTooltip.style.left = (e.clientX - rect.left + 12) + 'px';
-          chartTooltip.style.top = (e.clientY - rect.top - 10) + 'px';
+          const left = Math.min(e.clientX - rect.left + 14, rect.width - 180);
+          chartTooltip.style.left = Math.max(4, left) + 'px';
+          chartTooltip.style.top = Math.max(4, e.clientY - rect.top - 10) + 'px';
         });
         dot.addEventListener('mouseleave', () => {
           chartTooltip.classList.remove('visible');
         });
+        dot.addEventListener('click', () => focusModel(d.model));
       });
 
-      // Legend
-      chartLegend.innerHTML = '';
-      for (const [key, label] of Object.entries(TYPE_LABELS)) {
+      const avg = data.reduce((s, d) => s + d.score, 0) / data.length;
+      const best = data.reduce((a, b) => (b.score >= a.score ? b : a));
+      const valueBest = data.reduce((a, b) => ((b.score / b.cost) >= (a.score / a.cost) ? b : a));
+      const cheapest = data.reduce((a, b) => (b.cost <= a.cost ? b : a));
+      addChip('样本', data.length + ' 个');
+      addChip('平均分', avg.toFixed(2));
+      addChip('最高分', best.model + ' · ' + Number(best.score).toFixed(1));
+      addChip('性价比冠军', valueBest.model + ' · ' + (valueBest.score / valueBest.cost).toFixed(2));
+      addChip('最低成本', cheapest.model + ' · ' + formatCost(cheapest.cost));
+
+      let legendHtml = '';
+      Object.keys(TYPE_LABELS).forEach(key => {
         const count = data.filter(d => d.type === key).length;
-        if (count === 0) continue;
-        chartLegend.innerHTML += '<span class="chart-legend-item"><span class="chart-legend-dot" style="background:' + (TYPE_COLORS[key] || '#6b7280') + '"></span>' + label + ' (' + count + ')</span>';
+        if (!count) return;
+        legendHtml += '<span class="chart-legend-item"><span class="chart-legend-dot" style="background:' + TYPE_COLORS[key] + '"></span>' + TYPE_LABELS[key] + ' (' + count + ')</span>';
+      });
+      legendHtml += '<span class="chart-legend-item"><span class="frontier-sample"></span>性价比前沿（Pareto）</span>';
+      chartLegend.innerHTML = legendHtml;
+    }
+
+    function addChip(label, value) {
+      const chip = document.createElement('span');
+      chip.className = 'chip';
+      const b = document.createElement('b');
+      b.textContent = label;
+      chip.appendChild(b);
+      chip.appendChild(document.createTextNode(value));
+      chartSummary.appendChild(chip);
+    }
+
+    function focusModel(model) {
+      let rowEl = null;
+      rankBody.querySelectorAll('tr[data-model]').forEach(t => {
+        if (t.dataset.model === model) rowEl = t;
+      });
+      if (rowEl) {
+        rowEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        rowEl.classList.add('row-highlight');
+        setTimeout(() => rowEl.classList.remove('row-highlight'), 2400);
       }
+      panel.querySelectorAll('.card').forEach(c => {
+        if (c.dataset.model === model) {
+          c.classList.add('flash');
+          setTimeout(() => c.classList.remove('flash'), 1600);
+        }
+      });
     }
 
     function render() { renderRanking(); renderCards(); renderChart(); }
 
     function setViewMode(mode) {
       viewMode = mode;
+      tableSort = null;
       sortBtns.forEach(b => b.classList.toggle('active', b.dataset.mode === mode));
       render();
+    }
+
+    function downloadText(filename, text) {
+      const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+    }
+
+    function dateStamp() {
+      const d = new Date();
+      const p = (n) => String(n).padStart(2, '0');
+      return d.getFullYear() + '-' + p(d.getMonth() + 1) + '-' + p(d.getDate());
+    }
+
+    function csvCell(v) {
+      const s = String(v);
+      return /[",\\r\\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s;
+    }
+
+    function exportCsv() {
+      const rows = [['排名', '模型', '评分', '成本', '类型', '简评']];
+      getRankedItems().forEach((r, i) => {
+        rows.push([i + 1, r.model, Number(r.score) || 0, Number(r.cost) || 0, TYPE_LABELS[r.type] || r.type || '', r.comment || '']);
+      });
+      const csv = String.fromCharCode(0xFEFF) + rows.map(row => row.map(csvCell).join(',')).join('\\r\\n');
+      downloadText('模型排名-' + dateStamp() + '.csv', csv);
+    }
+
+    function mdCell(s) {
+      return String(s).replace(/\\|/g, '\\\\|').replace(/\\r?\\n/g, ' ');
+    }
+
+    function exportMarkdown() {
+      const lines = [
+        '# SVG 模型排名快照（' + dateStamp() + '）',
+        '',
+        '| 排名 | 模型 | 评分 | 成本 | 类型 | 简评 |',
+        '|---|---|---|---|---|---|'
+      ];
+      getRankedItems().forEach((r, i) => {
+        lines.push('| ' + (i + 1) + ' | ' + mdCell(r.model) + ' | ' + (Number(r.score) || 0).toFixed(1) + ' | ' + (Number(r.cost) || 0) + ' | ' + (TYPE_LABELS[r.type] || r.type || '') + ' | ' + mdCell(r.comment || '') + ' |');
+      });
+      downloadText('模型排名-' + dateStamp() + '.md', lines.join('\\n'));
     }
 
     sortBtns.forEach(btn => btn.addEventListener('click', () => setViewMode(btn.dataset.mode)));
     chartTypeSelect.addEventListener('change', renderChart);
     chartSortSelect.addEventListener('change', renderChart);
+    logScaleCheck.addEventListener('change', renderChart);
+    searchBox.addEventListener('input', () => { searchQuery = searchBox.value; render(); });
+    unratedOnlyEl.addEventListener('change', () => { onlyUnrated = unratedOnlyEl.checked; render(); });
+    undoBtn.addEventListener('click', undo);
+    exportCsvBtn.addEventListener('click', exportCsv);
+    exportMdBtn.addEventListener('click', exportMarkdown);
+
+    rankBody.addEventListener('click', (e) => {
+      const td = e.target.closest('td.rank-comment');
+      if (!td) return;
+      if (td.querySelector('textarea')) return;
+      const tr = td.closest('tr');
+      if (!tr || !tr.dataset.model) return;
+      startCommentEdit(td, tr.dataset.model);
+    });
+
+    document.querySelectorAll('th.sortable').forEach(th => {
+      th.addEventListener('click', () => {
+        const key = th.dataset.sort;
+        const baseDir = (key === 'model' || key === 'cost') ? 1 : -1;
+        if (!tableSort || tableSort.key !== key) {
+          tableSort = { key: key, dir: baseDir };
+        } else if (tableSort.dir === baseDir) {
+          tableSort.dir = -baseDir;
+        } else {
+          tableSort = null;
+        }
+        renderRanking();
+      });
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if ((e.ctrlKey || e.metaKey) && !e.shiftKey && String(e.key).toLowerCase() === 'z') {
+        const tag = document.activeElement && document.activeElement.tagName;
+        if (tag === 'INPUT' || tag === 'TEXTAREA') return;
+        e.preventDefault();
+        undo();
+      }
+    });
 
     resetBtn.addEventListener('click', () => {
       if (confirm('确定恢复为默认排名？')) {
-        ranking = initialRanking.slice();
+        ranking = normalizeRanking(initialRanking);
+        tableSort = null;
+        undoStack = [];
         if (!IS_LIVE) localStorage.removeItem(STORAGE_KEY);
         saveRanking();
+        updateUndoBtn();
+        setViewMode('rank');
+      }
+    });
+
+    resetBtn.addEventListener('click', () => {
+      if (confirm('确定恢复为默认排名？')) {
+        ranking = normalizeRanking(initialRanking);
+        tableSort = null;
+        undoStack = [];
+        if (!IS_LIVE) localStorage.removeItem(STORAGE_KEY);
+        saveRanking();
+        updateUndoBtn();
         setViewMode('rank');
       }
     });
 
     function connectLive() {
       const source = new EventSource('/events');
-      source.onopen = () => {};
       source.onmessage = (e) => {
         try {
           cards = JSON.parse(e.data);
           render();
         } catch (err) { console.error(err); }
       };
+      source.addEventListener('ranking', (e) => {
+        try {
+          const incoming = normalizeRanking(JSON.parse(e.data));
+          if (JSON.stringify(incoming) !== JSON.stringify(ranking)) {
+            ranking = incoming;
+            render();
+          }
+        } catch (err) { console.error(err); }
+      });
       source.onerror = () => {};
     }
 
     render();
+    updateUndoBtn();
   </script>
 </body>
 </html>`;
